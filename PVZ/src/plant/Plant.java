@@ -1,0 +1,109 @@
+package plant;
+
+import java.awt.Image;
+
+public abstract class Plant {
+	
+	private String name;
+	private int max_health;
+	private int current_health;
+	private boolean is_alive;
+	private int cd;
+	private int price;
+	private	int posX;
+	private	int posY;
+	private Image image;
+	
+	public Plant() {
+		
+		init();
+	}
+	
+	public void init() {
+		
+		this.max_health = 10;
+		this.current_health = 10;
+		this.is_alive = true;
+		this.price = 0;
+		this.cd = 0;	
+		
+	}
+	
+	public void receiveDamage(int damage) {
+		
+		current_health = current_health - damage;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getMax_health() {
+		return this.max_health;
+	}
+	
+	public int getCurrent_health() {
+		return this.current_health;
+	}
+	
+	public int getPrice() {
+		return this.price;
+	}
+	
+	public boolean getIs_alive() {
+		return this.is_alive;
+	}
+	
+	public int getCd() {
+		return this.cd;
+	}
+	
+	public int getPosX() {
+		return this.posX;
+	}
+	
+	public int getPosY() {
+		return this.posY;
+	}
+	
+	public Image getImage() {
+		return this.image;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setMax_health(int max_health) {
+		this.max_health = max_health;
+	}
+	
+	public void setCurrent_health(int current_health) {
+		this.current_health = current_health;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public void setIs_alive(boolean is_alive) {
+		this.is_alive = is_alive;
+	}
+	
+	public void setCd(int cd) {
+		this.cd = cd;
+	}
+	
+	public void setPosX(int x) {
+		this.posX = x;
+	}
+	
+	public void setPosY(int y) {
+		this.posY = y;
+	}
+	
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+}

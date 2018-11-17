@@ -1,22 +1,24 @@
 package plant;
 
-import java.awt.Toolkit;
+import java.awt.Component;
+import java.awt.Graphics;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class Peashooter extends Plant implements Runnable {
 	
 	private int shootSpeed;
 	private boolean is_shoot;
 	
-	public Peashooter() {
+	public Peashooter(int x, int y) {
 		
-		super();
-		this.shootSpeed = 5;
+		super(x, y);
+		this.shootSpeed = 500;
 		this.is_shoot = false;
-		this.setPosX(1);
-		this.setPosY(1);
 		this.setPrice(100);
 		this.setName("PeaShooter");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif"));
+		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage());
 	}
 
 	@Override
@@ -40,6 +42,4 @@ public class Peashooter extends Plant implements Runnable {
 	public void shoot() {
 		
 	}
-	
-
 }

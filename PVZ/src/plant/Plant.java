@@ -2,7 +2,9 @@ package plant;
 
 import java.awt.Image;
 
-public abstract class Plant {
+import javax.swing.JLabel;
+
+public abstract class Plant{
 	
 	private String name;
 	private int max_health;
@@ -14,23 +16,17 @@ public abstract class Plant {
 	private	int posY;
 	private Image image;
 	
-	public Plant() {
-		
-		init();
-	}
-	
-	public void init() {
-		
+	public Plant(int x, int y) {		
 		this.max_health = 10;
 		this.current_health = 10;
 		this.is_alive = true;
 		this.price = 0;
-		this.cd = 0;	
-		
+		this.cd = 0;
+		this.posX = x;
+		this.posY = y;
 	}
-	
-	public void receiveDamage(int damage) {
 		
+	public void receiveDamage(int damage) {		
 		current_health = current_health - damage;
 	}
 	
@@ -65,11 +61,7 @@ public abstract class Plant {
 	public int getPosY() {
 		return this.posY;
 	}
-	
-	public Image getImage() {
-		return this.image;
-	}
-	
+		
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -102,8 +94,11 @@ public abstract class Plant {
 		this.posY = y;
 	}
 	
+	public Image getImage() {
+		return image;
+	}
+	
 	public void setImage(Image image) {
 		this.image = image;
 	}
-
 }

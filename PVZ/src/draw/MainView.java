@@ -1,48 +1,48 @@
-package draw;
+ package draw;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+import controller.Controller;
+import plant.Peashooter;
+import plant.Plant;
 
-public class MainMenu extends JFrame{
+
+public class MainView extends JFrame{
 	private Container container;
-	private JLayeredPane pane;
-	
 	private JLayeredPane Menu;
 	private JLayeredPane game;
+	private DrawPanel panel;
+	private Controller controller;
 	
-	public MainMenu() {
+	public MainView(Controller controller) {
 		// TODO Auto-generated constructor stub
 		super("Plants Vs Zombies");
 		this.setIconImage(new ImageIcon("plantsVsZombieMaterials/images/interface/SmallLogo.png").getImage());
-
-		this.container = this.getContentPane();
-		this.pane = new JLayeredPane();
-		pane.setLayout(null);
+		this.container = this.getContentPane();	
+		this.controller = controller;
 		
-		
-		initMenu();
-		
+		initMenu();		
 		initGame();
+		showMenu();
 		
-		this.container.add(pane);
-		
-		this.setSize(900, 600);
+		this.setSize(918, 645);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
 	
 	public void showGame() {
-		this.pane.setLayer(Menu, new Integer(1));
-		this.pane.setLayer(game, new Integer(2));
+		game.setVisible(true);
+		Menu.setVisible(false);
 	}
 	
 	public void showMenu() {
-		this.pane.setLayer(Menu, new Integer(2));
-		this.pane.setLayer(game, new Integer(1));
+		game.setVisible(false);
+		Menu.setVisible(true);
 	}
 	
 
@@ -53,7 +53,7 @@ public class MainMenu extends JFrame{
 
 		this.Menu = new JLayeredPane();
 		this.Menu.setBounds(0, 0, 900, 600);		
-		this.pane.add(Menu, new Integer(2));
+		this.container.add(Menu);
 		
 		backgroud = new JLabel();
 		backgroud.setIcon(
@@ -96,25 +96,35 @@ public class MainMenu extends JFrame{
 
 	public void initGame() {
 		JLabel backgroud;
-		JPanel toolbar;
+		JPanel plantCard;
 		JLabel button;
+		
 		
 		this.game = new JLayeredPane();
 		this.game.setBounds(0, 0, 900, 600);
-		this.pane.add(game, new Integer(1));
+		this.container.add(game);
 		
+		//add backgroud		
 		backgroud = new JLabel();
 		backgroud.setIcon(
 				new ImageIcon("plantsVsZombieMaterials/images/interface/background1.jpg"));
 		backgroud.setBounds(0, 0, 900, 600);
 		this.game.add(backgroud, new Integer(1));	
 		
+		//add drawPanel in game
+		this.panel = new DrawPanel(this.controller);
+		panel.setBounds(0, 0, 900, 600);
+		this.game.add(this.panel, new Integer(2));
+		
+		//add menu button
 		button = new JLabel();
 		button.setIcon(
 				new ImageIcon("plantsVsZombieMaterials/images/interface/Button.png"));
 		button.setBounds(787, 0, 113, 41);
-		this.game.add(button, new Integer(2));
+		this.game.add(button, new Integer(3));
 		
+		
+		//add listenner
 		button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				button.setBounds(787, 2, 113, 41);
@@ -125,7 +135,24 @@ public class MainMenu extends JFrame{
 			public void mouseExited(MouseEvent e) {
 				button.setBounds(787, 0, 113, 41);
 			}	
-		});		
+		});	
+		
+		this.game.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (e.getButton() == 1) {
+					addPlant((e.getX()-150)/81, (e.getY()-90)/92);
+				}
+			}
+		});	
+	}
+	
+	public void addPlant(int x, int y) {
+		int[][] a = this.controller.getMap();
+		if (0 == a[x][y]) {
+			this.controller.getPlants().add(new Peashooter(x, y));		
+			a[x][y] = 1;
+			this.controller.setMap(a);
+		}		
 	}
 	
 }

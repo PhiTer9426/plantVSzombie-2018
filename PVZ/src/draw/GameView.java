@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 import plant.Peashooter;
+import plant.Wxz;
 
 public class GameView extends JLayeredPane {
 	private JLabel backgroud;
@@ -98,6 +99,6 @@ public class GameView extends JLayeredPane {
 	}
 	
 	public void addPlant(int x, int y) {
-		this.controller.getPlants().add(new Peashooter(x, y));
+		this.controller.getPlants().add(new Wxz(x, y));
 	}
 }

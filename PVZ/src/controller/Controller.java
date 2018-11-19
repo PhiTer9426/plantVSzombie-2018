@@ -9,15 +9,14 @@ import draw.MainView;
 import plant.Plant;
 import zombie.Zombie;
 
-public class Controller implements Runnable{
+public class Controller{
 	private ArrayList<Plant> plants;
 	private ArrayList<Zombie> zombies;
 	private ArrayList<Bullet> bullets;
 	
 	private int[][] map;
+	private int mouse;
 	
-	private Thread t;
-	private MainView frame;
 	
 	public Controller() {
 		// TODO Auto-generated constructor stub
@@ -25,31 +24,10 @@ public class Controller implements Runnable{
 		this.zombies = new ArrayList<Zombie>();
 		this.bullets = new ArrayList<Bullet>();
 		this.map = new int[9][5];
-		
-		this.frame = new MainView(this);
-		
-		this.start();
+		this.mouse = 0;
 	}
 	
-	public void start () {
-		if (t == null) {
-			t = new Thread (this);
-			t.start();
-		}
-	}
 	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		while (true) {
-			try	{
-				Thread.sleep(40);
-				frame.repaint();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 	public ArrayList<Bullet> getBullets() {
 		return bullets;
 	}
@@ -65,9 +43,11 @@ public class Controller implements Runnable{
 	public void setMap(int[][] map) {
 		this.map = map;
 	}
-
-	
-	public static void main(String[] args) {
-		Controller controller = new Controller();
+	public int getMouse() {
+		return mouse;
 	}
+	public void setMouse(int mouse) {
+		this.mouse = mouse;
+	}
+	
 }

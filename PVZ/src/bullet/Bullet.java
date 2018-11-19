@@ -8,44 +8,44 @@ public abstract class Bullet {
 	private	int bulletDamage;
 	private Image image;
 	
-	public abstract void bulletPath();
-	public abstract boolean isAttackZombie();
-	public boolean isBeyondBorder(int xFront , int xBehind) {
-		if(posX > xFront || posX < xBehind ) {
-			return true;
-		}
-		return false;
+	//public abstract void bulletPath();
+	//public abstract boolean isAttackZombie();
+	
+	public Bullet(int posX, int posY) {
+		// TODO 自动生成的构造函数存根
+		this.posX = posX;
+		this.posY = posY;
 	}
 	
-	public int getposX() {
+	public int getPosX() {
 		return this.posX;
 	}
 	
-	public int getposY() {
+	public int getPosY() {
 		return this.posY;
 	}
 	
-	public int getbulletDamage() {
+	public int getBulletDamage() {
 		return this.bulletDamage;
 	}
 	
-	public Image getimage() {
+	public Image getImage() {
 		return this.image;
 	}
 	
-	public void setposX(int x) {
+	public void setPosX(int x) {
 		this.posX = x;
 	}
 	
-	public void setposY(int y) {
+	public void setPosY(int y) {
 		this.posY = y;
 	}
 		
-	public void setbulletDamage(int bulletDamage) {
+	public void setBulletDamage(int bulletDamage) {
 		this.bulletDamage = bulletDamage;
 	}
 	
-	public void setimage(Image image) {
+	public void setImage(Image image) {
 		this.image = image;
 	}
 }

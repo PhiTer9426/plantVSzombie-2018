@@ -99,6 +99,6 @@ public class GameView extends JLayeredPane {
 	}
 	
 	public void addPlant(int x, int y) {
-		this.controller.getPlants().add(new Wxz(x, y));
+		this.controller.getPlants().add(new Wxz(x, y, controller));
 	}
 }

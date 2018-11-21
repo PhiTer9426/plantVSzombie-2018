@@ -11,11 +11,12 @@ public class NormalZombie extends Zombie implements Runnable{
 	public NormalZombie(CopyOnWriteArrayList<Zombie> zombies){
 		super((int)(Math.random() * 5));
 		
-		this.setMax_health(10);
 		this.setCurrent_health(10);
-		this.setWalkSpeed(1);
+		this.setWalkSpeed(40);
+		this.setEatSpeed(500);
 		
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif").getImage());		
+		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif").getImage());
+		this.setEatImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif").getImage());		
 		
 		this.zombies = zombies;
 		this.start();
@@ -32,35 +33,37 @@ public class NormalZombie extends Zombie implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
-			try {
-				Thread.sleep(40);
-				if (this.getCurrent_health() <= 0) {
-					this.setIs_alive(false);
-				}
-				switch (this.getStatus()) {
-				case 0:
-					Walk();
-					break;
-				case 1:
-					Eat();
-					break;
-				default:
-					break;
-				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if (this.getCurrent_health() <= 0) {
+				this.setIs_alive(false);
 			}
+			if (this.getStatus() == 0) {
+				Walk();
+			}				
+			else if (this.getStatus() == 1) {
+				Eat();
+			}	
 		}
 		this.zombies.remove(this);
 	}
 	
 	public void Walk() {
-		this.setPosX(getPosX() - this.getWalkSpeed());		
+		try {
+			Thread.sleep(this.getWalkSpeed());
+			this.setPosX(getPosX() - 1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 
 	public void Eat() {	
-		
+		try {
+			Thread.sleep(this.getEatSpeed());
+			this.getPlant().receiveDamage(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 
 	public void Die() {		

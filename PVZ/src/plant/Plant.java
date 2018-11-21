@@ -17,9 +17,7 @@ public abstract class Plant{
 	private	int posY;
 	private Image image;
 	
-	public Plant(int x, int y) {		
-		this.max_health = 10;
-		this.current_health = 10;
+	public Plant(int x, int y) {
 		this.is_alive = true;
 		this.price = 0;
 		this.cd = 0;

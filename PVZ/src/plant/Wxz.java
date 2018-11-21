@@ -1,9 +1,5 @@
 package plant;
 
-import java.awt.Component;
-import java.awt.Graphics;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import bullet.HotDog;
@@ -18,7 +14,8 @@ public class Wxz extends Plant implements Runnable {
 	public Wxz(int x, int y, Controller controller) {
 		
 		super(x, y);
-		this.shootSpeed = 1000;
+		this.setCurrent_health(6);
+		this.shootSpeed = 1200;
 		this.setPrice(100);
 		this.setName("WXZ");
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage());
@@ -37,18 +34,20 @@ public class Wxz extends Plant implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
-			
-			if (isIs_shoot() == true) {	
-				shoot();
-			}
-			
 			try {
+				if (isIs_shoot() == true) {	
+					shoot();
+				}
+				if (this.getCurrent_health() <= 0) {
+					this.setIs_alive(false);
+				}
 				Thread.sleep(shootSpeed);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		this.controller.getPlants().remove(this);
 	}
 	
 	public void shoot() {

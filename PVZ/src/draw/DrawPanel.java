@@ -23,14 +23,12 @@ public class DrawPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		synchronized (controller.getBullets()) {
-			if (controller.getBullets() != null) {
-				for (Bullet bullet : controller.getBullets()) {
-					g.drawImage(
-							bullet.getImage(), 
-							bullet.getPosX() - bullet.getImage().getWidth(null) + 15,
-							bullet.getPosY() - bullet.getImage().getHeight(null) - 25, null);
-				}
+		if (controller.getBullets() != null) {
+			for (Bullet bullet : controller.getBullets()) {
+				g.drawImage(
+						bullet.getImage(), 
+						bullet.getPosX() - bullet.getImage().getWidth(null) + 10,
+						bullet.getPosY() - bullet.getImage().getHeight(null) - 60, null);
 			}
 		}
 		if (controller.getPlants() != null) {
@@ -43,15 +41,31 @@ public class DrawPanel extends JPanel{
 		}
 		if (controller.getZombies() != null) {
 			for (Zombie zombie : controller.getZombies()) {
-				g.drawImage(
+				if (zombie.getStatus() == 0) {
+					g.drawImage(
 						zombie.getImage(), 
 						zombie.getPosX() - zombie.getImage().getWidth(null),
 						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
+				}
+				else if (zombie.getStatus() == 1) {
+					g.drawImage(
+							zombie.getEatImage(), 
+							zombie.getPosX() - zombie.getEatImage().getWidth(null),
+							90 + 92 + 92 * zombie.getPosY() - zombie.getEatImage().getHeight(null), null);
+					}
 			}
 		}
-		if (controller.getMouse() == 1) {
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/0.gif").getImage();
+		switch (controller.getMouse()) {
+		case "WXZ":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage();
 			g.drawImage(plant, 100, 100, null);
+			break;
+		case "Peashooter":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage();
+			g.drawImage(plant, 100, 100, null);
+			break;
+		default:
+			break;
 		}
 	}
 }

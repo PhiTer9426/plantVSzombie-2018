@@ -13,8 +13,7 @@ public class Controller implements Runnable{
 	private CopyOnWriteArrayList<Zombie> zombies;
 	private CopyOnWriteArrayList<Bullet> bullets;
 	
-	private int[][] map;
-	private int mouse;
+	private String mouse;
 	
 	private ZombieProducer zombieProducer;
 	
@@ -27,8 +26,7 @@ public class Controller implements Runnable{
 		this.plants = new CopyOnWriteArrayList<Plant>();
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
 		this.bullets = new CopyOnWriteArrayList<Bullet>();
-		this.map = new int[9][5];
-		this.mouse = 0;
+		this.mouse = "";
 		this.zombieProducer = new ZombieProducer(this);
 		this.start();
 	}
@@ -72,6 +70,7 @@ public class Controller implements Runnable{
 	public void runPersonelLogic() {
 		try	{
 			Thread.sleep(100);
+			//判断植物是否需要射击
 			for (Plant plant  : plants) {
 				boolean flag = true;
 				for (Zombie zombie : zombies) {
@@ -86,6 +85,7 @@ public class Controller implements Runnable{
 					plant.setIs_shoot(false);
 				}					
 			}
+			//判断子弹是否打中僵尸
 			for (Bullet bullet: bullets) {
 				for (Zombie zombie : zombies) {
 					if ((bullet.getPosY()-182)/90 == zombie.getPosY() &&
@@ -99,6 +99,24 @@ public class Controller implements Runnable{
 				if (bullet.isBeyondBorder()) {
 					bullet.setRemove(true);
 				}
+			}
+			//判断僵尸是否要吃植物
+			for (Zombie zombie : zombies) {
+				boolean flag = true;
+				for (Plant plant : plants) {
+					int posX = zombie.getPosX();
+					int posY = zombie.getPosY();
+					if ((posX - 150 - 81)/81 == plant.getPosX() &&
+							posY == plant.getPosY()) {
+						zombie.setStatus(1);
+						zombie.setPlant(plant);
+						flag = false;
+						break;
+					}
+				}
+				if (flag) {
+					zombie.setStatus(0);
+				}	
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -115,16 +133,10 @@ public class Controller implements Runnable{
 	public CopyOnWriteArrayList<Zombie> getZombies() {
 		return zombies;
 	}
-	public int[][] getMap() {
-		return map;
-	}
-	public void setMap(int[][] map) {
-		this.map = map;
-	}
-	public int getMouse() {
+	public String getMouse() {
 		return mouse;
 	}
-	public void setMouse(int mouse) {
+	public void setMouse(String mouse) {
 		this.mouse = mouse;
 	}
 	

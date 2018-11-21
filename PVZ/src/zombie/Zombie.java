@@ -2,10 +2,12 @@ package zombie;
 
 import java.awt.Image;
 
+import plant.Plant;
+
 public abstract class Zombie {
 	private Image image;
+	private Image eatImage;
       
-	private int max_health;
 	private int current_health;
 	private Boolean is_alive;
 	private int status;				//0：走路，1：吃
@@ -15,6 +17,8 @@ public abstract class Zombie {
 	
 	private int posX;
 	private int posY;
+	
+	private Plant plant;
 	
 	public Zombie(int y) {
 		// TODO Auto-generated constructor stub
@@ -34,12 +38,6 @@ public abstract class Zombie {
 	}
 	public void setStatus(int status) {
 		this.status = status;
-	}
-	public int getMax_health() {
-		return max_health;
-	}
-	public void setMax_health(int max_health) {
-		this.max_health = max_health;
 	}
 	public int getCurrent_health() {
 		return current_health;
@@ -82,5 +80,21 @@ public abstract class Zombie {
 	}
 	public void setImage(Image mat) {
 		image = mat;
+	}
+
+	public Image getEatImage() {
+		return eatImage;
+	}
+
+	public void setEatImage(Image eatImage) {
+		this.eatImage = eatImage;
+	}
+
+	public Plant getPlant() {
+		return plant;
+	}
+
+	public void setPlant(Plant plant) {
+		this.plant = plant;
 	}
 }

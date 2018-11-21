@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import bullet.Bullet;
 import controller.Controller;
 import plant.Plant;
+import zombie.Zombie;
 
 public class DrawPanel extends JPanel{
 	private Controller controller;
@@ -22,12 +23,14 @@ public class DrawPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if (controller.getBullets() != null) {
-			for (Bullet bullet : controller.getBullets()) {
-				g.drawImage(
-						bullet.getImage(), 
-						bullet.getPosX() - bullet.getImage().getWidth(null) + 15,
-						bullet.getPosY() - bullet.getImage().getHeight(null) - 25, null);
+		synchronized (controller.getBullets()) {
+			if (controller.getBullets() != null) {
+				for (Bullet bullet : controller.getBullets()) {
+					g.drawImage(
+							bullet.getImage(), 
+							bullet.getPosX() - bullet.getImage().getWidth(null) + 15,
+							bullet.getPosY() - bullet.getImage().getHeight(null) - 25, null);
+				}
 			}
 		}
 		if (controller.getPlants() != null) {
@@ -36,6 +39,14 @@ public class DrawPanel extends JPanel{
 						plant.getImage(), 
 						150 + 81 + 81 * plant.getPosX() - plant.getImage().getWidth(null),
 						90 + 92 + 92 * plant.getPosY() - plant.getImage().getHeight(null), null);
+			}
+		}
+		if (controller.getZombies() != null) {
+			for (Zombie zombie : controller.getZombies()) {
+				g.drawImage(
+						zombie.getImage(), 
+						zombie.getPosX() - zombie.getImage().getWidth(null),
+						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
 			}
 		}
 		if (controller.getMouse() == 1) {

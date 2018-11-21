@@ -6,6 +6,7 @@ public abstract class Bullet {
 	private	int posX;
 	private	int posY;
 	private	int bulletDamage;
+	private boolean isRemove;
 	private Image image;
 	
 	//public abstract void bulletPath();
@@ -15,8 +16,15 @@ public abstract class Bullet {
 		// TODO 自动生成的构造函数存根
 		this.posX = posX;
 		this.posY = posY;
+		this.setRemove(false);
 	}
 	
+	public boolean isBeyondBorder() {
+		if(getPosX() > 1000 || getPosX() < 0 ) {
+			return true;
+		}
+		return false;
+	}
 	public int getPosX() {
 		return this.posX;
 	}
@@ -47,5 +55,13 @@ public abstract class Bullet {
 	
 	public void setImage(Image image) {
 		this.image = image;
+	}
+
+	public boolean isRemove() {
+		return isRemove;
+	}
+
+	public void setRemove(boolean isRemove) {
+		this.isRemove = isRemove;
 	}
 }

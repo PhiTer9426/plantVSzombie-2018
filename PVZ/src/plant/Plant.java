@@ -9,6 +9,7 @@ public abstract class Plant{
 	private String name;
 	private int max_health;
 	private int current_health;
+	private boolean is_shoot;
 	private boolean is_alive;
 	private int cd;
 	private int price;
@@ -100,5 +101,13 @@ public abstract class Plant{
 	
 	public void setImage(Image image) {
 		this.image = image;
+	}
+
+	public boolean isIs_shoot() {
+		return is_shoot;
+	}
+
+	public void setIs_shoot(boolean is_shoot) {
+		this.is_shoot = is_shoot;
 	}
 }

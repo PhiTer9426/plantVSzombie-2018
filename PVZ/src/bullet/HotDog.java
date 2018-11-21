@@ -1,19 +1,22 @@
 package bullet;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import javax.swing.ImageIcon;
 
 import controller.Controller;
+import zombie.Zombie;
 
 public class HotDog extends LineBullet implements Runnable{
 	
 	private Thread t;
-	private Controller controller;
+	private CopyOnWriteArrayList<Bullet> bullets;
 	
 	public HotDog(int posX, int posY, Controller controller) {
 		super(posX, posY);
 		this.setBulletDamage(1);
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/HotDog.png").getImage());
-		this.controller = controller;
+		this.bullets = controller.getBullets();
 		this.start();
 	}
 	
@@ -30,11 +33,11 @@ public class HotDog extends LineBullet implements Runnable{
 		while (true) {
 			try	{
 				Thread.sleep(40);
-				if(isBeyondBorder()) {
-					this.controller.getBullets().remove(this);
+				if (this.isRemove()) {
+					this.bullets.remove(this);
 				}
 				else {
-					this.setPosX(getPosX() + 4); 				
+					this.setPosX(getPosX() + 4);
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();

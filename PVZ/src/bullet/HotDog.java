@@ -31,7 +31,7 @@ public class HotDog extends LineBullet implements Runnable{
 		// TODO Auto-generated method stub
 		while (!isRemove()) {
 			try	{
-				Thread.sleep(40);
+				Thread.sleep(10);
 				for (Zombie zombie : this.controller.getZombies()) {
 					if ((this.getPosY()-182)/90 == zombie.getPosY() &&
 							zombie.getPosX() - this.getPosX() < 50 &&

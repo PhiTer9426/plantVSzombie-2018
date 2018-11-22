@@ -10,11 +10,13 @@ public abstract class Plant{
 	private int max_health;
 	private int current_health;
 	private boolean is_alive;
+	private boolean is_shoot;
 	private int cd;
 	private int price;
 	private	int posX;
 	private	int posY;
 	private Image image;
+	
 	
 	public Plant(int x, int y) {		
 		this.max_health = 10;
@@ -24,6 +26,7 @@ public abstract class Plant{
 		this.cd = 0;
 		this.posX = x;
 		this.posY = y;
+		this.is_shoot = false;
 	}
 		
 	public void receiveDamage(int damage) {		
@@ -100,5 +103,13 @@ public abstract class Plant{
 	
 	public void setImage(Image image) {
 		this.image = image;
+	}
+
+	public boolean isIs_shoot() {
+		return is_shoot;
+	}
+
+	public void setIs_shoot(boolean is_shoot) {
+		this.is_shoot = is_shoot;
 	}
 }

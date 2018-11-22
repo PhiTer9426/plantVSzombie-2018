@@ -12,7 +12,6 @@ import controller.Controller;
 public class Wxz extends Plant implements Runnable {
 	
 	private int shootSpeed;
-	private boolean is_shoot;
 	private Controller controller;
 	private Thread t;
 	
@@ -20,7 +19,6 @@ public class Wxz extends Plant implements Runnable {
 		
 		super(x, y);
 		this.shootSpeed = 1000;
-		this.is_shoot = true;
 		this.setPrice(100);
 		this.setName("PeaShooter");
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage());
@@ -40,7 +38,7 @@ public class Wxz extends Plant implements Runnable {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
 			
-			if (is_shoot == true) {	
+			if (isIs_shoot() == true) {	
 				shoot();
 			}
 			

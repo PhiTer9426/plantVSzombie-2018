@@ -14,12 +14,10 @@ public class Controller implements Runnable{
 	private CopyOnWriteArrayList<Bullet> bullets;
 	
 	private String mouse;
-	
+	private int sun;
 	private ZombieProducer zombieProducer;
 	
-	private Thread t;	
-	private boolean suspend = false;	 
-	private String control = ""; // 只是需要一个对象而已，这个对象没有实际意义
+	private Thread t;
 	
 	public Controller() {
 		// TODO Auto-generated constructor stub
@@ -27,6 +25,7 @@ public class Controller implements Runnable{
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
 		this.bullets = new CopyOnWriteArrayList<Bullet>();
 		this.mouse = "";
+		this.sun = 50;
 		this.zombieProducer = new ZombieProducer(this);
 		this.start();
 	}
@@ -37,32 +36,8 @@ public class Controller implements Runnable{
 			t.start();
 		}
 	}
-	
- 
-	public void setSuspend(boolean suspend) {
-		if (!suspend) {
-			synchronized (control) {
-				control.notifyAll();
-			}
-		}
-		this.suspend = suspend;
-	}
- 
-	public boolean isSuspend() {
-		return this.suspend;
-	}
- 
 	public void run() {
-		while (true) {
-			synchronized (control) {
-				if (suspend) {
-					try {
-						control.wait();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
+		while (true) {			
 			this.runPersonelLogic();
 		}
 	}

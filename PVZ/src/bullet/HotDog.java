@@ -1,8 +1,10 @@
 package bullet;
 
+
 import javax.swing.ImageIcon;
 
 import controller.Controller;
+import zombie.Zombie;
 
 public class HotDog extends LineBullet implements Runnable{
 	
@@ -27,19 +29,27 @@ public class HotDog extends LineBullet implements Runnable{
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		while (true) {
+		while (!isRemove()) {
 			try	{
-				Thread.sleep(40);
-				if(isBeyondBorder()) {
-					this.controller.getBullets().remove(this);
+				Thread.sleep(10);
+				for (Zombie zombie : this.controller.getZombies()) {
+					if ((this.getPosY()-182)/90 == zombie.getPosY() &&
+							zombie.getPosX() - this.getPosX() < 50 &&
+							zombie.getPosX() - this.getPosX() > 20) {
+						zombie.setCurrent_health(zombie.getCurrent_health()-this.getBulletDamage());
+						this.setRemove(true);
+						break;
+					}
 				}
-				else {
-					this.setPosX(getPosX() + 4); 				
+				if (this.isBeyondBorder()) {
+					this.setRemove(true);
 				}
+				this.setPosX(getPosX() + 4);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		controller.getBullets().remove(this);
 	}
 	
 }

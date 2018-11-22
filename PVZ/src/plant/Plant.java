@@ -9,6 +9,7 @@ public abstract class Plant{
 	private String name;
 	private int max_health;
 	private int current_health;
+	private boolean is_shoot;
 	private boolean is_alive;
 	private boolean is_shoot;
 	private int cd;
@@ -17,10 +18,14 @@ public abstract class Plant{
 	private	int posY;
 	private Image image;
 	
+<<<<<<< HEAD
 	
 	public Plant(int x, int y) {		
 		this.max_health = 10;
 		this.current_health = 10;
+=======
+	public Plant(int x, int y) {
+>>>>>>> origin
 		this.is_alive = true;
 		this.price = 0;
 		this.cd = 0;

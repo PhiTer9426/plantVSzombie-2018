@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import controller.Controller;
 import plant.Peashooter;
+import plant.Plant;
 import plant.Wxz;
 
 public class GameView extends JLayeredPane {
@@ -56,18 +57,14 @@ public class GameView extends JLayeredPane {
 		this.plantCard = new JPanel();
 		this.plantCard.setBounds(0, 0, 110, 600);
 		this.plantCard.setOpaque(false);
-		this.add(this.plantCard, new Integer(3));
-		
-		JLabel card1 = new JLabel();
-		card1.setIcon(new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/Peashooter.png"));
-		card1.setBounds(10, 10, 100, 60);
-		plantCard.add(card1);
-		
-		card1.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				controller.setMouse(1);
-			}
-		});	
+		this.add(this.plantCard, new Integer(3));		
+
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/WXZ.png"), "WXZ", 0, this.controller));
+
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/Peashooter_01.gif"), "Peashooter", 1, this.controller));
+	
 	}
 	
 	
@@ -88,17 +85,31 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					if (e.getX() < 880 && e.getX() > 150 && e.getY() > 90 && e.getY() < 600
-							&& controller.getMouse() == 1) {
-						addPlant((e.getX()-150)/81, (e.getY()-90)/92);
-						controller.setMouse(0);
+					if (e.getX() < 880 && e.getX() > 150 && e.getY() > 90 && e.getY() < 560) {
+						addPlant((e.getX()-150)/81, (e.getY()-90)/92, controller.getMouse());
 					}
 				}
 			}
 		});	
 	}
 	
-	public void addPlant(int x, int y) {
-		this.controller.getPlants().add(new Wxz(x, y, controller));
+	public void addPlant(int x, int y, String name) {
+		for (Plant plant : this.controller.getPlants()) {
+			if (plant.getPosX() == x && plant.getPosY() == y) {
+				controller.setMouse("");
+				break;
+			}
+		}
+		switch (name) {
+		case "WXZ":
+			this.controller.getPlants().add(new Wxz(x, y, controller));
+			break;
+		case "Peashooter":
+			this.controller.getPlants().add(new Peashooter(x, y, controller));
+			break;
+		default:
+			break;
+		}
+		controller.setMouse("");
 	}
 }

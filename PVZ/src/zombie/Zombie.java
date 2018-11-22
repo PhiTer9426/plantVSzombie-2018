@@ -2,26 +2,41 @@ package zombie;
 
 import java.awt.Image;
 
-public abstract class Zombie {
-      private Image Mat;
-      private int max_health;
-      private int current_health;
-      private float eatSpeed;
-      private float walkSpeed;
-      private int posX;
-      private int posY;
-      private Boolean is_alive;
-      public abstract void Walk();
-      public abstract void Eat();
-      public abstract void Die();
-      public abstract void WalkAfterDie();
-      public abstract void EatAfterDie();
+import plant.Plant;
 
-	public int getMax_health() {
-		return max_health;
+public abstract class Zombie {
+	private Image image;
+      
+	private int current_health;
+	private Boolean is_alive;
+	private int status;				//0：走路，1：吃
+      
+	private int eatSpeed;
+	private int walkSpeed;
+	
+	private int posX;
+	private int posY;
+	
+	private Plant plant;
+	
+	public Zombie(int y) {
+		// TODO Auto-generated constructor stub
+		this.is_alive = true;
+		this.status = 0;
+		this.posX = 1000;//pixel
+		this.posY = y;//grid
 	}
-	public void setMax_health(int max_health) {
-		this.max_health = max_health;
+	
+	public abstract void Walk();
+	public abstract void Eat();
+	public abstract void Die();
+
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public int getCurrent_health() {
 		return current_health;
@@ -29,16 +44,16 @@ public abstract class Zombie {
 	public void setCurrent_health(int current_health) {
 		this.current_health = current_health;
 	}
-	public float getEatSpeed() {
+	public int getEatSpeed() {
 		return eatSpeed;
 	}
-	public void setEatSpeed(float eatSpeed) {
+	public void setEatSpeed(int eatSpeed) {
 		this.eatSpeed = eatSpeed;
 	}
-	public float getWalkSpeed() {
+	public int getWalkSpeed() {
 		return walkSpeed;
 	}
-	public void setWalkSpeed(float walkSpeed) {
+	public void setWalkSpeed(int walkSpeed) {
 		this.walkSpeed = walkSpeed;
 	}
 	public int getPosX() {
@@ -59,13 +74,18 @@ public abstract class Zombie {
 	public void setIs_alive(Boolean is_alive) {
 		this.is_alive = is_alive;
 	}
-
-	public Image getMat() {
-		return Mat;
+	public Image getImage() {
+		return image;
+	}
+	public void setImage(Image mat) {
+		image = mat;
 	}
 
-	public void setMat(Image mat) {
-		Mat = mat;
+	public Plant getPlant() {
+		return plant;
 	}
 
+	public void setPlant(Plant plant) {
+		this.plant = plant;
+	}
 }

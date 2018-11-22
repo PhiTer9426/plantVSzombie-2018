@@ -1,14 +1,12 @@
 package plant;
 
-import java.awt.Component;
-import java.awt.Graphics;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import bullet.HotDog;
 import controller.Controller;
+import zombie.Zombie;
 
+<<<<<<< HEAD
 public class Wxz extends Plant implements Runnable {
 	
 	private int shootSpeed;
@@ -19,9 +17,17 @@ public class Wxz extends Plant implements Runnable {
 		
 		super(x, y);
 		this.shootSpeed = 1000;
+=======
+public class Wxz extends PlantShooter {
+	public Wxz(int x, int y, Controller controller) {
+		super(x, y, controller);
+		this.setCurrent_health(6);
+		this.setShootSpeed(1200);
+>>>>>>> origin
 		this.setPrice(100);
-		this.setName("PeaShooter");
+		this.setName("WXZ");
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage());
+<<<<<<< HEAD
 		this.controller = controller;
 		this.start();
 	}
@@ -49,9 +55,11 @@ public class Wxz extends Plant implements Runnable {
 				e.printStackTrace();
 			}
 		}
+=======
+>>>>>>> origin
 	}
-	
 	public void shoot() {
-		this.controller.getBullets().add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, controller));
+		this.getController().getBullets().
+		add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
 	}
 }

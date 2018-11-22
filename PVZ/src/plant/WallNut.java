@@ -7,17 +7,16 @@ import controller.Controller;
 
 public class WallNut extends Plant implements Runnable {
 	
-	private int shootSpeed;
 	private Controller controller;
 	private Thread t;
 	
 	public WallNut(int x, int y, Controller controller) {
 		
 		super(x, y);
+		this.setMax_health(60);
 		this.setCurrent_health(6);
-		this.shootSpeed = 1200;
 		this.setPrice(100);
-		this.setName("WXZ");
+		this.setName("WallNut");
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage());
 		this.controller = controller;
 		this.start();

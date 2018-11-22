@@ -6,7 +6,6 @@ import plant.Plant;
 
 public abstract class Zombie {
 	private Image image;
-	private Image eatImage;
       
 	private int current_health;
 	private Boolean is_alive;
@@ -80,14 +79,6 @@ public abstract class Zombie {
 	}
 	public void setImage(Image mat) {
 		image = mat;
-	}
-
-	public Image getEatImage() {
-		return eatImage;
-	}
-
-	public void setEatImage(Image eatImage) {
-		this.eatImage = eatImage;
 	}
 
 	public Plant getPlant() {

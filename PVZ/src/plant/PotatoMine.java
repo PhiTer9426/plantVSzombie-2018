@@ -34,25 +34,9 @@ public class PotatoMine extends Plant implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
-			try {
-				if (isIs_shoot() == true) {	
-					shoot();
-				}
-				if (this.getCurrent_health() <= 0) {
-					this.setIs_alive(false);
-				}
-				Thread.sleep(shootSpeed);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		this.controller.getPlants().remove(this);
-	}
-	
-	public void shoot() {
-		this.controller.getBullets().
-		add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, controller));
 	}
 
 }

@@ -41,18 +41,10 @@ public class DrawPanel extends JPanel{
 		}
 		if (controller.getZombies() != null) {
 			for (Zombie zombie : controller.getZombies()) {
-				if (zombie.getStatus() == 0) {
 					g.drawImage(
 						zombie.getImage(), 
 						zombie.getPosX() - zombie.getImage().getWidth(null),
 						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
-				}
-				else if (zombie.getStatus() == 1) {
-					g.drawImage(
-							zombie.getEatImage(), 
-							zombie.getPosX() - zombie.getEatImage().getWidth(null),
-							90 + 92 + 92 * zombie.getPosY() - zombie.getEatImage().getHeight(null), null);
-					}
 			}
 		}
 		switch (controller.getMouse()) {

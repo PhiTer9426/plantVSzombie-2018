@@ -57,29 +57,14 @@ public class GameView extends JLayeredPane {
 		this.plantCard = new JPanel();
 		this.plantCard.setBounds(0, 0, 110, 600);
 		this.plantCard.setOpaque(false);
-		this.add(this.plantCard, new Integer(3));
-		
-		JLabel card1 = new JLabel();
-		card1.setIcon(new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/WXZ.png"));
-		card1.setBounds(10, 10, 100, 60);
-		plantCard.add(card1);
-		
-		card1.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				controller.setMouse("WXZ");
-			}
-		});	
-		
-		JLabel card2 = new JLabel();
-		card2.setIcon(new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/Peashooter_01.gif"));
-		card2.setBounds(10, 70, 100, 60);
-		plantCard.add(card2);
-		
-		card2.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				controller.setMouse("Peashooter");
-			}
-		});	
+		this.add(this.plantCard, new Integer(3));		
+
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/WXZ.png"), "WXZ", 0, this.controller));
+
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/Peashooter_01.gif"), "Peashooter", 1, this.controller));
+	
 	}
 	
 	

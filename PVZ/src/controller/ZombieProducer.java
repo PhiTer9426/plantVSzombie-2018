@@ -7,11 +7,11 @@ import zombie.Zombie;
 
 public class ZombieProducer implements Runnable{
 	private Thread t;
-	private CopyOnWriteArrayList<Zombie> zombies;
+	private Controller controller;
 	
 	public ZombieProducer(Controller controller) {
 		// TODO Auto-generated constructor stub
-		this.zombies = controller.getZombies();		
+		this.controller = controller;		
 		this.start();
 	}
 	
@@ -28,7 +28,7 @@ public class ZombieProducer implements Runnable{
 		while (true) {
 			try	{
 				Thread.sleep(5000);
-				zombies.add(new NormalZombie(this.zombies));
+				this.controller.getZombies().add(new NormalZombie(this.controller));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

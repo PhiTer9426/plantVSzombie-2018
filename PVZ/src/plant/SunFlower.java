@@ -55,8 +55,7 @@ public class SunFlower extends Plant implements Runnable{
 	}
 	
 	public void creat() {
-		this.controller.getBullets().
-		add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, controller));
+		
 	}
 
 }

@@ -1,24 +1,25 @@
 package zombie;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.swing.ImageIcon;
 
+import controller.Controller;
+import plant.Plant;
+
 public class NormalZombie extends Zombie implements Runnable{
 
-	private CopyOnWriteArrayList<Zombie> zombies;
+	private Controller controller;
 	private Thread t;
 	
-	public NormalZombie(CopyOnWriteArrayList<Zombie> zombies){
+	public NormalZombie(Controller controller){
 		super((int)(Math.random() * 5));
 		
 		this.setCurrent_health(10);
 		this.setWalkSpeed(40);
 		this.setEatSpeed(500);
 		
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif").getImage());
-		this.setEatImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif").getImage());		
+				
 		
-		this.zombies = zombies;
+		this.controller = controller;
 		this.start();
 	}
 	
@@ -33,6 +34,23 @@ public class NormalZombie extends Zombie implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
+			boolean flag = true;
+			for (Plant plant : this.controller.getPlants()) {
+				int posX = this.getPosX();
+				int posY = this.getPosY();
+				if ((posX - 150 - 81)/81 == plant.getPosX() &&
+						posY == plant.getPosY()) {
+					this.setStatus(1);
+					this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif").getImage());
+					this.setPlant(plant);
+					flag = false;
+					break;
+				}
+			}
+			if (flag) {
+				this.setStatus(0);
+				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif").getImage());
+			}	
 			if (this.getCurrent_health() <= 0) {
 				this.setIs_alive(false);
 			}
@@ -43,7 +61,7 @@ public class NormalZombie extends Zombie implements Runnable{
 				Eat();
 			}	
 		}
-		this.zombies.remove(this);
+		Die();
 	}
 	
 	public void Walk() {
@@ -67,6 +85,13 @@ public class NormalZombie extends Zombie implements Runnable{
 	}
 
 	public void Die() {		
-		this.zombies.remove(this);
+		try {
+			this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieDie.gif").getImage());
+			Thread.sleep(1000);
+			this.controller.getZombies().remove(this);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 	}
 }

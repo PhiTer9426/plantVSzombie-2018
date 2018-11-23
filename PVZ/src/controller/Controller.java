@@ -1,11 +1,5 @@
 package controller;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-import java.util.Iterator;
-=======
->>>>>>> origin
-
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,15 +8,6 @@ import plant.Plant;
 import zombie.Zombie;
 
 public class Controller implements Runnable{
-<<<<<<< HEAD
-	private ArrayList<Plant> plants;
-	private ArrayList<Zombie> zombies;
-	private ArrayList<Bullet> bullets;
-	
-	private int[][] map;
-	private int mouse;
-	private Thread t;
-=======
 	private CopyOnWriteArrayList<Plant> plants;
 	private CopyOnWriteArrayList<Zombie> zombies;
 	private CopyOnWriteArrayList<Bullet> bullets;
@@ -30,54 +15,11 @@ public class Controller implements Runnable{
 	private String mouse;
 	private int sun;
 	private ZombieProducer zombieProducer;
->>>>>>> origin
 	
 	private Thread t;
 	
 	public Controller() {
 		// TODO Auto-generated constructor stub
-<<<<<<< HEAD
-		this.plants = new ArrayList<Plant>();
-		this.zombies = new ArrayList<Zombie>();
-		this.bullets = new ArrayList<Bullet>();
-		this.map = new int[9][5];
-		this.mouse = 0;
-		this.start();
-	}
-	
-	public void start () {
-		if (t == null) {
-			t = new Thread (this);
-			t.start();
-		}
-	}
-	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		while (true) {
-			try	{
-				Thread.sleep(200);
-				for (Plant plant  : plants) {
-					boolean flag = true;
-					for (Zombie zombie : zombies) {
-						if (plant.getPosY() == zombie.getPosY()) {
-							plant.setIs_shoot(true);
-							flag = false;
-							break;
-						}
-					}
-					if (flag) {
-						plant.setIs_shoot(false);
-					}					
-				}
-							
-				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-=======
 		this.plants = new CopyOnWriteArrayList<Plant>();
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
 		this.bullets = new CopyOnWriteArrayList<Bullet>();
@@ -97,7 +39,7 @@ public class Controller implements Runnable{
 //		while (true) {			
 //			this.runPersonelLogic();
 //		}
->>>>>>> origin
+
 	}
 //	
 //	public void runPersonelLogic() {

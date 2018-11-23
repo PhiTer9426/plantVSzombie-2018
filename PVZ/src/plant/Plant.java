@@ -9,20 +9,20 @@ public abstract class Plant{
 	private String name;
 	private int max_health;
 	private int current_health;
-	private boolean is_shoot;
 	private boolean is_alive;
+	private boolean is_shoot;
 	private int cd;
 	private int price;
 	private	int posX;
 	private	int posY;
 	private Image image;
-	
 	public Plant(int x, int y) {
 		this.is_alive = true;
 		this.price = 0;
 		this.cd = 0;
 		this.posX = x;
 		this.posY = y;
+		this.is_shoot = false;
 	}
 		
 	public void receiveDamage(int damage) {		

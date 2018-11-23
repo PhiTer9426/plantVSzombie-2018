@@ -6,6 +6,7 @@ import bullet.HotDog;
 import controller.Controller;
 import zombie.Zombie;
 
+
 public class Wxz extends PlantShooter {
 	public Wxz(int x, int y, Controller controller) {
 		super(x, y, controller);

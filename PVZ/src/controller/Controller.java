@@ -1,7 +1,6 @@
 package controller;
 
 
-
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import bullet.Bullet;
@@ -40,6 +39,7 @@ public class Controller implements Runnable{
 //		while (true) {			
 //			this.runPersonelLogic();
 //		}
+
 	}
 //	
 //	public void runPersonelLogic() {

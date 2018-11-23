@@ -2,7 +2,7 @@ package plant;
 
 import javax.swing.ImageIcon;
 
-import bullet.HotDog;
+import bullet.Pea;
 import controller.Controller;
 
 public class Peashooter extends PlantShooter {
@@ -16,6 +16,6 @@ public class Peashooter extends PlantShooter {
 	}
 	public void shoot() {
 		this.getController().getBullets().
-		add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
+		add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
 	}
 }

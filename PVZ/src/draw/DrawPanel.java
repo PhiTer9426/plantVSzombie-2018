@@ -28,7 +28,7 @@ public class DrawPanel extends JPanel{
 				g.drawImage(
 						bullet.getImage(), 
 						bullet.getPosX() - bullet.getImage().getWidth(null) + 10,
-						bullet.getPosY() - bullet.getImage().getHeight(null) - 60, null);
+						bullet.getPosY() - bullet.getImage().getHeight(null) - 40, null);
 			}
 		}
 		if (controller.getPlants() != null) {
@@ -54,6 +54,18 @@ public class DrawPanel extends JPanel{
 			break;
 		case "Peashooter":
 			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage();
+			g.drawImage(plant, 100, 100, null);
+			break;
+		case "SnowPea":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif").getImage();
+			g.drawImage(plant, 100, 100, null);
+			break;
+		case "WallNut":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage();
+			g.drawImage(plant, 100, 100, null);
+			break;
+		case "TallNut":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif").getImage();
 			g.drawImage(plant, 100, 100, null);
 			break;
 		default:

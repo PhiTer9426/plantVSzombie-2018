@@ -9,9 +9,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import controller.Controller;
-import plant.Peashooter;
-import plant.Plant;
-import plant.Wxz;
+import plant.*;
 
 public class GameView extends JLayeredPane {
 	private JLabel backgroud;
@@ -65,6 +63,14 @@ public class GameView extends JLayeredPane {
 		plantCard.add(new CardLabel(
 				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/Peashooter_01.gif"), "Peashooter", 1, this.controller));
 	
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/SnowPea_01.gif"), "SnowPea", 2, this.controller));
+		
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/WallNut_01.gif"), "WallNut", 3, this.controller));
+		
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/TallNut_01.gif"), "TallNut", 2, this.controller));
 	}
 	
 	
@@ -100,12 +106,21 @@ public class GameView extends JLayeredPane {
 				break;
 			}
 		}
-		switch (name) {
+		switch (controller.getMouse()) {
 		case "WXZ":
 			this.controller.getPlants().add(new Wxz(x, y, controller));
 			break;
 		case "Peashooter":
 			this.controller.getPlants().add(new Peashooter(x, y, controller));
+			break;
+		case "SnowPea":
+			this.controller.getPlants().add(new SnowPea(x, y, controller));
+			break;
+		case "WallNut":
+			this.controller.getPlants().add(new WallNut(x, y, controller));
+			break;
+		case "TallNut":
+			this.controller.getPlants().add(new TallNut(x, y, controller));
 			break;
 		default:
 			break;

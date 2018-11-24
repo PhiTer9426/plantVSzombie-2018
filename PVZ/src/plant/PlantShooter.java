@@ -26,18 +26,7 @@ public abstract class PlantShooter extends Plant implements Runnable{
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
 			try {
-				boolean flag = true;
-				for (Zombie zombie : this.controller.getZombies()) {
-					if (this.getPosY() == zombie.getPosY() &&
-							this.getPosX() * 81 + 81 +150 < zombie.getPosX()) {
-						this.setIs_shoot(true);
-						flag = false;
-						break;
-					}
-				}
-				if (flag) {
-					this.setIs_shoot(false);
-				}		
+				IsZombieIn();
 				if (isIs_shoot() == true) {	
 					shoot();
 				}
@@ -53,6 +42,21 @@ public abstract class PlantShooter extends Plant implements Runnable{
 		this.controller.getPlants().remove(this);
 	}
 	public abstract void shoot();
+	
+	public void IsZombieIn() {
+		boolean flag = true;
+		for (Zombie zombie : this.controller.getZombies()) {
+			if (this.getPosY() == zombie.getPosY() &&
+					this.getPosX() * 81 + 81 +150 < zombie.getPosX()) {
+				this.setIs_shoot(true);
+				flag = false;
+				break;
+			}
+		}
+		if (flag) {
+			this.setIs_shoot(false);
+		}		
+	}
 	
 	public int getShootSpeed() {
 		return shootSpeed;

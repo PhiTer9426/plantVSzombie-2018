@@ -2,6 +2,9 @@ package zombie;
 
 import java.awt.Image;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import controller.AudioFilePlayer;
 import plant.Plant;
 
 public abstract class Zombie {
@@ -11,6 +14,8 @@ public abstract class Zombie {
 	private int current_health;
 	private boolean is_alive;
 	private int status;				//0：走路，1：吃
+	private int coldTime;
+	
       
 	private int eatSpeed;
 	private int walkSpeed;
@@ -22,14 +27,26 @@ public abstract class Zombie {
 	private int death;             //0:正常死，1：炸死
 	
 	private Plant plant;
+	private final AudioFilePlayer player;
+	
 	
 	public Zombie(int y) {
 		// TODO Auto-generated constructor stub
 		this.is_alive = true;
 		this.status = 0;
+		this.setColdTime(0);
 		this.posX = 1000;//pixel
 		this.posY = y;//grid
+<<<<<<< HEAD
 		this.death=0;
+=======
+		this.player = new AudioFilePlayer ();
+		
+	}
+	
+	public void playMusic(String path) {
+		player.play(path);
+>>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 	}
 	
 	public abstract void Walk();
@@ -95,6 +112,7 @@ public abstract class Zombie {
 		this.plant = plant;
 	}
 
+<<<<<<< HEAD
 	public Image getImageOfDie() {
 		return imageOfDie;
 	}
@@ -128,4 +146,14 @@ public abstract class Zombie {
 	}
 
 	
+=======
+	public int getColdTime() {
+		return coldTime;
+	}
+
+	public void setColdTime(int coldTime) {
+		this.coldTime = coldTime;
+	}
+
+>>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 }

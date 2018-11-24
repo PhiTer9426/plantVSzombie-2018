@@ -14,11 +14,17 @@ public class NormalZombie extends Zombie implements Runnable{
 		super((int)(Math.random() * 5));
 		
 		this.setCurrent_health(10);
+<<<<<<< HEAD
 		this.setWalkSpeed(80);
 		this.setEatSpeed(500);
 		
 				
 		
+=======
+		this.setWalkSpeed(40);
+		this.setEatSpeed(400);
+
+>>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 		this.controller = controller;
 		this.start();
 	}
@@ -54,12 +60,16 @@ public class NormalZombie extends Zombie implements Runnable{
 			if (this.getCurrent_health() <= 0) {
 				this.setIs_alive(false);
 			}
-			if (this.getStatus() == 0) {
+			switch (this.getStatus()) {
+			case 0:
 				Walk();
-			}				
-			else if (this.getStatus() == 1) {
+				break;
+			case 1:
 				Eat();
-			}	
+				break;
+			default:
+				break;
+			}
 		}
 		if(this.getDeath()==0) {
 		    this.setDiePosX(getPosX());  
@@ -90,6 +100,10 @@ public class NormalZombie extends Zombie implements Runnable{
 	public void Walk() {
 		try {
 			Thread.sleep(this.getWalkSpeed());
+			if (this.getColdTime() > 0) {
+				Thread.sleep(this.getWalkSpeed());
+				setColdTime(getColdTime() - 1);
+			}
 			this.setPosX(getPosX() - 1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -108,6 +122,11 @@ public class NormalZombie extends Zombie implements Runnable{
 	public void Eat() {	
 		try {
 			Thread.sleep(this.getEatSpeed());
+			if (this.getColdTime() > 0) {
+				Thread.sleep(this.getEatSpeed());
+				setColdTime(getColdTime() - 10);
+			}
+			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
 			this.getPlant().receiveDamage(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -142,4 +161,5 @@ public class NormalZombie extends Zombie implements Runnable{
 			e.printStackTrace();
 		}	
 	}
+
 }

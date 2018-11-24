@@ -6,9 +6,10 @@ import plant.Plant;
 
 public abstract class Zombie {
 	private Image image;
+	private Image imageOfDie;
       
 	private int current_health;
-	private Boolean is_alive;
+	private boolean is_alive;
 	private int status;				//0：走路，1：吃
       
 	private int eatSpeed;
@@ -16,6 +17,9 @@ public abstract class Zombie {
 	
 	private int posX;
 	private int posY;
+	private int diePosX=getPosX();  //死亡时横坐标
+	private int diePosY=getPosY();  //死亡时纵坐标
+	private int death;             //0:正常死，1：炸死
 	
 	private Plant plant;
 	
@@ -25,11 +29,13 @@ public abstract class Zombie {
 		this.status = 0;
 		this.posX = 1000;//pixel
 		this.posY = y;//grid
+		this.death=0;
 	}
 	
 	public abstract void Walk();
 	public abstract void Eat();
-	public abstract void Die();
+	public abstract void Die_0();
+	public abstract void Die_1();
 
 	
 	public int getStatus() {
@@ -88,4 +94,38 @@ public abstract class Zombie {
 	public void setPlant(Plant plant) {
 		this.plant = plant;
 	}
+
+	public Image getImageOfDie() {
+		return imageOfDie;
+	}
+
+	public void setImageOfDie(Image imageOfDie) {
+		this.imageOfDie = imageOfDie;
+	}
+
+	public int getDiePosY() {
+		return diePosY;
+	}
+
+	public void setDiePosY(int diePosY) {
+		this.diePosY = diePosY;
+	}
+
+	public int getDiePosX() {
+		return diePosX;
+	}
+
+	public void setDiePosX(int diePosX) {
+		this.diePosX = diePosX;
+	}
+
+	public int getDeath() {
+		return death;
+	}
+
+	public void setDeath(int death) {
+		this.death = death;
+	}
+
+	
 }

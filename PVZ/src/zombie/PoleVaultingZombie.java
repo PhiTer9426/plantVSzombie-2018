@@ -5,16 +5,17 @@ import javax.swing.ImageIcon;
 import controller.Controller;
 import plant.Plant;
 
-public class NormalZombie extends Zombie implements Runnable{
+public class PoleVaultingZombie extends Zombie implements Runnable {
 
 	private Controller controller;
 	private Thread t;
+	private boolean is_Pole=true;//只改到这行
 	
-	public NormalZombie(Controller controller){
+	public PoleVaultingZombie(Controller controller){
 		super((int)(Math.random() * 5));
 		
 		this.setCurrent_health(10);
-		this.setWalkSpeed(80);
+		this.setWalkSpeed(30);
 		this.setEatSpeed(500);
 		
 				

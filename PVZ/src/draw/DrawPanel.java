@@ -68,6 +68,14 @@ public class DrawPanel extends JPanel{
 			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif").getImage();
 			g.drawImage(plant, 100, 100, null);
 			break;
+		case "PotatoMine":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMineNotReady.gif").getImage();
+			g.drawImage(plant, 100, 100, null);
+			break;
+		case "CherryBomb":
+			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/CherryBomb/CherryBomb.gif").getImage();
+			g.drawImage(plant, 100, 100, null);
+			break;
 		default:
 			break;
 		}

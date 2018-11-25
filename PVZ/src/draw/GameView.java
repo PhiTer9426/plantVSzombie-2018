@@ -70,7 +70,13 @@ public class GameView extends JLayeredPane {
 				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/WallNut_01.gif"), "WallNut", 3, this.controller));
 		
 		plantCard.add(new CardLabel(
-				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/TallNut_01.gif"), "TallNut", 2, this.controller));
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/TallNut_01.gif"), "TallNut", 4, this.controller));
+		
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/PotatoMine_01.gif"), "PotatoMine", 5, this.controller));
+		
+		plantCard.add(new CardLabel(
+				new ImageIcon("plantsVsZombieMaterials/images/Card/Plants/CherryBomb_01.gif"), "CherryBomb", 6, this.controller));
 	}
 	
 	
@@ -121,6 +127,12 @@ public class GameView extends JLayeredPane {
 			break;
 		case "TallNut":
 			this.controller.getPlants().add(new TallNut(x, y, controller));
+			break;
+		case "PotatoMine":
+			this.controller.getPlants().add(new PotatoMine(x, y, controller));
+			break;
+		case "CherryBomb":
+			this.controller.getPlants().add(new CherryBomb(x, y, controller));
 			break;
 		default:
 			break;

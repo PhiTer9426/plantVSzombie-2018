@@ -35,16 +35,13 @@ public abstract class Zombie {
 		this.setColdTime(0);
 		this.posX = 1000;//pixel
 		this.posY = y;//grid
-<<<<<<< HEAD
 		this.death=0;
-=======
 		this.player = new AudioFilePlayer ();
 		
 	}
 	
 	public void playMusic(String path) {
 		player.play(path);
->>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 	}
 	
 	public abstract void Walk();
@@ -110,7 +107,6 @@ public abstract class Zombie {
 		this.plant = plant;
 	}
 
-<<<<<<< HEAD
 	public Image getImageOfDie() {
 		return imageOfDie;
 	}
@@ -143,8 +139,6 @@ public abstract class Zombie {
 		this.death = death;
 	}
 
-	
-=======
 	public int getColdTime() {
 		return coldTime;
 	}
@@ -153,5 +147,4 @@ public abstract class Zombie {
 		this.coldTime = coldTime;
 	}
 
->>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 }

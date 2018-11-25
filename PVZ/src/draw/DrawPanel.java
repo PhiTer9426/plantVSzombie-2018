@@ -45,6 +45,22 @@ public class DrawPanel extends JPanel{
 						zombie.getImage(), 
 						zombie.getPosX() - zombie.getImage().getWidth(null),
 						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
+					if((zombie.getIs_alive()==false)&&(zombie.getDeath()==0)) {
+						if(zombie.getStatus()==0) {
+					        g.drawImage(
+							    zombie.getImageOfDie(), 
+							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)+81,
+							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
+						}//只有第一只僵尸头会跳
+						
+						/*else if(zombie.getStatus()==1) {
+							g.drawImage(
+								    zombie.getImageOfDie(), 
+								    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)-500,
+								    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
+						}*/
+						//如果加上这一段，会卡，无法理解
+					}
 			}
 		}
 //		switch (controller.getMouse()) {

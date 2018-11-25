@@ -7,9 +7,10 @@ import plant.Plant;
 
 public abstract class Zombie {
 	private Image image;
+	private Image imageOfDie;
       
 	private int current_health;
-	private Boolean is_alive;
+	private boolean is_alive;
 	private int status;				//0：走路，1：吃
 	private int coldTime;
 	
@@ -19,6 +20,9 @@ public abstract class Zombie {
 	
 	private int posX;
 	private int posY;
+	private int diePosX=getPosX();  //死亡时横坐标
+	private int diePosY=getPosY();  //死亡时纵坐标
+	private int death;             //0:正常死，1：炸死
 	
 	private Plant plant;
 	private final AudioFilePlayer player;
@@ -31,17 +35,22 @@ public abstract class Zombie {
 		this.setColdTime(0);
 		this.posX = 1000;//pixel
 		this.posY = y;//grid
+<<<<<<< HEAD
+		this.death=0;
+=======
 		this.player = new AudioFilePlayer ();
 		
 	}
 	
 	public void playMusic(String path) {
 		player.play(path);
+>>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 	}
 	
 	public abstract void Walk();
 	public abstract void Eat();
-	public abstract void Die();
+	public abstract void Die_0();
+	public abstract void Die_1();
 
 	
 	public int getStatus() {
@@ -101,6 +110,41 @@ public abstract class Zombie {
 		this.plant = plant;
 	}
 
+<<<<<<< HEAD
+	public Image getImageOfDie() {
+		return imageOfDie;
+	}
+
+	public void setImageOfDie(Image imageOfDie) {
+		this.imageOfDie = imageOfDie;
+	}
+
+	public int getDiePosY() {
+		return diePosY;
+	}
+
+	public void setDiePosY(int diePosY) {
+		this.diePosY = diePosY;
+	}
+
+	public int getDiePosX() {
+		return diePosX;
+	}
+
+	public void setDiePosX(int diePosX) {
+		this.diePosX = diePosX;
+	}
+
+	public int getDeath() {
+		return death;
+	}
+
+	public void setDeath(int death) {
+		this.death = death;
+	}
+
+	
+=======
 	public int getColdTime() {
 		return coldTime;
 	}
@@ -109,4 +153,5 @@ public abstract class Zombie {
 		this.coldTime = coldTime;
 	}
 
+>>>>>>> d47776c6d2f5c800b3d0b63d9fe4d5714e9fd569
 }

@@ -23,7 +23,7 @@ public class DrawPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if (controller.getBullets() != null) {
+		if (controller.getBullets().size() != 0) {
 			for (Bullet bullet : controller.getBullets()) {
 				g.drawImage(
 						bullet.getImage(), 
@@ -31,7 +31,7 @@ public class DrawPanel extends JPanel{
 						bullet.getPosY() - bullet.getImage().getHeight(null) - 40, null);
 			}
 		}
-		if (controller.getPlants() != null) {
+		if (controller.getPlants().size() != 0) {
 			for (Plant plant : controller.getPlants()) {
 				g.drawImage(
 						plant.getImage(), 
@@ -39,7 +39,7 @@ public class DrawPanel extends JPanel{
 						90 + 92 + 92 * plant.getPosY() - plant.getImage().getHeight(null), null);
 			}
 		}
-		if (controller.getZombies() != null) {
+		if (controller.getZombies().size() != 0) {
 			for (Zombie zombie : controller.getZombies()) {
 					g.drawImage(
 						zombie.getImage(), 
@@ -47,29 +47,29 @@ public class DrawPanel extends JPanel{
 						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
 			}
 		}
-		switch (controller.getMouse()) {
-		case "WXZ":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		case "Peashooter":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		case "SnowPea":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		case "WallNut":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		case "TallNut":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		default:
-			break;
-		}
+//		switch (controller.getMouse()) {
+//		case "WXZ":
+//			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage();
+//			g.drawImage(plant, 100, 100, null);
+//			break;
+//		case "Peashooter":
+//			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage();
+//			g.drawImage(plant, 100, 100, null);
+//			break;
+//		case "SnowPea":
+//			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif").getImage();
+//			g.drawImage(plant, 100, 100, null);
+//			break;
+//		case "WallNut":
+//			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage();
+//			g.drawImage(plant, 100, 100, null);
+//			break;
+//		case "TallNut":
+//			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif").getImage();
+//			g.drawImage(plant, 100, 100, null);
+//			break;
+//		default:
+//			break;
+//		}
 	}
 }

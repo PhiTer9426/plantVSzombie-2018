@@ -41,7 +41,7 @@ public class TallNut extends Plant implements Runnable {
 				this.setIs_alive(false);
 			}
 			else if (this.getCurrent_health() <= 30) {
-				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/PlantsTallNut/TallNut/TallnutCracked2.gif").getImage());
+				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallnutCracked2.gif").getImage());
 			}
 			 else if (this.getCurrent_health() <= 60) {
 				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallnutCracked1.gif").getImage());

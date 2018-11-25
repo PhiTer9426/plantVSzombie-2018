@@ -1,5 +1,7 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
 import controller.Controller;
@@ -15,7 +17,7 @@ public class TallNut extends Plant implements Runnable {
 		this.setCurrent_health(90);
 		this.setPrice(100);
 		this.setName("TallNut");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif"));
 		this.controller = controller;
 		this.start();
 	}
@@ -44,7 +46,7 @@ public class TallNut extends Plant implements Runnable {
 				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallnutCracked2.gif").getImage());
 			}
 			 else if (this.getCurrent_health() <= 60) {
-				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallnutCracked1.gif").getImage());
+				 this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/TallNut/TallnutCracked1.gif").getImage());
 			}
 		}
 		this.controller.getPlants().remove(this);

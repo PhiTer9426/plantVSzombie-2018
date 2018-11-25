@@ -1,5 +1,7 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
 import controller.Controller;
@@ -16,7 +18,8 @@ public class WallNut extends Plant implements Runnable {
 		this.setCurrent_health(60);
 		this.setPrice(100);
 		this.setName("WallNut");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage());
+//		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif"));
 		this.controller = controller;
 		this.start();
 	}

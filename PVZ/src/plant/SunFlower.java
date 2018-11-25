@@ -2,6 +2,7 @@ package plant;
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -22,7 +23,7 @@ public class SunFlower extends Plant implements Runnable{
 		this.creatSpeed = 24000;
 		this.setPrice(50);
 		this.setName("SunFlower");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/SunFlower/SunFlower1.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/SunFlower/SunFlower1.gif"));
 		this.controller = controller;
 		this.start();
 	}

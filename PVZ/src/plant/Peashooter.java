@@ -1,5 +1,7 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
 import bullet.Pea;
@@ -12,7 +14,7 @@ public class Peashooter extends PlantShooter {
 		this.setShootSpeed(1200);
 		this.setPrice(100);
 		this.setName("Peashooter");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().

@@ -1,5 +1,7 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
 import bullet.HotDog;
@@ -12,7 +14,7 @@ public class Repeater extends PlantShooter {
 		this.setShootSpeed(1100);
 		this.setPrice(100);
 		this.setName("Repeater");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().

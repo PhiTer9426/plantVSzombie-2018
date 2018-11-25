@@ -78,6 +78,10 @@ public class GameView extends JLayeredPane {
 		plantCard.add(new CardLabel("WallNut", 3, this.controller, this));
 		
 		plantCard.add(new CardLabel("TallNut", 4, this.controller, this));
+		
+		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this));
+		
+		plantCard.add(new CardLabel("CherryBomb", 6, this.controller, this));
 	}
 	
 	
@@ -110,12 +114,16 @@ public class GameView extends JLayeredPane {
 				if (!controller.getMouse().equals("")) {
 					prePlant.setVisible(true);
 					prePlant.setBounds(
-							e.getX() - prePlant.getIcon().getIconWidth() +50, 
-							e.getY() - prePlant.getIcon().getIconHeight() +50, 100, 130);
+							e.getX() - prePlant.getIcon().getIconWidth() +40, 
+							e.getY() - prePlant.getIcon().getIconHeight() +45,
+							prePlant.getIcon().getIconWidth(), 
+							prePlant.getIcon().getIconHeight());
 					if (e.getX() < 880 && e.getX() > 150 && e.getY() > 90 && e.getY() < 560) {
 						prePlantShadow.setBounds(
-								e.getX() + 81 - (e.getX()-150)%81 - prePlantShadow.getIcon().getIconWidth(), 
-								e.getY() + 92 - (e.getY()-90)%92 - prePlantShadow.getIcon().getIconHeight(), 100, 130);
+								150 + 81 + ((e.getX()-150)/81)*81 - prePlantShadow.getIcon().getIconWidth(), 
+								90 + 92 + ((e.getY()-90)/92)*92 - prePlantShadow.getIcon().getIconHeight(), 
+								prePlantShadow.getIcon().getIconWidth(), 
+								prePlantShadow.getIcon().getIconHeight());
 						prePlantShadow.setVisible(true);
 					}
 				}
@@ -149,6 +157,12 @@ public class GameView extends JLayeredPane {
 			break;
 		case "TallNut":
 			this.controller.getPlants().add(new TallNut(x, y, controller));
+			break;
+		case "PotatoMine":
+			this.controller.getPlants().add(new PotatoMine(x, y, controller));
+			break;
+		case "CherryBomb":
+			this.controller.getPlants().add(new CherryBomb(x, y, controller));
 			break;
 		default:
 			break;

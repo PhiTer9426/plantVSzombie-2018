@@ -27,7 +27,7 @@ public class ZombieProducer implements Runnable{
 		// TODO Auto-generated method stub
 		while (true) {
 			try	{
-				Thread.sleep(1000);
+				Thread.sleep(5000);
 				this.controller.getZombies().add(new NormalZombie(this.controller));
 			} catch (InterruptedException e) {
 				e.printStackTrace();

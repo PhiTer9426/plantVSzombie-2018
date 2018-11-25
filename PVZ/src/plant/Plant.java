@@ -4,6 +4,8 @@ import java.awt.Image;
 
 import javax.swing.JLabel;
 
+import controller.AudioFilePlayer;
+
 public abstract class Plant{
 	
 	private String name;
@@ -16,6 +18,8 @@ public abstract class Plant{
 	private	int posX;
 	private	int posY;
 	private Image image;
+	private final AudioFilePlayer player;
+	
 	public Plant(int x, int y) {
 		this.is_alive = true;
 		this.price = 0;
@@ -23,6 +27,11 @@ public abstract class Plant{
 		this.posX = x;
 		this.posY = y;
 		this.is_shoot = false;
+		this.player = new AudioFilePlayer ();
+	}
+	
+	public void playMusic(String path) {
+		player.play(path);
 	}
 		
 	public void receiveDamage(int damage) {		

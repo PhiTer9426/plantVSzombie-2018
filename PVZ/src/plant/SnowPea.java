@@ -1,5 +1,7 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
 import bullet.HotDog;
@@ -13,7 +15,7 @@ public class SnowPea extends PlantShooter {
 		this.setShootSpeed(1200);
 		this.setPrice(100);
 		this.setName("Peashooter");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().

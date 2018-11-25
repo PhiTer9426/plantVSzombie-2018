@@ -1,5 +1,7 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
 import bullet.HotDog;
@@ -19,7 +21,7 @@ public class PotatoMine extends Plant implements Runnable {
 		this.setCurrent_health(6);
 		this.setPrice(25);
 		this.setName("PotatoMine");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMineNotReady.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMineNotReady.gif"));
 		this.controller = controller;
 		this.readyTime = 500;
 		this.is_ready = false;

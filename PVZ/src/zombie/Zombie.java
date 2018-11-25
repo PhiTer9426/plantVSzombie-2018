@@ -2,17 +2,16 @@ package zombie;
 
 import java.awt.Image;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import controller.AudioFilePlayer;
 import plant.Plant;
 
 public abstract class Zombie {
 	private Image image;
+	private Image imageOfDie;
       
 	private int current_health;
-	private Boolean is_alive;
-	private int status;				//0：走路，1：吃
+	private boolean is_alive;
+	private int status;				//0锛氳蛋璺紝1锛氬悆
 	private int coldTime;
 	
       
@@ -21,6 +20,9 @@ public abstract class Zombie {
 	
 	private int posX;
 	private int posY;
+	private int diePosX=getPosX();  //姝讳骸鏃舵í鍧愭爣
+	private int diePosY=getPosY();  //姝讳骸鏃剁旱鍧愭爣
+	private int death;             //0:姝ｅ父姝伙紝1锛氱偢姝�
 	
 	private Plant plant;
 	private final AudioFilePlayer player;
@@ -33,6 +35,7 @@ public abstract class Zombie {
 		this.setColdTime(0);
 		this.posX = 1000;//pixel
 		this.posY = y;//grid
+		this.death=0;
 		this.player = new AudioFilePlayer ();
 		
 	}
@@ -43,7 +46,8 @@ public abstract class Zombie {
 	
 	public abstract void Walk();
 	public abstract void Eat();
-	public abstract void Die();
+	public abstract void Die_0();
+	public abstract void Die_1();
 
 	
 	public int getStatus() {
@@ -101,6 +105,38 @@ public abstract class Zombie {
 
 	public void setPlant(Plant plant) {
 		this.plant = plant;
+	}
+
+	public Image getImageOfDie() {
+		return imageOfDie;
+	}
+
+	public void setImageOfDie(Image imageOfDie) {
+		this.imageOfDie = imageOfDie;
+	}
+
+	public int getDiePosY() {
+		return diePosY;
+	}
+
+	public void setDiePosY(int diePosY) {
+		this.diePosY = diePosY;
+	}
+
+	public int getDiePosX() {
+		return diePosX;
+	}
+
+	public void setDiePosX(int diePosX) {
+		this.diePosX = diePosX;
+	}
+
+	public int getDeath() {
+		return death;
+	}
+
+	public void setDeath(int death) {
+		this.death = death;
 	}
 
 	public int getColdTime() {

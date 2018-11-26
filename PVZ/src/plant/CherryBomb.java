@@ -37,9 +37,9 @@ public class CherryBomb extends Plant implements Runnable {
 		// TODO Auto-generated method stub
 		try {
 			Thread.sleep(700);
-			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/CherryBomb/Boom.gif"));
+			this.setImage(Toolkit.getDefaultToolkit().
+					createImage("plantsVsZombieMaterials/images/Plants/CherryBomb/Boom.gif"));
 			for (Zombie zombie : this.controller.getZombies()) {
-	    		Thread.sleep(40);
     			if ((this.getPosY() == zombie.getPosY() && zombie.getPosX() > this.getPosX() * 81 - 81 +150 && zombie.getPosX() < this.getPosX() * 81 + 81 + 81 + 81 +150)||
     				(this.getPosY() == zombie.getPosY() - 1 && zombie.getPosX() > this.getPosX() * 81 - 81 +150 && zombie.getPosX() < this.getPosX() * 81 + 81 + 81 + 81 +150)||
     				(this.getPosY() == zombie.getPosY() + 1 && zombie.getPosX() > this.getPosX() * 81 - 81 +150 && zombie.getPosX() < this.getPosX() * 81 + 81 + 81 + 81 +150 )) {
@@ -48,12 +48,11 @@ public class CherryBomb extends Plant implements Runnable {
     				this.setIs_alive(false);
     			}
     		}
-			//Thread.sleep(1700);
+			Thread.sleep(1700);
 		} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
 		this.controller.getPlants().remove(this);
 	}
 	

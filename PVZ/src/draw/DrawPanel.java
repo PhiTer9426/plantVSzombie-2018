@@ -3,7 +3,6 @@ package draw;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import bullet.Bullet;
@@ -41,26 +40,26 @@ public class DrawPanel extends JPanel{
 		}
 		if (controller.getZombies().size() != 0) {
 			for (Zombie zombie : controller.getZombies()) {
-					g.drawImage(
-						zombie.getImage(), 
-						zombie.getPosX() - zombie.getImage().getWidth(null),
-						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
-					
-					if((zombie.getIs_alive()==false)&&(zombie.getDeath()==0)) {
-						if(zombie.getStatus()==0) {
-					        g.drawImage(
+				g.drawImage(
+					zombie.getImage(), 
+					zombie.getPosX() - zombie.getImage().getWidth(null),
+					90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
+				if((zombie.getIs_alive() == false) && (zombie.getDeath() == 0)) {
+					if(zombie.getStatus() == 0) {
+				        g.drawImage(
+						    zombie.getImageOfDie(), 
+						    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)+81,
+						    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
+					}
+					else if(zombie.getStatus() == 1) {
+						g.drawImage(
 							    zombie.getImageOfDie(), 
 							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)+81,
 							   // zombie.getDiePosX(),
+
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
-						}					
-						else if(zombie.getStatus()==1) {
-							g.drawImage(
-								zombie.getImageOfDie(), 
-								zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)-20,
-								90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
-						}
 					}
+				}
 			}
 		}
 	}

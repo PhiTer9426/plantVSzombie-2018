@@ -10,7 +10,7 @@ public class NewspaperZombie extends Zombie implements Runnable {
 	private Thread t;
 	
 	public NewspaperZombie(Controller controller){
-		super((int)(Math.random() * 5));
+		super((int)(Math.random() * 5) , controller);
 		
 		this.setCurrent_health(10);
 		this.setWalkSpeed(40);

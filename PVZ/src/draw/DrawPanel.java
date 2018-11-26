@@ -24,15 +24,15 @@ public class DrawPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		if (controller.getBullets() != null) {
+		if (controller.getBullets().size() != 0) {
 			for (Bullet bullet : controller.getBullets()) {
 				g.drawImage(
 						bullet.getImage(), 
 						bullet.getPosX() - bullet.getImage().getWidth(null) + 10,
-						bullet.getPosY() - bullet.getImage().getHeight(null) - 60, null);
+						bullet.getPosY() - bullet.getImage().getHeight(null) - 40, null);
 			}
 		}
-		if (controller.getPlants() != null) {
+		if (controller.getPlants().size() != 0) {
 			for (Plant plant : controller.getPlants()) {
 				g.drawImage(
 						plant.getImage(), 
@@ -40,14 +40,29 @@ public class DrawPanel extends JPanel{
 						90 + 92 + 92 * plant.getPosY() - plant.getImage().getHeight(null), null);
 			}
 		}
-		if (controller.getZombies() != null) {
+		if (controller.getZombies().size() != 0) {
 			for (Zombie zombie : controller.getZombies()) {
-					g.drawImage(
-						zombie.getImage(), 
-						zombie.getPosX() - zombie.getImage().getWidth(null),
-						90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
+				g.drawImage(
+					zombie.getImage(), 
+					zombie.getPosX() - zombie.getImage().getWidth(null),
+					90 + 92 + 92 * zombie.getPosY() - zombie.getImage().getHeight(null), null);
+				if((zombie.getIs_alive() == false) && (zombie.getDeath() == 0)) {
+					if(zombie.getStatus() == 0) {
+				        g.drawImage(
+						    zombie.getImageOfDie(), 
+						    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)+81,
+						    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
+					}
+					else if(zombie.getStatus() == 1) {
+						g.drawImage(
+							    zombie.getImageOfDie(), 
+							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)-500,
+							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
+					}
+				}
 			}
 		}
+
 		if(controller.getSuns()!=null) {
 			for(Sun sun : controller.getSuns()) {
 				g.drawImage(sun.getImage(), sun.getPosX(),
@@ -68,5 +83,7 @@ public class DrawPanel extends JPanel{
 		default:
 			break;
 		}
+
+
 	}
 }

@@ -1,8 +1,9 @@
 package plant;
 
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 
-import bullet.HotDog;
 import controller.Controller;
 
 public class WallNut extends Plant implements Runnable {
@@ -14,10 +15,11 @@ public class WallNut extends Plant implements Runnable {
 		
 		super(x, y);
 		this.setMax_health(60);
-		this.setCurrent_health(6);
+		this.setCurrent_health(60);
 		this.setPrice(100);
 		this.setName("WallNut");
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage());
+//		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif").getImage());
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif"));
 		this.controller = controller;
 		this.start();
 	}
@@ -31,17 +33,22 @@ public class WallNut extends Plant implements Runnable {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub  
 		while(this.getIs_alive()) {
-			
-			if (this.getCurrent_health() <= (this.getMax_health())*2/3) {
-				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/Wallnut_cracked1.gif").getImage());
+			try {
+				Thread.sleep(40);
+			} catch (InterruptedException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
 			}
-			else if (this.getCurrent_health() <= (this.getMax_health())/3) {
+			if (this.getCurrent_health() <= 0) {
+				this.setIs_alive(false);
+			}
+			else if (this.getCurrent_health() <= 20) {
 				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/Wallnut_cracked2.gif").getImage());
 			}
-			else if (this.getCurrent_health() <= 0) {
-				this.setIs_alive(false);
+			 else if (this.getCurrent_health() <= 40) {
+				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/Wallnut_cracked1.gif").getImage());
 			}
 		}
 		this.controller.getPlants().remove(this);

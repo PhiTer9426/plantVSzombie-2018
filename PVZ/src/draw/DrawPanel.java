@@ -3,11 +3,13 @@ package draw;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import bullet.Bullet;
 import controller.Controller;
 import plant.Plant;
+import plant.Sun;
 import zombie.Zombie;
 
 public class DrawPanel extends JPanel{
@@ -60,6 +62,15 @@ public class DrawPanel extends JPanel{
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 				}
+			}
+		}
+
+		if(controller.getSuns()!=null) {
+			for(Sun sun : controller.getSuns()) {
+				g.drawImage(sun.getImage(), sun.getPosX(),
+						sun.getPosY(), null);
+//				g.drawImage(sun.getImage(), sun.getPosX()-sun.getImage().getWidth(null),
+//						sun.getPosY()-sun.getImage().getHeight(null)+50, null);
 			}
 		}
 	}

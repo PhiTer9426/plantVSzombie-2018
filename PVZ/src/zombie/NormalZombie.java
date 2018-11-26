@@ -16,7 +16,7 @@ public class NormalZombie extends Zombie{
 	    this.setImageOfDie(Toolkit.getDefaultToolkit().
 	    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
 		this.setImage(Toolkit.getDefaultToolkit().
-				createImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
+				getImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
 	}
 	
 }

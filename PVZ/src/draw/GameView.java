@@ -143,6 +143,7 @@ public class GameView extends JLayeredPane {
 						{
 							addSunNumber();
 							destroy(sun);
+							break;
 						}
 					}
 						

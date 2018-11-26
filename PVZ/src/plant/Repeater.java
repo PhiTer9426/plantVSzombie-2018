@@ -15,7 +15,7 @@ public class Repeater extends PlantShooter {
 		this.setShootSpeed(1100);
 		this.setPrice(100);
 		this.setName("Repeater");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().

@@ -10,16 +10,17 @@ import zombie.Zombie;
 public class LawnCleaner extends Bullet{
 	
 	private boolean isOn;
+	private Controller controller;
 	
 	public LawnCleaner(int posX, int posY, Controller controller) {
 		super(posX, posY, controller);
 		this.isOn = false;
+		this.controller = controller;
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/interface/LawnCleaner.png").getImage());
 	}
 	
 	public void bulletEffect(Zombie zombie) {
-		zombie.setIs_alive(false);
-		zombie.setDeath(2);
+		controller.getZombies().remove(zombie);
 	}
 	
 	public void run() {

@@ -15,7 +15,7 @@ public class PoleVaultingZombie extends Zombie  {
 	public PoleVaultingZombie(Controller controller){
 		super((int)(Math.random() * 5), controller);
 		this.setIs_Pole(true);
-		this.setCurrent_health(100);
+		this.setCurrent_health(10);
 		this.setWalkSpeed(30);
 		this.setEatSpeed(500);
 		this.setImage(Toolkit.getDefaultToolkit().

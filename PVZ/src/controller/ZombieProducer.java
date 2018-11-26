@@ -31,8 +31,8 @@ public class ZombieProducer implements Runnable{
 			try	{
 				Thread.sleep(5000);
 
-				//this.controller.getZombies().add(new NormalZombie(this.controller));
-				this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
+				this.controller.getZombies().add(new NormalZombie(this.controller));
+				//this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
 				//this.controller.getZombies().add(new NewspaperZombie(this.controller));
 
 			} catch (InterruptedException e) {

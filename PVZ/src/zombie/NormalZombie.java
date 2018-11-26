@@ -16,7 +16,7 @@ public class NormalZombie extends Zombie implements Runnable{
 		super((int)(Math.random() * 5));
 		
 		this.setCurrent_health(10);
-		this.setWalkSpeed(40);
+		this.setWalkSpeed(60);
 		this.setEatSpeed(400);
 		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
 		this.controller = controller;
@@ -156,5 +156,5 @@ public class NormalZombie extends Zombie implements Runnable{
 			e.printStackTrace();
 		}	
 	}
-
+	
 }

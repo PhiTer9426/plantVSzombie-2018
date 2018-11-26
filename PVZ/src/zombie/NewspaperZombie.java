@@ -2,26 +2,20 @@ package zombie;
 
 import java.awt.Toolkit;
 
-import javax.swing.ImageIcon;
-
 import controller.Controller;
 import plant.Plant;
 
-public class PoleVaultingZombie extends Zombie implements Runnable {
-
+public class NewspaperZombie extends Zombie implements Runnable {
 	private Controller controller;
 	private Thread t;
-	private boolean is_Pole; //true为有杆子
 	
-	public PoleVaultingZombie(Controller controller){
+	public NewspaperZombie(Controller controller){
 		super((int)(Math.random() * 5));
-		this.setIs_Pole(true);
-		this.setCurrent_health(100);
-		this.setWalkSpeed(30);
-		this.setEatSpeed(500);
 		
-				
-		
+		this.setCurrent_health(10);
+		this.setWalkSpeed(40);
+		this.setEatSpeed(400);
+		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
 		this.controller = controller;
 		this.start();
 	}
@@ -41,18 +35,10 @@ public class PoleVaultingZombie extends Zombie implements Runnable {
 			for (Plant plant : this.controller.getPlants()) {
 				int posX = this.getPosX();
 				int posY = this.getPosY();
-				if((posX - 150 - 81)/81-1 == plant.getPosX() &&
-						posY == plant.getPosY()&&this.getIs_Pole()==true) {
-					Jump1();
-					Jump2();
-					setWalkSpeed(this.getWalkSpeed()+40);
-					this.setIs_Pole(false);
-				}
-				else if (posX - 150 - plant.getImage().getWidth(null) <= plant.getPosX()*81+150 &&
-						posX - 150 - plant.getImage().getWidth(null) > plant.getPosX()*81+150-81&&
-						posY == plant.getPosY()&&this.getIs_Pole()==false) {
+				if ((posX - 150 - 81)/81 == plant.getPosX() &&
+						posY == plant.getPosY()) {
 					this.setStatus(1);
-					this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieAttack.gif"));
+					this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 					this.setPlant(plant);
 					flag = false;
 					break; 
@@ -60,10 +46,7 @@ public class PoleVaultingZombie extends Zombie implements Runnable {
 			}
 			if (flag) {
 				this.setStatus(0);
-				if(this.getIs_Pole()==true)
-					this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombie.gif"));
-				else if(this.getIs_Pole()==false)
-				    this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieWalk.gif"));
+				this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
 			}	
 			if (this.getCurrent_health() <= 0) {
 				this.setIs_alive(false);
@@ -106,29 +89,13 @@ public class PoleVaultingZombie extends Zombie implements Runnable {
 		
 	}
 	
-	public void Jump1() {		
-		try {
-			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieJump.gif"));
-			this.setPosX(this.getPosX());
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	}
-	public void Jump2() {		
-		try {
-			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieJump2.gif"));
-			this.setPosX(this.getPosX()-140);
-			Thread.sleep(800);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	}
 	public void Walk() {
 		try {
 			Thread.sleep(this.getWalkSpeed());
+			if (this.getColdTime() > 0) {
+				Thread.sleep(this.getWalkSpeed());
+				setColdTime(getColdTime() - 1);
+			}
 			this.setPosX(getPosX() - 1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -147,6 +114,11 @@ public class PoleVaultingZombie extends Zombie implements Runnable {
 	public void Eat() {	
 		try {
 			Thread.sleep(this.getEatSpeed());
+			if (this.getColdTime() > 0) {
+				Thread.sleep(this.getEatSpeed());
+				setColdTime(getColdTime() - 10);
+			}
+			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
 			this.getPlant().receiveDamage(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -163,7 +135,7 @@ public class PoleVaultingZombie extends Zombie implements Runnable {
 	}
 	public void Die_0() {		
 		try {
-		    this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieDie.gif").getImage());
+		    this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieDie.gif"));
 			Thread.sleep(1800);
 			this.controller.getZombies().remove(this);
 		} catch (InterruptedException e) {
@@ -173,20 +145,13 @@ public class PoleVaultingZombie extends Zombie implements Runnable {
 	}
 	public void Die_1() {		
 		try {
-		    this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Zombies/Zombie/BoomDie.gif").getImage());
-			Thread.sleep(1000);
+		    this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/BoomDie.gif"));
+			Thread.sleep(2500);
 			this.controller.getZombies().remove(this);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
-
-	public boolean getIs_Pole() {
-		return is_Pole;
-	}
-
-	public void setIs_Pole(boolean is_Pole) {
-		this.is_Pole = is_Pole;
-	}
+	
 }

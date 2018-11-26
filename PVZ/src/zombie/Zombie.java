@@ -133,9 +133,7 @@ public abstract class Zombie implements Runnable{
 	public void WalkOfDie() {
 		try {
 			this.setDiePosX(getPosX());  
-		    this.setDiePosY(getPosY()); 
-		    this.setImageOfDie(Toolkit.getDefaultToolkit().
-		    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
+		    this.setDiePosY(getPosY());
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieLostHead.gif"));
 			
@@ -157,9 +155,7 @@ public abstract class Zombie implements Runnable{
 	public void EatOfDie() {	
 		try {
 			this.setDiePosX(getPosX());  
-		    this.setDiePosY(getPosY()); 
-		    this.setImageOfDie(Toolkit.getDefaultToolkit().
-		    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
+		    this.setDiePosY(getPosY()); 		    
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieLostHeadAttack.gif"));
 			

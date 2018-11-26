@@ -13,7 +13,10 @@ public class NormalZombie extends Zombie{
 		this.setCurrent_health(10);
 		this.setWalkSpeed(40);
 		this.setEatSpeed(400);
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().
+				getImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
+		this.setImageOfDie(Toolkit.getDefaultToolkit().
+	    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
 	}
 
 }

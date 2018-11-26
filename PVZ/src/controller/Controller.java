@@ -5,16 +5,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import bullet.Bullet;
 import plant.Plant;
+import plant.Sun;
 import zombie.Zombie;
 
 public class Controller implements Runnable{
 	private CopyOnWriteArrayList<Plant> plants;
 	private CopyOnWriteArrayList<Zombie> zombies;
 	private CopyOnWriteArrayList<Bullet> bullets;
+	private CopyOnWriteArrayList<Sun> sunNumber;
 	
 	private String mouse;
 	private int sun;
 	private ZombieProducer zombieProducer;
+	private SunProducer sunProducer;
 	
 	private Thread t;
 	
@@ -23,9 +26,11 @@ public class Controller implements Runnable{
 		this.plants = new CopyOnWriteArrayList<Plant>();
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
 		this.bullets = new CopyOnWriteArrayList<Bullet>();
+		this.sunNumber =new CopyOnWriteArrayList<Sun>();
 		this.mouse = "";
-		this.sun = 50;
+		this.setSun(50);
 		this.zombieProducer = new ZombieProducer(this);
+		this.sunProducer=new SunProducer(this);
 //		this.start();
 	}
 //	
@@ -41,7 +46,7 @@ public class Controller implements Runnable{
 //		}
 
 	}
-//	
+/*//	
 //	public void runPersonelLogic() {
 //		try	{
 //			Thread.sleep(100);
@@ -96,7 +101,7 @@ public class Controller implements Runnable{
 //		} catch (InterruptedException e) {
 //			e.printStackTrace();
 //		}
-//	}
+//	}*/
 	
 	
 	public CopyOnWriteArrayList<Bullet> getBullets() {
@@ -108,11 +113,21 @@ public class Controller implements Runnable{
 	public CopyOnWriteArrayList<Zombie> getZombies() {
 		return zombies;
 	}
+	public CopyOnWriteArrayList<Sun> getSuns(){
+		return sunNumber;
+	}
 	public String getMouse() {
 		return mouse;
 	}
 	public void setMouse(String mouse) {
 		this.mouse = mouse;
 	}
+	public int getSun() {
+		return sun;
+	}
+	public void setSun(int sun) {
+		this.sun = sun;
+	}
+	
 	
 }

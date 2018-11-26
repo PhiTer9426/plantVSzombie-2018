@@ -71,17 +71,21 @@ public class GameView extends JLayeredPane {
 
 		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
 
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+		plantCard.add(new CardLabel("Repeater", 1, this.controller, this));
 	
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
 		
 		plantCard.add(new CardLabel("WallNut", 3, this.controller, this));
 		
-		plantCard.add(new CardLabel("TallNut", 4, this.controller, this));
+		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
 		
 		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this));
 		
-		plantCard.add(new CardLabel("CherryBomb", 6, this.controller, this));
+		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this));
+		
+		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
+		
+		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
 	}
 	
 	
@@ -146,8 +150,8 @@ public class GameView extends JLayeredPane {
 		case "WXZ":
 			this.controller.getPlants().add(new Wxz(x, y, controller));
 			break;
-		case "Peashooter":
-			this.controller.getPlants().add(new Peashooter(x, y, controller));
+		case "Repeater":
+			this.controller.getPlants().add(new Repeater(x, y, controller));
 			break;
 		case "SnowPea":
 			this.controller.getPlants().add(new SnowPea(x, y, controller));
@@ -155,14 +159,20 @@ public class GameView extends JLayeredPane {
 		case "WallNut":
 			this.controller.getPlants().add(new WallNut(x, y, controller));
 			break;
-		case "TallNut":
-			this.controller.getPlants().add(new TallNut(x, y, controller));
+		case "Torchwood":
+			this.controller.getPlants().add(new Torchwood(x, y, controller));
 			break;
 		case "PotatoMine":
 			this.controller.getPlants().add(new PotatoMine(x, y, controller));
 			break;
-		case "CherryBomb":
-			this.controller.getPlants().add(new CherryBomb(x, y, controller));
+		case "Jalapeno":
+			this.controller.getPlants().add(new Jalapeno(x, y, controller));
+			break;
+		case "Chomper":
+			this.controller.getPlants().add(new Chomper(x, y, controller));
+			break;
+		case "Spikeweed":
+			this.controller.getPlants().add(new Spikeweed(x, y, controller));
 			break;
 		default:
 			break;

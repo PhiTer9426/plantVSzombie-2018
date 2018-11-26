@@ -10,9 +10,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import controller.Controller;
+
+import plant.Peashooter;
+import plant.Plant;
+import plant.Sun;
+import plant.Wxz;
+
 import plant.*;
+
 
 public class GameView extends JLayeredPane {
 	private JLabel backgroud;
@@ -25,6 +33,8 @@ public class GameView extends JLayeredPane {
 	private MainView parent;
 	private Controller controller;
 	
+	private JLabel sunText;
+	private JTextField sun;
 	
 	public GameView(MainView parent) {
 		// TODO Auto-generated constructor stub
@@ -69,19 +79,40 @@ public class GameView extends JLayeredPane {
 		this.add(prePlant, new Integer(4));
 		this.add(prePlantShadow, new Integer(3));	
 
-		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
 
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+		//addText
+		this.sunText=new JLabel();
+		this.sunText.setIcon(new ImageIcon("plantsVsZombieMaterials/images/interface/SunBack.png"));
+		this.sunText.setBounds(600,0,113,41);
+		//this.sunText .setEditable(false);
+		this .add(this.sunText ,new Integer(3));
+		
+		sun = new JTextField();
+		sun.setBounds(640,0,113,41);
+		sun.setOpaque(false);
+		sun.setBorder(null);
+		sun.setEditable(false);
+		sun.setText("50");
+		this.add(this. sun,new Integer(4));
+		
+
+		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
 	
+		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
 		
 		plantCard.add(new CardLabel("WallNut", 3, this.controller, this));
 		
-		plantCard.add(new CardLabel("TallNut", 4, this.controller, this));
+		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
 		
 		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this));
 		
-		plantCard.add(new CardLabel("CherryBomb", 6, this.controller, this));
+		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this));
+		
+		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
+		
+		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
 	}
 	
 	
@@ -99,9 +130,23 @@ public class GameView extends JLayeredPane {
 			}	
 		});	
 		
+		
+		
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+					for(Sun sun : controller.getSuns()) {
+						if(e.getX() < sun.getPosX() + 80   &&
+								e.getX() > sun.getPosX() - 80  &&
+								e.getY() < sun.getPosY() + 100 &&
+								e.getY() > sun.getPosY() - 100)
+						{
+							addSunNumber();
+							destroy(sun);
+						}
+					}
+						
+					
 					if (e.getX() < 880 && e.getX() > 150 && e.getY() > 90 && e.getY() < 560) {
 						addPlant((e.getX()-150)/81, (e.getY()-90)/92, controller.getMouse());
 					}
@@ -137,7 +182,7 @@ public class GameView extends JLayeredPane {
 	
 	public void addPlant(int x, int y, String name) {
 		for (Plant plant : this.controller.getPlants()) {
-			if (plant.getPosX() == x && plant.getPosY() == y) {
+			if (plant.getPosX() == x && plant.getPosY() == y) {      //���ô��Ƿ���ֲ��
 				controller.setMouse("");
 				break;
 			}
@@ -146,8 +191,8 @@ public class GameView extends JLayeredPane {
 		case "WXZ":
 			this.controller.getPlants().add(new Wxz(x, y, controller));
 			break;
-		case "Peashooter":
-			this.controller.getPlants().add(new Peashooter(x, y, controller));
+		case "Repeater":
+			this.controller.getPlants().add(new Repeater(x, y, controller));
 			break;
 		case "SnowPea":
 			this.controller.getPlants().add(new SnowPea(x, y, controller));
@@ -155,14 +200,20 @@ public class GameView extends JLayeredPane {
 		case "WallNut":
 			this.controller.getPlants().add(new WallNut(x, y, controller));
 			break;
-		case "TallNut":
-			this.controller.getPlants().add(new TallNut(x, y, controller));
+		case "Torchwood":
+			this.controller.getPlants().add(new Torchwood(x, y, controller));
 			break;
 		case "PotatoMine":
 			this.controller.getPlants().add(new PotatoMine(x, y, controller));
 			break;
-		case "CherryBomb":
-			this.controller.getPlants().add(new CherryBomb(x, y, controller));
+		case "Jalapeno":
+			this.controller.getPlants().add(new Jalapeno(x, y, controller));
+			break;
+		case "Chomper":
+			this.controller.getPlants().add(new Chomper(x, y, controller));
+			break;
+		case "Spikeweed":
+			this.controller.getPlants().add(new Spikeweed(x, y, controller));
 			break;
 		default:
 			break;
@@ -170,6 +221,16 @@ public class GameView extends JLayeredPane {
 		controller.setMouse("");
 	}
 
+	
+	public void addSunNumber() {
+		controller.setSun(controller.getSun() + 50);
+		String s =String.valueOf(controller.getSun());
+		sun.setText(s);
+	}
+	
+	public void destroy(Sun sun) {
+		this.controller.getSuns().remove(sun);
+	}
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));

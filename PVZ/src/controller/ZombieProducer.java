@@ -2,7 +2,9 @@ package controller;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import zombie.NewspaperZombie;
 import zombie.NormalZombie;
+import zombie.PoleVaultingZombie;
 import zombie.Zombie;
 
 public class ZombieProducer implements Runnable{
@@ -28,7 +30,11 @@ public class ZombieProducer implements Runnable{
 		while (true) {
 			try	{
 				Thread.sleep(5000);
-				this.controller.getZombies().add(new NormalZombie(this.controller));
+
+				//this.controller.getZombies().add(new NormalZombie(this.controller));
+				this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
+				//this.controller.getZombies().add(new NewspaperZombie(this.controller));
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

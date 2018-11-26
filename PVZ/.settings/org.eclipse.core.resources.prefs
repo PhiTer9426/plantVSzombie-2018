@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//src/controller/Controller.java=UTF-8
+=======
 encoding//src/draw/DrawPanel.java=UTF-8
+>>>>>>> 69b7bc68ec589baef869d73153bba3613ee521fe
 encoding//src/zombie/Zombie.java=UTF-8

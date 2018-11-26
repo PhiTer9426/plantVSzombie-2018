@@ -26,7 +26,7 @@ public class SunProducer implements Runnable{
 		while(true)
 		{
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(20000);
 				this.controller.getSuns().add(new ProduceSun(this.controller));
 			}catch(InterruptedException e) {
 				e.printStackTrace();

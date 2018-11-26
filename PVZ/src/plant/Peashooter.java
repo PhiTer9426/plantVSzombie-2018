@@ -14,7 +14,7 @@ public class Peashooter extends PlantShooter {
 		this.setShootSpeed(1200);
 		this.setPrice(100);
 		this.setName("Peashooter");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().

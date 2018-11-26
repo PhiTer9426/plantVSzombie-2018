@@ -19,7 +19,7 @@ public class Torchwood extends Plant implements Runnable {
 		this.setCurrent_health(60);
 		this.setPrice(100);
 		this.setName("Torchwood");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Torchwood/Torchwood.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Torchwood/Torchwood.gif"));
 		this.controller = controller;
 		this.start();
 	}

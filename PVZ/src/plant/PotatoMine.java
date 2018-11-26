@@ -20,7 +20,7 @@ public class PotatoMine extends Plant implements Runnable {
 		this.setCurrent_health(6);
 		this.setPrice(25);
 		this.setName("PotatoMine");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMineNotReady.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMineNotReady.gif"));
 		this.controller = controller;
 		this.readyTime = 250;
 		this.start();
@@ -50,7 +50,7 @@ public class PotatoMine extends Plant implements Runnable {
 				for (Zombie zombie : this.controller.getZombies()) {
 					if (this.getPosY() == zombie.getPosY() &&
 							this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()) {
-						zombie.setCurrent_health(zombie.getCurrent_health() - 90);
+						this.controller.getZombies().remove(zombie);
 						this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMine_mashed.gif").getImage());
 						this.setIs_alive(false);
 					}

@@ -15,7 +15,7 @@ public class Threepeater extends PlantShooter {
 		this.setShootSpeed(1100);
 		this.setPrice(325);
 		this.setName("Threepeater");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Threepeater/Threepeater.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Threepeater/Threepeater.gif"));
 	}
 	public void shoot() {
 		

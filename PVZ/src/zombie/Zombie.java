@@ -108,7 +108,7 @@ public abstract class Zombie implements Runnable{
 				Thread.sleep(this.getEatSpeed());
 				setColdTime(getColdTime() - 10);
 			}
-			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
+//			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
 			this.getPlant().receiveDamage(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

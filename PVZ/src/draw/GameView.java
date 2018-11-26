@@ -113,6 +113,8 @@ public class GameView extends JLayeredPane {
 		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
 		
 		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
+		
+		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this));
 	}
 	
 	
@@ -143,6 +145,7 @@ public class GameView extends JLayeredPane {
 						{
 							addSunNumber();
 							destroy(sun);
+							break;
 						}
 					}
 						
@@ -191,6 +194,9 @@ public class GameView extends JLayeredPane {
 		case "WXZ":
 			this.controller.getPlants().add(new Wxz(x, y, controller));
 			break;
+		case "Peashooter":
+			this.controller.getPlants().add(new Peashooter(x, y, controller));
+			break;
 		case "Repeater":
 			this.controller.getPlants().add(new Repeater(x, y, controller));
 			break;
@@ -214,6 +220,18 @@ public class GameView extends JLayeredPane {
 			break;
 		case "Spikeweed":
 			this.controller.getPlants().add(new Spikeweed(x, y, controller));
+			break;
+		case "Threepeater":
+			this.controller.getPlants().add(new Threepeater(x, y, controller));
+			break;
+		case "Squash":
+			this.controller.getPlants().add(new Squash(x, y, controller));
+			break;
+		case "CherryBomb":
+			this.controller.getPlants().add(new CherryBomb(x, y, controller));
+			break;
+		case "TallNut":
+			this.controller.getPlants().add(new TallNut(x, y, controller));
 			break;
 		default:
 			break;

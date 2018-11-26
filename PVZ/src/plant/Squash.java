@@ -45,8 +45,7 @@ public class Squash extends Plant implements Runnable {
 						this.setPosX(this.getPosX()+1);
 						this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Squash/SquashAttack.gif"));
 						Thread.sleep(1200);
-						this.setIs_alive(false);
-						zombie.setCurrent_health(zombie.getCurrent_health() - 90);
+						this.controller.getZombies().remove(zombie);
 						break;
 					}
 				}		

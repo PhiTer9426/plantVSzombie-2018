@@ -15,7 +15,7 @@ public class SnowPea extends PlantShooter {
 		this.setShootSpeed(1200);
 		this.setPrice(100);
 		this.setName("Peashooter");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/SnowPea/SnowPea.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().

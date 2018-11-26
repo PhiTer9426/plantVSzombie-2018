@@ -97,25 +97,27 @@ public class PoleVaultingZombie extends Zombie  {
 	@Override
 	public void isEat() {
 		boolean flag = true;
-		for (Plant plant : this.controller.getPlants()) {
-			int posX = this.getPosX();
-			int posY = this.getPosY();
-			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
-				if(this.getIs_Pole()) {					
-					Jump1();
-					if(!plant.getName().equals("TallNut")) {
-						Jump2();
+		if (this.controller.getPlants() != null) {
+			for (Plant plant : this.controller.getPlants()) {
+				int posX = this.getPosX();
+				int posY = this.getPosY();
+				if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
+					if(this.getIs_Pole()) {					
+						Jump1();
+						if(!plant.getName().equals("TallNut")) {
+							Jump2();
+						}
+						
+						setWalkSpeed(this.getWalkSpeed()+40);
+						this.setIs_Pole(false);
 					}
-					
-					setWalkSpeed(this.getWalkSpeed()+40);
-					this.setIs_Pole(false);
-				}
-				else {
-					this.setStatus(1);
-					this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieAttack.gif"));
-					this.setPlant(plant);
-					flag = false;
-				break; 
+					else {
+						this.setStatus(1);
+						this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieAttack.gif"));
+						this.setPlant(plant);
+						flag = false;
+					break; 
+					}
 				}
 			}
 		}

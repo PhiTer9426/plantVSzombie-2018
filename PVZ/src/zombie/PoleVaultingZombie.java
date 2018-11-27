@@ -15,7 +15,7 @@ public class PoleVaultingZombie extends Zombie  {
 	public PoleVaultingZombie(Controller controller){
 		super((int)(Math.random() * 5), controller);
 		this.setIs_Pole(true);
-		this.setCurrent_health(100);
+		this.setCurrent_health(10);
 		this.setWalkSpeed(30);
 		this.setEatSpeed(500);
 		this.setImage(Toolkit.getDefaultToolkit().
@@ -30,9 +30,19 @@ public class PoleVaultingZombie extends Zombie  {
 		try {
 			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieJump.gif"));
 			this.setPosX(this.getPosX());
+			int PosX=this.getPosX();         //使其能被原地炸死
 			//this.playMusic("plantsVsZombieMaterials/audio/polevault.mp3");
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
+			for(int i = 0;i<20;i++) {
+			    Thread.sleep(50);
+			    PosX -= 5;
+			    if (this.getCurrent_health() <= 0) {
+					this.setIs_alive(false);
+					this.setPosX(PosX);
+			        break;
+			    }
+		     } 
+		}
+			catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
@@ -41,7 +51,7 @@ public class PoleVaultingZombie extends Zombie  {
 	public void Jump2() {		
 		try {
 			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieJump2.gif"));
-			this.setPosX(this.getPosX()-150);
+			this.setPosX(this.getPosX()-130);
 			Thread.sleep(800);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -103,11 +113,13 @@ public class PoleVaultingZombie extends Zombie  {
 			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
 				if(this.getIs_Pole()) {					
 					Jump1();
+					if(this.getIs_alive() == false)
+						break;
 					if(!plant.getName().equals("TallNut")) {
 						Jump2();
 					}
 					
-					setWalkSpeed(this.getWalkSpeed()+40);
+					this.setWalkSpeed(this.getWalkSpeed()+40);
 					this.setIs_Pole(false);
 				}
 				else {

@@ -57,7 +57,13 @@ public class DrawPanel extends JPanel{
 					else if(zombie.getStatus() == 1) {
 						g.drawImage(
 							    zombie.getImageOfDie(), 
+<<<<<<< HEAD
+							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null),
+							   // zombie.getDiePosX(),
+
+=======
 							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null) + 81,
+>>>>>>> 457ec5d7b2378cb1227daa189df9c99b5f4ba1c7
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 				}

@@ -102,11 +102,17 @@ public abstract class Zombie implements Runnable{
 	}
 	
 	public void Eat() {	
-		try {
-			Thread.sleep(this.getEatSpeed());
-			if (this.getColdTime() > 0) {
-				Thread.sleep(this.getEatSpeed());
-				setColdTime(getColdTime() - 10);
+		try {   
+			for(int i = 0; i < 10; i++) {
+			Thread.sleep(this.getEatSpeed() / 10);
+			    if (this.getColdTime() > 0) {
+				    Thread.sleep(this.getEatSpeed() / 10);
+				    setColdTime(getColdTime() - 1);
+			    }
+			    if (this.getCurrent_health() <= 0) {
+					this.setIs_alive(false);
+			        break;
+			    }
 			}
 //			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
 			this.getPlant().receiveDamage(1);

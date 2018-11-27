@@ -65,7 +65,8 @@ public class ConeheadZombie extends Zombie {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()) {
+			if((posX - 150 - 81)/81 == plant.getPosX() && posY == plant.getPosY()
+							&& plant.getName() != "Spikeweed") {
 					this.setStatus(1);
 					if(getIs_Cone() == true)
 					    this.setImage(Toolkit.getDefaultToolkit().

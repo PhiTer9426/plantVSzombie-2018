@@ -49,7 +49,8 @@ public class PotatoMine extends Plant implements Runnable {
 				Thread.sleep(40);
 				for (Zombie zombie : this.controller.getZombies()) {
 					if (this.getPosY() == zombie.getPosY() &&
-							this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()) {
+							this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX() &&
+							this.getPosX() * 81 + 81 + 150 < zombie.getPosX()) {
 						this.controller.getZombies().remove(zombie);
 						zombie.setIs_alive(false);
 						this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/PotatoMine/PotatoMine_mashed.gif").getImage());

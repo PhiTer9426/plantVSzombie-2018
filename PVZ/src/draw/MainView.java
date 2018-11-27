@@ -28,9 +28,10 @@ public class MainView extends JFrame{
 		this.container.add(game);
 		showMenu();
 		
-		this.setSize(918, 645);
+		this.setSize(905, 640);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		
 	}
 	

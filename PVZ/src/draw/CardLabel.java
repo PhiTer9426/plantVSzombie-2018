@@ -16,7 +16,7 @@ public class CardLabel extends JLabel{
 		// TODO Auto-generated constructor stub
 		this.setIcon(new ImageIcon(
 				"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
-		this.setBounds(10, 10 + index * 60, 100, 60);
+		this.setBounds(10, index * 60, 100, 60);
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				controller.setMouse(name);

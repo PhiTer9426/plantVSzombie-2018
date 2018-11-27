@@ -9,21 +9,18 @@ public class Sun{
 	private int posX;
 	private int posY;
 	
-	private int tposX;
-	private int tposY;
-	
+	private int tposY;	
 	
 	private boolean existent;
 	
 	private Image image;
 	
-	public Sun(){
+	public Sun(int x, int y, int ty){
 
 		this.setExistent(true);
-		this.setPosX((int)(Math.random() * 500) + 200);
-		this.setPosY(0);
-		this.setTposX((int)(Math.random() * 500) + 200);
-		this.setTposY((int)(Math.random() * 400) + 100);
+		this.setPosX(x);
+		this.setPosY(y);
+		this.setTposY(ty);
 		
 	}
 
@@ -57,14 +54,6 @@ public class Sun{
 
 	public void setExistent(boolean existent) {
 		this.existent = existent;
-	}
-
-	public int getTposX() {
-		return tposX;
-	}
-
-	public void setTposX(int tposX) {
-		this.tposX = tposX;
 	}
 
 	public int getTposY() {

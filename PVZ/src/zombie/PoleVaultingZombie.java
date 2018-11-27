@@ -30,9 +30,19 @@ public class PoleVaultingZombie extends Zombie  {
 		try {
 			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieJump.gif"));
 			this.setPosX(this.getPosX());
+			int PosX=this.getPosX();         //使其能被原地炸死
 			//this.playMusic("plantsVsZombieMaterials/audio/polevault.mp3");
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
+			for(int i = 0;i<20;i++) {
+			    Thread.sleep(50);
+			    PosX -= 5;
+			    if (this.getCurrent_health() <= 0) {
+					this.setIs_alive(false);
+					this.setPosX(PosX);
+			        break;
+			    }
+		     } 
+		}
+			catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
@@ -41,7 +51,7 @@ public class PoleVaultingZombie extends Zombie  {
 	public void Jump2() {		
 		try {
 			this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieJump2.gif"));
-			this.setPosX(this.getPosX()-150);
+			this.setPosX(this.getPosX()-130);
 			Thread.sleep(800);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -97,27 +107,27 @@ public class PoleVaultingZombie extends Zombie  {
 	@Override
 	public void isEat() {
 		boolean flag = true;
-		if (this.controller.getPlants() != null) {
-			for (Plant plant : this.controller.getPlants()) {
-				int posX = this.getPosX();
-				int posY = this.getPosY();
-				if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
-					if(this.getIs_Pole()) {					
-						Jump1();
-						if(!plant.getName().equals("TallNut")) {
-							Jump2();
-						}
-						
-						setWalkSpeed(this.getWalkSpeed()+40);
-						this.setIs_Pole(false);
+		for (Plant plant : this.controller.getPlants()) {
+			int posX = this.getPosX();
+			int posY = this.getPosY();
+			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
+				if(this.getIs_Pole()) {					
+					Jump1();
+					if(this.getIs_alive() == false)
+						break;
+					if(!plant.getName().equals("TallNut")) {
+						Jump2();
 					}
-					else {
-						this.setStatus(1);
-						this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieAttack.gif"));
-						this.setPlant(plant);
-						flag = false;
-					break; 
-					}
+					
+					this.setWalkSpeed(this.getWalkSpeed()+40);
+					this.setIs_Pole(false);
+				}
+				else {
+					this.setStatus(1);
+					this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/PoleVaultingZombie/PoleVaultingZombieAttack.gif"));
+					this.setPlant(plant);
+					flag = false;
+				break;
 				}
 			}
 		}

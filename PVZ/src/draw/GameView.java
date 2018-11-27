@@ -13,12 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.Controller;
-
-import plant.Peashooter;
-import plant.Plant;
-import plant.Sun;
-import plant.Wxz;
-
 import plant.*;
 
 
@@ -102,7 +96,7 @@ public class GameView extends JLayeredPane {
 
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
 		
-		plantCard.add(new CardLabel("WallNut", 3, this.controller, this));
+		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this));
 		
 		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
 		
@@ -137,12 +131,14 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					for(Sun sun : controller.getSuns()) {
+
+					for(ProduceSun sun : controller.getSuns()) {
 						if(e.getX() < sun.getPosX() + 80   &&
 								e.getX() > sun.getPosX() - 80  &&
 								e.getY() < sun.getPosY() + 100 &&
 								e.getY() > sun.getPosY() - 100)
 						{
+							controller.getMovingSun().add(new SunMove(sun.getPosX(),sun.getPosY(),controller));
 							addSunNumber();
 							destroy(sun);
 							break;
@@ -185,7 +181,7 @@ public class GameView extends JLayeredPane {
 	
 	public void addPlant(int x, int y, String name) {
 		for (Plant plant : this.controller.getPlants()) {
-			if (plant.getPosX() == x && plant.getPosY() == y) {      //���ô��Ƿ���ֲ��
+			if (plant.getPosX() == x && plant.getPosY() == y) {
 				controller.setMouse("");
 				break;
 			}
@@ -233,22 +229,29 @@ public class GameView extends JLayeredPane {
 		case "TallNut":
 			this.controller.getPlants().add(new TallNut(x, y, controller));
 			break;
+		case "SunFlower":
+			this.controller.getPlants().add(new SunFlower(x, y, controller));
+			break;
 		default:
 			break;
 		}
 		controller.setMouse("");
+		prePlant.setVisible(false);
+		prePlantShadow.setVisible(false);
 	}
 
-	
+
 	public void addSunNumber() {
-		controller.setSun(controller.getSun() + 50);
+		controller.setSun(controller.getSun() + 25);
 		String s =String.valueOf(controller.getSun());
 		sun.setText(s);
 	}
 	
-	public void destroy(Sun sun) {
+	public void destroy(ProduceSun sun) {
 		this.controller.getSuns().remove(sun);
 	}
+	
+
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));

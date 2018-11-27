@@ -87,7 +87,7 @@ public abstract class Zombie implements Runnable{
 			int posX = this.getPosX();
 			int posY = this.getPosY();
 			if ((posX - 150 - 81)/81 == plant.getPosX() &&
-					posY == plant.getPosY()) {
+					posY == plant.getPosY() && plant.getName() != "Spikeweed") {
 				this.setStatus(1);
 				this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 				this.setPlant(plant);

@@ -237,6 +237,8 @@ public class GameView extends JLayeredPane {
 			break;
 		}
 		controller.setMouse("");
+		prePlant.setVisible(false);
+		prePlantShadow.setVisible(false);
 	}
 
 	
@@ -249,6 +251,7 @@ public class GameView extends JLayeredPane {
 	public void destroy(Sun sun) {
 		this.controller.getSuns().remove(sun);
 	}
+	
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));

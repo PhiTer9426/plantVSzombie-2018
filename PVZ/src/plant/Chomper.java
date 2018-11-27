@@ -50,8 +50,10 @@ public class Chomper extends Plant implements Runnable {
 					for (Zombie zombie : this.controller.getZombies()) {	
 				    	if (this.getPosY() == zombie.getPosY() &&
 							this.getPosX() * 81 + 81 + 81 + 81 +150 > zombie.getPosX()) {
-				    		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperAttack.gif"));
+				    		this.setImage(Toolkit.getDefaultToolkit()
+				    				.createImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperAttack.gif"));
 				    		Thread.sleep(500);
+				    		zombie.setIs_alive(false);
 				    		this.controller.getZombies().remove(zombie);
 					    	Thread.sleep(500);
 					    	this.setIs_ready(false);
@@ -60,7 +62,8 @@ public class Chomper extends Plant implements Runnable {
 				    }			
 				}
 				if(this.getIs_raedy() == false) {
-					this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperDigest.gif"));
+					this.setImage(Toolkit.getDefaultToolkit()
+							.getImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperDigest.gif"));
 					for (int i = 0; i < this.getEatTime()/40; i++) {
 						Thread.sleep(40);
 						if (this.getCurrent_health() <= 0) {
@@ -68,7 +71,8 @@ public class Chomper extends Plant implements Runnable {
 							break;
 						}	
 				    }
-					this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Chomper/Chomper.gif"));
+					this.setImage(Toolkit.getDefaultToolkit()
+							.getImage("plantsVsZombieMaterials/images/Plants/Chomper/Chomper.gif"));
 					this.setIs_ready(true);
 			    }
 		    } catch (InterruptedException e) {

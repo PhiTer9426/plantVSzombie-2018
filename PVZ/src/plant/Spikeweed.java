@@ -39,10 +39,10 @@ public class Spikeweed extends Plant implements Runnable {
 				for (Zombie zombie : this.controller.getZombies()) {
 		    	    if (this.getPosY() == zombie.getPosY() &&
 		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()) {
-		    		    zombie.setCurrent_health(zombie.getCurrent_health() - 5);
+		    		    zombie.setCurrent_health(zombie.getCurrent_health() - 1);
 	                }
 	    	    }
-				Thread.sleep(500);
+				Thread.sleep(1500);
 			}		
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

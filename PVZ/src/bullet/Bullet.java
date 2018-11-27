@@ -8,7 +8,6 @@ import zombie.Zombie;
 public abstract class Bullet implements Runnable{
 	private	int posX;
 	private	int posY;
-	private int status;       //0：普通， 1：冰， 2：火
 	private	int bulletDamage;
 	private boolean isRemove;
 	private Image image;
@@ -120,14 +119,6 @@ public abstract class Bullet implements Runnable{
 
 	public void setRemove(boolean isRemove) {
 		this.isRemove = isRemove;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 }

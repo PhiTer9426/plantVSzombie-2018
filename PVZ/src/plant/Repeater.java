@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 import bullet.HotDog;
+import bullet.Pea;
 import controller.Controller;
 
 public class Repeater extends PlantShooter {
@@ -14,11 +15,11 @@ public class Repeater extends PlantShooter {
 		this.setShootSpeed(1100);
 		this.setPrice(100);
 		this.setName("Repeater");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif"));
 	}
 	public void shoot() {
 		this.getController().getBullets().
-		add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
+		add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
 		try {
 			Thread.sleep(100);
 		} catch (InterruptedException e) {
@@ -26,6 +27,6 @@ public class Repeater extends PlantShooter {
 			e.printStackTrace();
 		}
 		this.getController().getBullets().
-		add(new HotDog(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
+		add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
 	}
 }

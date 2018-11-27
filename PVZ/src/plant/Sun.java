@@ -19,15 +19,11 @@ public class Sun{
 	
 	public Sun(){
 
-		Random r =new Random();
-		int random = r.nextInt(500)+200;
-		int randomx = r.nextInt(500)+200;
-		int randomy = r.nextInt(500)+100;
 		this.setExistent(true);
-		this.setPosX(random);
+		this.setPosX((int)(Math.random() * 500) + 200);
 		this.setPosY(0);
-		this.setTposX(randomx);
-		this.setTposY(randomy);
+		this.setTposX((int)(Math.random() * 500) + 200);
+		this.setTposY((int)(Math.random() * 400) + 100);
 		
 	}
 

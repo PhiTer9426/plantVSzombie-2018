@@ -51,13 +51,13 @@ public class DrawPanel extends JPanel{
 					if(zombie.getStatus() == 0) {
 				        g.drawImage(
 						    zombie.getImageOfDie(), 
-						    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)+81,
+						    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null) + 81,
 						    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 					else if(zombie.getStatus() == 1) {
 						g.drawImage(
 							    zombie.getImageOfDie(), 
-							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null)-500,
+							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null) + 81,
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 				}
@@ -68,10 +68,9 @@ public class DrawPanel extends JPanel{
 			for(ProduceSun sun : controller.getSuns()) {
 				g.drawImage(sun.getImage(), sun.getPosX(),
 						sun.getPosY(), null);
-//				g.drawImage(sun.getImage(), sun.getPosX()-sun.getImage().getWidth(null),
-//						sun.getPosY()-sun.getImage().getHeight(null)+50, null);
 			}
 		}
+<<<<<<< HEAD
 		if(controller.getMovingSun()!=null) {
 			for(SunMove sun : controller.getMovingSun()) {
 			g.drawImage(sun.getImage(), sun.getPosX(),
@@ -92,5 +91,7 @@ public class DrawPanel extends JPanel{
 		}
 
 
+=======
+>>>>>>> a4afd05fea871c9efe6d888a565c5805dff7d1f0
 	}
 }

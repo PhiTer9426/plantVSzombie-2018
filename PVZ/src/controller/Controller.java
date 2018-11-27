@@ -4,6 +4,7 @@ package controller;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import bullet.Bullet;
+import bullet.LawnCleaner;
 import plant.Plant;
 import plant.ProduceSun;
 import plant.SunMove;
@@ -30,7 +31,11 @@ public class Controller {
 		this.movingSun=new CopyOnWriteArrayList<SunMove>();
 		this.mouse = "";
 		this.setSun(50);
+		for (int i = 0; i < 5; i++) {
+			this.bullets.add(new LawnCleaner(150, i * 92 + 90 + 92, this));
+		}
 		this.zombieProducer = new ZombieProducer(this);
+	
 
 		this.sunProducer=new SunProducer(this);
 

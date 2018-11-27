@@ -91,19 +91,24 @@ public class GameView extends JLayeredPane {
 		
 
 		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
-
-
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
 	
+		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
 		
 		plantCard.add(new CardLabel("WallNut", 3, this.controller, this));
 		
-		plantCard.add(new CardLabel("TallNut", 4, this.controller, this));
+		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
 		
 		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this));
 		
-		plantCard.add(new CardLabel("CherryBomb", 6, this.controller, this));
+		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this));
+		
+		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
+		
+		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
+		
+		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this));
 	}
 	
 	
@@ -126,15 +131,24 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
+<<<<<<< HEAD
 					for(ProduceSun sun : controller.getSuns()) {
 						if(e.getX()<sun.getPosX()+80&&
 								e.getX()>sun.getPosX()-80&&
 								e.getY()<sun.getPosY()+100&&
 								e.getY()>sun.getPosY()-100)
+=======
+					for(Sun sun : controller.getSuns()) {
+						if(e.getX() < sun.getPosX() + 80   &&
+								e.getX() > sun.getPosX() - 80  &&
+								e.getY() < sun.getPosY() + 100 &&
+								e.getY() > sun.getPosY() - 100)
+>>>>>>> a4afd05fea871c9efe6d888a565c5805dff7d1f0
 						{
 							controller.getMovingSun().add(new SunMove(sun.getPosX(),sun.getPosY(),controller));
 							addSunNumber();
 							destroy(sun);
+							break;
 						}
 					}
 						
@@ -174,7 +188,7 @@ public class GameView extends JLayeredPane {
 	
 	public void addPlant(int x, int y, String name) {
 		for (Plant plant : this.controller.getPlants()) {
-			if (plant.getPosX() == x && plant.getPosY() == y) {      //¼ì²â¸Ã´¦ÊÇ·ñÓÐÖ²Îï
+			if (plant.getPosX() == x && plant.getPosY() == y) {      //ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ö²ï¿½ï¿½
 				controller.setMouse("");
 				break;
 			}
@@ -186,20 +200,41 @@ public class GameView extends JLayeredPane {
 		case "Peashooter":
 			this.controller.getPlants().add(new Peashooter(x, y, controller));
 			break;
+		case "Repeater":
+			this.controller.getPlants().add(new Repeater(x, y, controller));
+			break;
 		case "SnowPea":
 			this.controller.getPlants().add(new SnowPea(x, y, controller));
 			break;
 		case "WallNut":
 			this.controller.getPlants().add(new WallNut(x, y, controller));
 			break;
-		case "TallNut":
-			this.controller.getPlants().add(new TallNut(x, y, controller));
+		case "Torchwood":
+			this.controller.getPlants().add(new Torchwood(x, y, controller));
 			break;
 		case "PotatoMine":
 			this.controller.getPlants().add(new PotatoMine(x, y, controller));
 			break;
+		case "Jalapeno":
+			this.controller.getPlants().add(new Jalapeno(x, y, controller));
+			break;
+		case "Chomper":
+			this.controller.getPlants().add(new Chomper(x, y, controller));
+			break;
+		case "Spikeweed":
+			this.controller.getPlants().add(new Spikeweed(x, y, controller));
+			break;
+		case "Threepeater":
+			this.controller.getPlants().add(new Threepeater(x, y, controller));
+			break;
+		case "Squash":
+			this.controller.getPlants().add(new Squash(x, y, controller));
+			break;
 		case "CherryBomb":
 			this.controller.getPlants().add(new CherryBomb(x, y, controller));
+			break;
+		case "TallNut":
+			this.controller.getPlants().add(new TallNut(x, y, controller));
 			break;
 		default:
 			break;

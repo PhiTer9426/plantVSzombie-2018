@@ -108,7 +108,7 @@ public abstract class Zombie implements Runnable{
 				Thread.sleep(this.getEatSpeed());
 				setColdTime(getColdTime() - 10);
 			}
-			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
+//			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
 			this.getPlant().receiveDamage(1);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -132,10 +132,9 @@ public abstract class Zombie implements Runnable{
 	
 	public void WalkOfDie() {
 		try {
-			this.setDiePosX(getPosX());  
-		    this.setDiePosY(getPosY()); 
-		    this.setImageOfDie(Toolkit.getDefaultToolkit().
-		    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
+			this.setDiePosX(getPosX());
+		    this.setDiePosY(getPosY());
+
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieLostHead.gif"));
 			
@@ -157,9 +156,8 @@ public abstract class Zombie implements Runnable{
 	public void EatOfDie() {	
 		try {
 			this.setDiePosX(getPosX());  
-		    this.setDiePosY(getPosY()); 
-		    this.setImageOfDie(Toolkit.getDefaultToolkit().
-		    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
+		    this.setDiePosY(getPosY()); 		    
+
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieLostHeadAttack.gif"));
 			

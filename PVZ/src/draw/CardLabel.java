@@ -1,5 +1,6 @@
 package draw;
 
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,6 +23,9 @@ public class CardLabel extends JLabel{
 				game.setPreIcon(
 						"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif",
 						"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif");
+			}
+			public void mouseEntered(MouseEvent e) {
+				setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 		});	
 	}

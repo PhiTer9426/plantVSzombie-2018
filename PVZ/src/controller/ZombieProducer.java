@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.concurrent.CopyOnWriteArrayList;
-
-import zombie.NormalZombie;
-import zombie.Zombie;
+import zombie.*;
 
 public class ZombieProducer implements Runnable{
 	private Thread t;
@@ -27,8 +24,12 @@ public class ZombieProducer implements Runnable{
 		// TODO Auto-generated method stub
 		while (true) {
 			try	{
-				Thread.sleep(5000);
+				Thread.sleep(2000);
+
 				this.controller.getZombies().add(new NormalZombie(this.controller));
+				//this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
+				//this.controller.getZombies().add(new NewspaperZombie(this.controller));
+
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

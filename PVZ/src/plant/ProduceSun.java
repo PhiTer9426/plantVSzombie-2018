@@ -10,7 +10,6 @@ public class ProduceSun extends Sun implements Runnable{
 	
 	private Controller controller;
 	private Thread t;
-	private float time;
 	public ProduceSun(Controller controller) {
 		super();
 		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/interface/Sun.gif").getImage());
@@ -28,11 +27,8 @@ public class ProduceSun extends Sun implements Runnable{
 	
 	public void run() {
 		while(this.isExistent()) {
-			if(this.getPosY()<this.getTposY() ) {
+			if(this.getPosY() < this.getTposY() ) {
 				moveY(1);
-			}
-			else if(this.getPosX()>this.getTposX()){
-				moveY(-1);
 			}
 		}
 	}
@@ -40,9 +36,11 @@ public class ProduceSun extends Sun implements Runnable{
 	public void moveY(int x) {
 		try {
 			Thread.sleep(40);
-			this.setPosY(this.getPosY()+x);
+			this.setPosY(this.getPosY() + x);
 		}catch(InterruptedException e){
 			e.printStackTrace();
 		}
 	}
+	
 }
+

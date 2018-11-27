@@ -17,7 +17,7 @@ public class TallNut extends Plant implements Runnable {
 		this.setCurrent_health(90);
 		this.setPrice(100);
 		this.setName("TallNut");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif"));
 		this.controller = controller;
 		this.start();
 	}

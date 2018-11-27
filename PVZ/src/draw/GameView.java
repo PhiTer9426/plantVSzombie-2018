@@ -13,12 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.Controller;
-
-import plant.Peashooter;
-import plant.Plant;
-import plant.Sun;
-import plant.Wxz;
-
 import plant.*;
 
 
@@ -113,6 +107,8 @@ public class GameView extends JLayeredPane {
 		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
 		
 		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
+		
+		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this));
 	}
 	
 	
@@ -135,14 +131,24 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					for(Sun sun : controller.getSuns()) {
+<<<<<<< HEAD
+					for(ProduceSun sun : controller.getSuns()) {
 						if(e.getX()<sun.getPosX()+80&&
 								e.getX()>sun.getPosX()-80&&
 								e.getY()<sun.getPosY()+100&&
 								e.getY()>sun.getPosY()-100)
+=======
+					for(Sun sun : controller.getSuns()) {
+						if(e.getX() < sun.getPosX() + 80   &&
+								e.getX() > sun.getPosX() - 80  &&
+								e.getY() < sun.getPosY() + 100 &&
+								e.getY() > sun.getPosY() - 100)
+>>>>>>> a4afd05fea871c9efe6d888a565c5805dff7d1f0
 						{
+							controller.getMovingSun().add(new SunMove(sun.getPosX(),sun.getPosY(),controller));
 							addSunNumber();
 							destroy(sun);
+							break;
 						}
 					}
 						
@@ -191,6 +197,9 @@ public class GameView extends JLayeredPane {
 		case "WXZ":
 			this.controller.getPlants().add(new Wxz(x, y, controller));
 			break;
+		case "Peashooter":
+			this.controller.getPlants().add(new Peashooter(x, y, controller));
+			break;
 		case "Repeater":
 			this.controller.getPlants().add(new Repeater(x, y, controller));
 			break;
@@ -215,22 +224,36 @@ public class GameView extends JLayeredPane {
 		case "Spikeweed":
 			this.controller.getPlants().add(new Spikeweed(x, y, controller));
 			break;
+		case "Threepeater":
+			this.controller.getPlants().add(new Threepeater(x, y, controller));
+			break;
+		case "Squash":
+			this.controller.getPlants().add(new Squash(x, y, controller));
+			break;
+		case "CherryBomb":
+			this.controller.getPlants().add(new CherryBomb(x, y, controller));
+			break;
+		case "TallNut":
+			this.controller.getPlants().add(new TallNut(x, y, controller));
+			break;
 		default:
 			break;
 		}
 		controller.setMouse("");
 	}
 
-	
+
 	public void addSunNumber() {
-		controller.setSun(controller.getSun() + 50);
+		controller.setSun(controller.getSun() + 25);
 		String s =String.valueOf(controller.getSun());
 		sun.setText(s);
 	}
 	
-	public void destroy(Sun sun) {
+	public void destroy(ProduceSun sun) {
 		this.controller.getSuns().remove(sun);
 	}
+	
+
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));

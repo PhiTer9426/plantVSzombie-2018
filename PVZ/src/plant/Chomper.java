@@ -21,7 +21,7 @@ public class Chomper extends Plant implements Runnable {
 		this.setCurrent_health(6);
 		this.setPrice(25);
 		this.setName("Chomper");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Chomper/Chomper.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Chomper/Chomper.gif"));
 		this.controller = controller;
 		this.eatTime = 10000;
 		this.is_ready = true;
@@ -52,14 +52,15 @@ public class Chomper extends Plant implements Runnable {
 							this.getPosX() * 81 + 81 + 81 + 81 +150 > zombie.getPosX()) {
 				    		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperAttack.gif"));
 				    		Thread.sleep(500);
-					    	zombie.setCurrent_health(zombie.getCurrent_health() - 90);
+				    		this.controller.getZombies().remove(zombie);
 					    	Thread.sleep(500);
 					    	this.setIs_ready(false);
+					    	break;
 				    	}
 				    }			
 				}
 				if(this.getIs_raedy() == false) {
-					this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperDigest.gif"));
+					this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Chomper/ChomperDigest.gif"));
 					for (int i = 0; i < this.getEatTime()/40; i++) {
 						Thread.sleep(40);
 						if (this.getCurrent_health() <= 0) {

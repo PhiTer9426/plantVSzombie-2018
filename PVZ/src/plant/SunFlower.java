@@ -56,7 +56,7 @@ public class SunFlower extends Plant implements Runnable{
 	}
 	
 	public void creat() {
-		
+		controller.getSuns().add(new ProduceSun(controller));
 	}
 
 }

@@ -1,19 +1,14 @@
 package plant;
 
-import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
-
-import controller.Controller;
 
 public class ProduceSun extends Sun implements Runnable{
 	
-	private Controller controller;
 	private Thread t;
-	public ProduceSun(Controller controller) {
-		super();
-		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/interface/Sun.gif").getImage());
-		this.controller=controller;
+	public ProduceSun(int x, int y, int ty) {
+		super(x, y, ty);
+		this.setImage(new ImageIcon
+				("plantsVsZombieMaterials/images/interface/Sun.gif").getImage());
 		this.start();
 	}
 
@@ -30,15 +25,15 @@ public class ProduceSun extends Sun implements Runnable{
 			if(this.getPosY() < this.getTposY() ) {
 				moveY(1);
 			}
+			try {
+				Thread.sleep(40);
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	public void moveY(int x) {
-		try {
-			Thread.sleep(40);
-			this.setPosY(this.getPosY() + x);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-		}
+		this.setPosY(this.getPosY() + x);
 	}
 }

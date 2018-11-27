@@ -9,7 +9,8 @@ import javax.swing.JPanel;
 import bullet.Bullet;
 import controller.Controller;
 import plant.Plant;
-import plant.Sun;
+import plant.ProduceSun;
+import plant.SunMove;
 import zombie.Zombie;
 
 public class DrawPanel extends JPanel{
@@ -64,9 +65,15 @@ public class DrawPanel extends JPanel{
 		}
 
 		if(controller.getSuns()!=null) {
-			for(Sun sun : controller.getSuns()) {
+			for(ProduceSun sun : controller.getSuns()) {
 				g.drawImage(sun.getImage(), sun.getPosX(),
 						sun.getPosY(), null);
+			}
+		}
+		if(controller.getMovingSun()!=null) {
+			for(SunMove sun : controller.getMovingSun()) {
+			g.drawImage(sun.getImage(), sun.getPosX(),
+					sun.getPosY(), null);
 			}
 		}
 	}

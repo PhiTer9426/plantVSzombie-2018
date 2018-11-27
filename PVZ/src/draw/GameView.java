@@ -13,12 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controller.Controller;
-
-import plant.Peashooter;
-import plant.Plant;
-import plant.Sun;
-import plant.Wxz;
-
 import plant.*;
 
 
@@ -132,12 +126,13 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-					for(Sun sun : controller.getSuns()) {
+					for(ProduceSun sun : controller.getSuns()) {
 						if(e.getX()<sun.getPosX()+80&&
 								e.getX()>sun.getPosX()-80&&
 								e.getY()<sun.getPosY()+100&&
 								e.getY()>sun.getPosY()-100)
 						{
+							controller.getMovingSun().add(new SunMove(sun.getPosX(),sun.getPosY(),controller));
 							addSunNumber();
 							destroy(sun);
 						}
@@ -212,16 +207,18 @@ public class GameView extends JLayeredPane {
 		controller.setMouse("");
 	}
 
-	
+
 	public void addSunNumber() {
-		controller.setSun(controller.getSun() + 50);
+		controller.setSun(controller.getSun() + 25);
 		String s =String.valueOf(controller.getSun());
 		sun.setText(s);
 	}
 	
-	public void destroy(Sun sun) {
+	public void destroy(ProduceSun sun) {
 		this.controller.getSuns().remove(sun);
 	}
+	
+
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));

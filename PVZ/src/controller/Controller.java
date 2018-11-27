@@ -5,14 +5,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 import bullet.Bullet;
 import plant.Plant;
-import plant.Sun;
+import plant.ProduceSun;
+import plant.SunMove;
 import zombie.Zombie;
 
 public class Controller {
 	private CopyOnWriteArrayList<Plant> plants;
 	private CopyOnWriteArrayList<Zombie> zombies;
 	private CopyOnWriteArrayList<Bullet> bullets;
-	private CopyOnWriteArrayList<Sun> sunNumber;
+	private CopyOnWriteArrayList<ProduceSun> sunNumber;
+	private CopyOnWriteArrayList<SunMove> movingSun;
 	
 	private String mouse;
 	private int sun;
@@ -24,7 +26,8 @@ public class Controller {
 		this.plants = new CopyOnWriteArrayList<Plant>();
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
 		this.bullets = new CopyOnWriteArrayList<Bullet>();
-		this.sunNumber =new CopyOnWriteArrayList<Sun>();
+		this.sunNumber =new CopyOnWriteArrayList<ProduceSun>();
+		this.movingSun=new CopyOnWriteArrayList<SunMove>();
 		this.mouse = "";
 		this.setSun(50);
 		this.zombieProducer = new ZombieProducer(this);
@@ -44,7 +47,7 @@ public class Controller {
 	public CopyOnWriteArrayList<Zombie> getZombies() {
 		return zombies;
 	}
-	public CopyOnWriteArrayList<Sun> getSuns(){
+	public CopyOnWriteArrayList<ProduceSun> getSuns(){
 		return sunNumber;
 	}
 	public String getMouse() {
@@ -59,6 +62,10 @@ public class Controller {
 	public void setSun(int sun) {
 		this.sun = sun;
 	}
-	
+
+	public CopyOnWriteArrayList<SunMove> getMovingSun() {
+		return movingSun;
+	}
+
 	
 }

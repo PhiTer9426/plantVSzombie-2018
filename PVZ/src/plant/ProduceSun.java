@@ -47,4 +47,6 @@ public class ProduceSun extends Sun implements Runnable{
 			e.printStackTrace();
 		}
 	}
+	
 }
+

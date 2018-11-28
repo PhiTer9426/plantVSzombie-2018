@@ -36,9 +36,21 @@ public class ZombieProducer implements Runnable{
 				this.controller.getZombies().add(new BucketheadZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new ConeheadZombie(this.controller));
-				Thread.sleep(2000);
-				this.controller.getZombies().add(new FlagZombie(this.controller));
-
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new FlagZombie(this.controller));
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new ScreenDoorZombie(this.controller));
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new FootballZombie(this.controller));
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new DuckyTubeZombie(this.controller));
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new DuckyTubeConeheadZombie(this.controller));
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new DuckyTubeBucketheadZombie(this.controller));
+//				Thread.sleep(2000);
+//				this.controller.getZombies().add(new Zomboni(this.controller));
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -16,7 +16,7 @@ public class Jalapeno extends Plant implements Runnable {
 	public Jalapeno(int x, int y, Controller controller) {
 		
 		super(x, y);
-		this.setPrice(150);
+		this.setPrice(125);
 		this.setName("Jalapeno");
 		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Jalapeno/Jalapeno.gif"));
 		this.controller = controller;

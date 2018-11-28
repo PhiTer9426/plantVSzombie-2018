@@ -25,6 +25,7 @@ public class BucketheadZombie extends Zombie {
 		this.controller = controller;
 	}
 	
+	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
@@ -65,7 +66,8 @@ public class BucketheadZombie extends Zombie {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()) {
+			if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()
+					&& plant.getName() != "Spikeweed") {
 					this.setStatus(1);
 					if(getIs_Bucket() == true)
 					    this.setImage(Toolkit.getDefaultToolkit().
@@ -75,6 +77,7 @@ public class BucketheadZombie extends Zombie {
 								createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 					this.setPlant(plant);
 					flag = false;
+					break;
 			}
 		}
 		if (flag) {

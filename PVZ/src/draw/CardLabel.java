@@ -26,6 +26,7 @@ public class CardLabel extends JLabel implements Runnable{
 		// TODO Auto-generated constructor stub
 		this.setIcon(new ImageIcon(
 				"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
+
 		this.setBounds(10, 10 + index * 60, 100, 60);
 		
 		this.isBegin=true;
@@ -37,6 +38,9 @@ public class CardLabel extends JLabel implements Runnable{
 		
 		this.start();
 		
+
+		this.setBounds(10, index * 60, 100, 60);
+
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 								

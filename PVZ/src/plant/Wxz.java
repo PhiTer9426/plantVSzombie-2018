@@ -14,7 +14,7 @@ public class Wxz extends PlantShooter {
 		super(x, y, controller);
 		this.setCurrent_health(6);
 		this.setShootSpeed(1200);
-		this.setPrice(100);
+		this.setPrice(1000);
 		this.setName("WXZ");
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif"));
 	}

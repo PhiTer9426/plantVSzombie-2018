@@ -47,7 +47,7 @@ public class GameView extends JLayeredPane {
 	}
 	
 	public void init() {
-		//add backgroud
+		//add background
 		backgroud.setIcon(
 				new ImageIcon("plantsVsZombieMaterials/images/interface/background1.jpg"));
 		backgroud.setBounds(0, 0, 900, 600);
@@ -90,9 +90,15 @@ public class GameView extends JLayeredPane {
 		this.add(this. sun,new Integer(4));
 		
 
+
 		plantCard.add(new CardLabel("WXZ", 0, this.controller, this,5000));
 	
 		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this,(long) 0.8));
+		
+		plantCard.add(new CardLabel("CherryBomb", 0, this.controller, this,5000));
+	
+		plantCard.add(new CardLabel("Squash", 1, this.controller, this,5000));
+
 
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this,5000));
 		
@@ -110,7 +116,6 @@ public class GameView extends JLayeredPane {
 		
 		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this,5000));
 	}
-	
 	
 	
 	public void addListener() {
@@ -132,11 +137,14 @@ public class GameView extends JLayeredPane {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 
+
 					for(ProduceSun sun : controller.getSuns()) {
+
 						if(e.getX() < sun.getPosX() + 80   &&
 								e.getX() > sun.getPosX() - 80  &&
 								e.getY() < sun.getPosY() + 100 &&
 								e.getY() > sun.getPosY() - 100)
+
 						{
 							controller.getMovingSun().add(new SunMove(sun.getPosX(),sun.getPosY(),controller));
 							addSunNumber();

@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import bullet.HotDog;
 import bullet.Pea;
 import controller.Controller;
+import zombie.Zombie;
 
 public class Threepeater extends PlantShooter {
 	public Threepeater(int x, int y, Controller controller) {		
@@ -17,28 +18,30 @@ public class Threepeater extends PlantShooter {
 		this.setName("Threepeater");
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Threepeater/Threepeater.gif"));
 	}
-	public void shoot() {
-		
-		if(this.getPosY() == 0) {
-			this.getController().getBullets().
-			add(new Pea(getPosX() * 81 + 150 + 81, (getPosY() + 1) * 92 + 90 + 92, this.getController()));
-			this.getController().getBullets().
-			add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));	
+	
+	public void shoot() {		
+		this.getController().getBullets().
+				add(new Pea(getPosX() * 81 + 150 + 81, (getPosY() + 1) * 92 + 90 + 92, this.getController()));
+		this.getController().getBullets().
+				add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
+		this.getController().getBullets().
+				add(new Pea(getPosX() * 81 + 150 + 81, (getPosY() - 1) * 92 + 90 + 92, this.getController()));			
+	}
+	
+	public void IsZombieIn() {
+		boolean flag = true;
+		for (Zombie zombie : getController().getZombies()) {
+			if ((this.getPosY() == zombie.getPosY() 				||
+					this.getPosY() == zombie.getPosY() + 1		||
+					this.getPosY() == zombie.getPosY() - 1)		&&
+					this.getPosX() * 81 + 81 +150 < zombie.getPosX()) {
+				this.setIs_shoot(true);
+				flag = false;
+				break;
+			}
 		}
-		else if(this.getPosY() == 4) {
-			this.getController().getBullets().
-			add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
-			this.getController().getBullets().
-			add(new Pea(getPosX() * 81 + 150 + 81, (getPosY() - 1) * 92 + 90 + 92, this.getController()));
-		}
-		else {
-			this.getController().getBullets().
-		    add(new Pea(getPosX() * 81 + 150 + 81, (getPosY() + 1) * 92 + 90 + 92, this.getController()));
-		    this.getController().getBullets().
-		    add(new Pea(getPosX() * 81 + 150 + 81, getPosY() * 92 + 90 + 92, this.getController()));
-		    this.getController().getBullets().
-		    add(new Pea(getPosX() * 81 + 150 + 81, (getPosY() - 1) * 92 + 90 + 92, this.getController()));	
-		}
-		
+		if (flag) {
+			this.setIs_shoot(false);
+		}		
 	}
 }

@@ -17,9 +17,11 @@ public class Spikeweed extends Plant implements Runnable {
 		
 		super(x, y);
 		this.setCurrent_health(6);
-		this.setPrice(25);
+		this.setPrice(100);
 		this.setName("Spikeweed");
+
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Spikeweed/Spikeweed.gif"));
+
 		this.controller = controller;
 		this.start();
 	}
@@ -38,12 +40,14 @@ public class Spikeweed extends Plant implements Runnable {
 			while(this.getIs_alive()) {
 				for (Zombie zombie : this.controller.getZombies()) {
 		    	    if (this.getPosY() == zombie.getPosY() &&
-		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()) {
+		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()
+		    			    && this.getPosX() * 81 + 81 + 150 < zombie.getPosX()) {
 		    		    zombie.setCurrent_health(zombie.getCurrent_health() - 1);
 	                }
 	    	    }
 				Thread.sleep(1500);
 			}		
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

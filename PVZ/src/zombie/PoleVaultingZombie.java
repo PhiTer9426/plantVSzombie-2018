@@ -107,10 +107,12 @@ public class PoleVaultingZombie extends Zombie  {
 	@Override
 	public void isEat() {
 		boolean flag = true;
+
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
+			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() 
+					&& !plant.getName().equals("Spikeweed")) {
 				if(this.getIs_Pole()) {					
 					Jump1();
 					if(this.getIs_alive() == false)
@@ -119,7 +121,7 @@ public class PoleVaultingZombie extends Zombie  {
 						Jump2();
 					}
 					
-					this.setWalkSpeed(this.getWalkSpeed()+40);
+					this.setWalkSpeed(this.getWalkSpeed()+30);
 					this.setIs_Pole(false);
 				}
 				else {
@@ -128,6 +130,7 @@ public class PoleVaultingZombie extends Zombie  {
 					this.setPlant(plant);
 					flag = false;
 				break;
+
 				}
 			}
 		}

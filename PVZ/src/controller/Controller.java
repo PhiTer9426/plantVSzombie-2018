@@ -19,8 +19,10 @@ public class Controller {
 	
 	private String mouse;
 	private int sun;
+	
 	private ZombieProducer zombieProducer;
 	private SunProducer sunProducer;
+	
 	
 	public Controller() {
 		// TODO Auto-generated constructor stub
@@ -34,11 +36,8 @@ public class Controller {
 		for (int i = 0; i < 5; i++) {
 			this.bullets.add(new LawnCleaner(150, i * 92 + 90 + 92, this));
 		}
-		this.zombieProducer = new ZombieProducer(this);
-	
-
+		this.zombieProducer = new ZombieProducer(this);	
 		this.sunProducer=new SunProducer(this);
-
 	}
 
 	
@@ -72,5 +71,4 @@ public class Controller {
 		return movingSun;
 	}
 
-	
 }

@@ -25,6 +25,7 @@ public class BucketheadZombie extends Zombie {
 		this.controller = controller;
 	}
 	
+	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
@@ -76,6 +77,7 @@ public class BucketheadZombie extends Zombie {
 								createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 					this.setPlant(plant);
 					flag = false;
+					break;
 			}
 		}
 		if (flag) {

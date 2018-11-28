@@ -1,11 +1,9 @@
 package draw;
 
-import java.awt.Component;
-import java.awt.Graphics;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -46,7 +44,7 @@ public class GameView extends JLayeredPane {
 	}
 	
 	public void init() {
-		//add backgroud
+		//add background
 		backgroud.setIcon(
 				new ImageIcon("plantsVsZombieMaterials/images/interface/background1.jpg"));
 		backgroud.setBounds(0, 0, 900, 600);
@@ -89,27 +87,32 @@ public class GameView extends JLayeredPane {
 		this.add(this. sun,new Integer(4));
 		
 
-		plantCard.add(new CardLabel("CherryBomb", 0, this.controller, this));
-	
-		plantCard.add(new CardLabel("Squash", 1, this.controller, this));
 
-		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
+		plantCard.add(new CardLabel("WXZ", 0, this.controller, this,200));
+	
+		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this));
+		plantCard.add(new CardLabel("CherryBomb", 0, this.controller, this, 200));
+	
+		plantCard.add(new CardLabel("Squash", 1, this.controller, this, 200));
+
+		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
+		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this));
+		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this));
+		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
+		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
+		plantCard.add(new CardLabel("Chomper", 7, this.controller, this, 200));
 		
-		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this));
+		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this, 200));
+		
+		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this, 200));
 	}
-		
+
 	public void addListener() {
 		button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -128,7 +131,6 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-
 					for(ProduceSun sun : controller.getSuns()) {
 						if(e.getX() < sun.getPosX() + 80   &&
 								e.getX() > sun.getPosX() - 80  &&
@@ -141,8 +143,6 @@ public class GameView extends JLayeredPane {
 							break;
 						}
 					}
-						
-					
 					if (e.getX() < 880 && e.getX() > 150 && e.getY() > 90 && e.getY() < 560) {
 						addPlant((e.getX()-150)/81, (e.getY()-90)/92, controller.getMouse());
 					}

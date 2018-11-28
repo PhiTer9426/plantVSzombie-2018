@@ -39,9 +39,9 @@ public class MainView extends JFrame{
 	}
 	
 	public void showGame() {
-		game.setVisible(false);
+		game.setVisible(true);
 		Menu.setVisible(false);
-		pickup.setVisible(true);
+		pickup.setVisible(false);
 	}
 	
 	public void showMenu() {

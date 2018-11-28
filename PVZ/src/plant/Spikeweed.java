@@ -19,7 +19,9 @@ public class Spikeweed extends Plant implements Runnable {
 		this.setCurrent_health(6);
 		this.setPrice(100);
 		this.setName("Spikeweed");
+
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Spikeweed/Spikeweed.gif"));
+
 		this.controller = controller;
 		this.start();
 	}
@@ -45,6 +47,7 @@ public class Spikeweed extends Plant implements Runnable {
 	    	    }
 				Thread.sleep(1500);
 			}		
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

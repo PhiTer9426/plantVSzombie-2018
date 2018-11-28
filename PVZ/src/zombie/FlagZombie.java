@@ -12,7 +12,7 @@ public class FlagZombie extends Zombie {
 		super((int)(Math.random() * 5), controller);
 		
 		this.setCurrent_health(10);
-		this.setWalkSpeed(60);
+		this.setWalkSpeed(50);
 		this.setEatSpeed(500);
 	    this.setImageOfDie(Toolkit.getDefaultToolkit().
 	    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));

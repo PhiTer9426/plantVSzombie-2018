@@ -56,7 +56,9 @@ public class DrawPanel extends JPanel{
 					else if(zombie.getStatus() == 1) {
 						g.drawImage(
 							    zombie.getImageOfDie(), 
+
 							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null) + 81,
+
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 				}
@@ -69,11 +71,13 @@ public class DrawPanel extends JPanel{
 						sun.getPosY(), null);
 			}
 		}
+
 		if(controller.getMovingSun()!=null) {
 			for(SunMove sun : controller.getMovingSun()) {
 			g.drawImage(sun.getImage(), sun.getPosX(),
 					sun.getPosY(), null);
 			}
 		}
+
 	}
 }

@@ -17,7 +17,7 @@ public class Squash extends Plant implements Runnable {
 		
 		super(x, y);
 		this.setCurrent_health(20);
-		this.setPrice(25);
+		this.setPrice(50);
 		this.setName("Squash");
 		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Squash/Squash.gif"));
 		this.controller = controller;

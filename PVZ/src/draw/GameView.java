@@ -34,7 +34,6 @@ public class GameView extends JLayeredPane {
 		// TODO Auto-generated constructor stub
 		this.setBounds(0, 0, 900, 600);
 		this.parent = parent;
-		parent.getContainer().add(this);
 		this.controller = new Controller();
 		this.backgroud = new JLabel();
 		this.button = new JLabel();
@@ -110,9 +109,7 @@ public class GameView extends JLayeredPane {
 		
 		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this));
 	}
-	
-	
-	
+		
 	public void addListener() {
 		button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -240,7 +237,6 @@ public class GameView extends JLayeredPane {
 		prePlantShadow.setVisible(false);
 	}
 
-
 	public void addSunNumber() {
 		controller.setSun(controller.getSun() + 25);
 		String s =String.valueOf(controller.getSun());
@@ -251,7 +247,6 @@ public class GameView extends JLayeredPane {
 		this.controller.getSuns().remove(sun);
 	}
 	
-
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));

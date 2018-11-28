@@ -50,8 +50,9 @@ public class Zomboni extends Zombie {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if ((posX - 150 - 81)/81 == plant.getPosX() &&
+			if ((posX - 150 -40)/81 == plant.getPosX() &&
 					posY == plant.getPosY() && plant.getName() != "Spikeweed") {
+				plant.setIs_alive(false);
 				this.controller.getPlants().remove(plant);
 			}
 			if ((posX - 150 - 81)/81 == plant.getPosX() &&

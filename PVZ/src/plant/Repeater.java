@@ -13,7 +13,7 @@ public class Repeater extends PlantShooter {
 		super(x, y, controller);
 		this.setCurrent_health(6);
 		this.setShootSpeed(1100);
-		this.setPrice(100);
+		this.setPrice(200);
 		this.setName("Repeater");
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Repeater/Repeater.gif"));
 	}

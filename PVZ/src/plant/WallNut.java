@@ -16,7 +16,7 @@ public class WallNut extends Plant implements Runnable {
 		super(x, y);
 		this.setMax_health(60);
 		this.setCurrent_health(60);
-		this.setPrice(100);
+		this.setPrice(50);
 		this.setName("WallNut");
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/WallNut/WallNut.gif"));
 		this.controller = controller;

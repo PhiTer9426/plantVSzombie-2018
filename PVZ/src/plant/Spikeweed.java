@@ -17,7 +17,7 @@ public class Spikeweed extends Plant implements Runnable {
 		
 		super(x, y);
 		this.setCurrent_health(6);
-		this.setPrice(25);
+		this.setPrice(100);
 		this.setName("Spikeweed");
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Spikeweed/Spikeweed.gif"));
 		this.controller = controller;

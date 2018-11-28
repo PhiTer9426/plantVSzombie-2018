@@ -46,8 +46,11 @@ public class ZombieProducer implements Runnable{
 				//this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
 				//this.controller.getZombies().add(new NewspaperZombie(this.controller));
 				//this.controller.getZombies().add(new BucketheadZombie(this.controller));
-			//	this.controller.getZombies().add(new ConeheadZombie(this.controller));
-				this.controller.getZombies().add(new FlagZombie(this.controller));
+			    //this.controller.getZombies().add(new ConeheadZombie(this.controller));
+				//this.controller.getZombies().add(new FlagZombie(this.controller));
+                this.controller.getZombies().add(new ScreenDoorZombie(this.controller));
+
+
 
 			} catch (InterruptedException e) {
 				e.printStackTrace();

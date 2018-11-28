@@ -12,15 +12,15 @@ public class ScreenDoorZombie extends Zombie {
 		
 		public ScreenDoorZombie(Controller controller){
 			super((int)(Math.random() * 5), controller);
-			this.setIs_Newspaper(true);
-			this.setCurrent_health(15);
-			this.setNewsPaper_health(5);
-			this.setWalkSpeed(120);
-			this.setEatSpeed(1500);
+			this.setIs_Door(true);
+			this.setCurrent_health(60);
+			this.setDoor_health(50);
+			this.setWalkSpeed(60);
+			this.setEatSpeed(500);
 			this.setImage(Toolkit.getDefaultToolkit().
-					getImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadWalk1.gif"));
+					createImage("plantsVsZombieMaterials/images/Zombies/ScreenDoorZombie/ScreenDoorZombie.gif"));
 		    this.setImageOfDie(Toolkit.getDefaultToolkit().
-		    		createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/Head.gif"));
+		    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead"));
 			this.controller = controller;
 		}
 		
@@ -34,11 +34,10 @@ public class ScreenDoorZombie extends Zombie {
 				else if (this.getStatus() == 1) {
 					Eat();
 				}
-				if(this.getIs_Newspaper() == true) {            //有报纸才需要判定
+				if(this.getIs_Door() == true) {            //有铁桶才需要判定
 				    //if (this.getNewsPaper_health() <= 0) {      //报纸生命耗尽
-					if(this.getCurrent_health()<=6) {
-					    this.setIs_Newspaper(false);
-					    LostPaper();
+					if(this.getCurrent_health()<=10) {
+					    this.setIs_Door(false);
 				    }
 				}
 				if (this.getCurrent_health() <= 0) {
@@ -67,71 +66,27 @@ public class ScreenDoorZombie extends Zombie {
 				int posY = this.getPosY();
 				if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()) {
 						this.setStatus(1);
-						if(getIs_Newspaper() == true)
+						if(getIs_Door() == true)
 						    this.setImage(Toolkit.getDefaultToolkit().
-						    		createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadAttack1.gif"));
-						else if(getIs_Newspaper() == false)
+						    		createImage("plantsVsZombieMaterials/images/Zombies/ScreenDoorZombie/ScreenDoorZombieAttack.gif"));
+						else if(getIs_Door() == false)
 							this.setImage(Toolkit.getDefaultToolkit().
-									createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadAttack0.gif"));
+									createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 						this.setPlant(plant);
 						flag = false;
 				}
 			}
 			if (flag) {
 				this.setStatus(0);
-				if(this.getIs_Newspaper()==true)
+				if(this.getIs_Door()==true)
 					this.setImage(Toolkit.getDefaultToolkit().
-							getImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadWalk1.gif"));
-				else if(this.getIs_Newspaper()==false)
+							getImage("plantsVsZombieMaterials/images/Zombies/ScreenDoorZombie/ScreenDoorZombie.gif"));
+				else if(this.getIs_Door()==false)
 				    this.setImage(Toolkit.getDefaultToolkit().
-				    		getImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadWalk0.gif"));
+				    		getImage("plantsVsZombieMaterials/images/Zombies/Zombie/Zombie.gif"));
 			}
 			
 		}
-		@Override
-		public void WalkOfDie() {
-			try {
-				this.setDiePosX(getPosX());  
-			    this.setDiePosY(getPosY()); 
-			    if(this.getIs_Newspaper()==true)
-				    this.setImage(Toolkit.getDefaultToolkit().
-						createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/LostHeadWalk1.gif"));
-			    else if(this.getIs_Newspaper()==false)
-					this.setImage(Toolkit.getDefaultToolkit().
-					    createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/LostHeadWalk0.gif"));
-			    while(this.getDiePosX()<(this.getPosX()+41)) {     //比死亡时走多41像素
-			    	Thread.sleep(this.getWalkSpeed());
-			    	this.setPosX(getPosX() - 1);
-		        }			
-				this.setImage(Toolkit.getDefaultToolkit().
-						createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/Die.gif"));
-				Thread.sleep(1800);
-				this.controller.getZombies().remove(this);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-		}
-
-		@Override
-		public void EatOfDie() {	
-			try {
-				this.setDiePosX(getPosX());  
-			    this.setDiePosY(getPosY()); 
-				this.setImage(Toolkit.getDefaultToolkit().
-						createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/LostHeadAttack0.gif"));
-				
-		    	Thread.sleep(this.getEatSpeed() * 2);
-				this.setImage(Toolkit.getDefaultToolkit().
-						createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/Die.gif"));
-				Thread.sleep(1800);
-				this.controller.getZombies().remove(this);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-		}
-
 		public boolean getIs_Door() {
 			return is_Door;
 		}

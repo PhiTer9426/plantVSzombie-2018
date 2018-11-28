@@ -57,13 +57,9 @@ public class DrawPanel extends JPanel{
 					else if(zombie.getStatus() == 1) {
 						g.drawImage(
 							    zombie.getImageOfDie(), 
-<<<<<<< HEAD
-							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null),
-							   // zombie.getDiePosX(),
 
-=======
 							    zombie.getDiePosX() - zombie.getImageOfDie().getWidth(null) + 81,
->>>>>>> 457ec5d7b2378cb1227daa189df9c99b5f4ba1c7
+
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 				}
@@ -76,28 +72,6 @@ public class DrawPanel extends JPanel{
 						sun.getPosY(), null);
 			}
 		}
-<<<<<<< HEAD
-		if(controller.getMovingSun()!=null) {
-			for(SunMove sun : controller.getMovingSun()) {
-			g.drawImage(sun.getImage(), sun.getPosX(),
-					sun.getPosY(), null);
-			}
-		}
-		switch (controller.getMouse()) {
-		case "WXZ":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/WXZ/WXZ.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		case "Peashooter":
-			this.plant = new ImageIcon("plantsVsZombieMaterials/images/Plants/Peashooter/Peashooter.gif").getImage();
-			g.drawImage(plant, 100, 100, null);
-			break;
-		default:
-			break;
-		}
 
-
-=======
->>>>>>> a4afd05fea871c9efe6d888a565c5805dff7d1f0
 	}
 }

@@ -90,25 +90,25 @@ public class GameView extends JLayeredPane {
 		this.add(this. sun,new Integer(4));
 		
 
-		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
+		plantCard.add(new CardLabel("WXZ", 0, this.controller, this,5000));
 	
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this,(long) 0.8));
 
-		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
+		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this));
+		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
+		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this));
+		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this));
+		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("Chomper", 7, this.controller, this));
+		plantCard.add(new CardLabel("Chomper", 7, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this));
+		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this,5000));
 		
-		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this));
+		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this,5000));
 	}
 	
 	

@@ -90,13 +90,13 @@ public class GameView extends JLayeredPane {
 		this.add(this. sun,new Integer(4));
 		
 
-		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
+		plantCard.add(new CardLabel("CherryBomb", 0, this.controller, this));
 	
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+		plantCard.add(new CardLabel("Squash", 1, this.controller, this));
 
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
 		
-		plantCard.add(new CardLabel("WallNut", 3, this.controller, this));
+		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this));
 		
 		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this));
 		
@@ -131,7 +131,9 @@ public class GameView extends JLayeredPane {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
 
-					for(Sun sun : controller.getSuns()) {
+
+					for(ProduceSun sun : controller.getSuns()) {
+
 						if(e.getX() < sun.getPosX() + 80   &&
 								e.getX() > sun.getPosX() - 80  &&
 								e.getY() < sun.getPosY() + 100 &&
@@ -181,7 +183,7 @@ public class GameView extends JLayeredPane {
 	
 	public void addPlant(int x, int y, String name) {
 		for (Plant plant : this.controller.getPlants()) {
-			if (plant.getPosX() == x && plant.getPosY() == y) {      //���ô��Ƿ���ֲ��
+			if (plant.getPosX() == x && plant.getPosY() == y) {
 				controller.setMouse("");
 				break;
 			}
@@ -229,10 +231,15 @@ public class GameView extends JLayeredPane {
 		case "TallNut":
 			this.controller.getPlants().add(new TallNut(x, y, controller));
 			break;
+		case "SunFlower":
+			this.controller.getPlants().add(new SunFlower(x, y, controller));
+			break;
 		default:
 			break;
 		}
 		controller.setMouse("");
+		prePlant.setVisible(false);
+		prePlantShadow.setVisible(false);
 	}
 
 

@@ -15,7 +15,7 @@ public class NewspaperZombie extends Zombie implements Runnable {
 		this.setIs_Newspaper(true);
 		this.setCurrent_health(15);
 		this.setNewsPaper_health(5);
-		this.setWalkSpeed(120);
+		this.setWalkSpeed(60);
 		this.setEatSpeed(1500);
 		this.setImage(Toolkit.getDefaultToolkit().
 				getImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadWalk1.gif"));
@@ -36,7 +36,7 @@ public class NewspaperZombie extends Zombie implements Runnable {
 			}
 			if(this.getIs_Newspaper() == true) {            //有报纸才需要判定
 			    //if (this.getNewsPaper_health() <= 0) {      //报纸生命耗尽
-				if(this.getCurrent_health()<=6) {
+				if(this.getCurrent_health()<=10) {
 				    this.setIs_Newspaper(false);
 				    LostPaper();
 			    }
@@ -65,7 +65,8 @@ public class NewspaperZombie extends Zombie implements Runnable {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()) {
+			if((posX - 150 - 81)/81 == plant.getPosX() && posY == plant.getPosY()
+					&& plant.getName() != "Spikeweed") {
 					this.setStatus(1);
 					if(getIs_Newspaper() == true)
 					    this.setImage(Toolkit.getDefaultToolkit().
@@ -75,6 +76,7 @@ public class NewspaperZombie extends Zombie implements Runnable {
 								createImage("plantsVsZombieMaterials/images/Zombies/NewspaperZombie/HeadAttack0.gif"));
 					this.setPlant(plant);
 					flag = false;
+					break;
 			}
 		}
 		if (flag) {
@@ -144,7 +146,7 @@ public class NewspaperZombie extends Zombie implements Runnable {
 			        break;
 			    }
 			}
-			this.setWalkSpeed(this.getWalkSpeed() - 90);
+			this.setWalkSpeed(this.getWalkSpeed() - 36);
 //			this.playMusic("plantsVsZombieMaterials/audio/chomp.mp3");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

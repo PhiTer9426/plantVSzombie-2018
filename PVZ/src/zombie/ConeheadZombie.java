@@ -14,8 +14,8 @@ public class ConeheadZombie extends Zombie {
 	public ConeheadZombie(Controller controller){
 		super((int)(Math.random() * 5), controller);
 		this.setIs_Cone(true);
-		this.setCurrent_health(30); //待修改
-		this.setCone_health(20);
+		this.setCurrent_health(25); //待修改
+		this.setCone_health(15);
 		this.setWalkSpeed(60);
 		this.setEatSpeed(500);
 	    this.setImage(Toolkit.getDefaultToolkit().
@@ -35,8 +35,8 @@ public class ConeheadZombie extends Zombie {
 			else if (this.getStatus() == 1) {
 				Eat();
 			}
-			if(this.getIs_Cone() == true) {            //有铁桶才需要判定
-			    //if (this.getNewsPaper_health() <= 0) {      //报纸生命耗尽
+			if(this.getIs_Cone() == true) {            
+			    //if (this.getNewsPaper_health() <= 0) {      
 				if(this.getCurrent_health()<=10) {
 				    this.setIs_Cone(false);
 			    }
@@ -65,7 +65,8 @@ public class ConeheadZombie extends Zombie {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()) {
+			if((posX - 150 - 81)/81 == plant.getPosX() && posY == plant.getPosY()
+							&& plant.getName() != "Spikeweed") {
 					this.setStatus(1);
 					if(getIs_Cone() == true)
 					    this.setImage(Toolkit.getDefaultToolkit().
@@ -75,6 +76,7 @@ public class ConeheadZombie extends Zombie {
 								createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 					this.setPlant(plant);
 					flag = false;
+					break;
 			}
 		}
 		if (flag) {

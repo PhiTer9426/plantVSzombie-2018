@@ -71,6 +71,8 @@ public abstract class Bullet implements Runnable{
 		}
 		return false;
 	}
+	
+	
 	public int getPosX() {
 		return this.posX;
 	}

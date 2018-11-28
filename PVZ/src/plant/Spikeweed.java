@@ -37,15 +37,15 @@ public class Spikeweed extends Plant implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub		
 		try {
-
 			while(this.getIs_alive()) {
 				for (Zombie zombie : this.controller.getZombies()) {
 		    	    if (this.getPosY() == zombie.getPosY() &&
-		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()) {
-		    		    zombie.setCurrent_health(zombie.getCurrent_health() - 5);
+		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()
+		    			    && this.getPosX() * 81 + 81 + 150 < zombie.getPosX()) {
+		    		    zombie.setCurrent_health(zombie.getCurrent_health() - 1);
 	                }
 	    	    }
-				Thread.sleep(500);
+				Thread.sleep(1500);
 			}		
 
 		} catch (InterruptedException e) {

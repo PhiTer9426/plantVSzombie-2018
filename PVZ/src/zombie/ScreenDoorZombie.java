@@ -7,14 +7,14 @@ import plant.Plant;
 
 public class ScreenDoorZombie extends Zombie {
 		private Controller controller;
-		private boolean is_Door; //true为有报纸
+		private boolean is_Door; //true为有门
 		private int Door_health;
 		
 		public ScreenDoorZombie(Controller controller){
 			super((int)(Math.random() * 5), controller);
 			this.setIs_Door(true);
-			this.setCurrent_health(60);
-			this.setDoor_health(50);
+			this.setCurrent_health(50);
+			this.setDoor_health(40);
 			this.setWalkSpeed(60);
 			this.setEatSpeed(500);
 			this.setImage(Toolkit.getDefaultToolkit().
@@ -34,8 +34,8 @@ public class ScreenDoorZombie extends Zombie {
 				else if (this.getStatus() == 1) {
 					Eat();
 				}
-				if(this.getIs_Door() == true) {            //有铁桶才需要判定
-				    //if (this.getNewsPaper_health() <= 0) {      //报纸生命耗尽
+				if(this.getIs_Door() == true) {            //有门才需要判定
+				    //if (this.getNewsPaper_health() <= 0) {      //门生命耗尽
 					if(this.getCurrent_health()<=10) {
 					    this.setIs_Door(false);
 				    }
@@ -64,7 +64,8 @@ public class ScreenDoorZombie extends Zombie {
 			for (Plant plant : this.controller.getPlants()) {
 				int posX = this.getPosX();
 				int posY = this.getPosY();
-				if((posX - 150 - 81)/81 == plant.getPosX() &&	posY == plant.getPosY()) {
+				if ((posX - 150 - 81)/81 == plant.getPosX() &&
+						posY == plant.getPosY() && plant.getName() != "Spikeweed")  {
 						this.setStatus(1);
 						if(getIs_Door() == true)
 						    this.setImage(Toolkit.getDefaultToolkit().
@@ -74,6 +75,7 @@ public class ScreenDoorZombie extends Zombie {
 									createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieAttack.gif"));
 						this.setPlant(plant);
 						flag = false;
+						break;
 				}
 			}
 			if (flag) {

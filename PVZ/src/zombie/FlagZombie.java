@@ -12,7 +12,7 @@ public class FlagZombie extends Zombie {
 		super((int)(Math.random() * 5), controller);
 		
 		this.setCurrent_health(10);
-		this.setWalkSpeed(60);
+		this.setWalkSpeed(50);
 		this.setEatSpeed(500);
 	    this.setImageOfDie(Toolkit.getDefaultToolkit().
 	    		createImage("plantsVsZombieMaterials/images/Zombies/Zombie/ZombieHead.gif"));
@@ -28,7 +28,7 @@ public class FlagZombie extends Zombie {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
 			if ((posX - 150 - 81)/81 == plant.getPosX() &&
-					posY == plant.getPosY()) {
+					posY == plant.getPosY() && plant.getName() != "Spikeweed") {
 				this.setStatus(1);
 				this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Zombies/FlagZombie/FlagZombieAttack.gif"));
 				this.setPlant(plant);

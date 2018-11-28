@@ -3,7 +3,6 @@ package draw;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import bullet.Bullet;
@@ -70,6 +69,13 @@ public class DrawPanel extends JPanel{
 			for(ProduceSun sun : controller.getSuns()) {
 				g.drawImage(sun.getImage(), sun.getPosX(),
 						sun.getPosY(), null);
+			}
+		}
+
+		if(controller.getMovingSun()!=null) {
+			for(SunMove sun : controller.getMovingSun()) {
+			g.drawImage(sun.getImage(), sun.getPosX(),
+					sun.getPosY(), null);
 			}
 		}
 

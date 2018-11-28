@@ -12,11 +12,12 @@ public class SunMove extends Sun implements Runnable{
 	private int m;
 	private int n;
 	public SunMove(int x,int y,Controller controller) {
-		super();
+		super(x, y, 0);
 		this.setPosX(x);
 		this.setPosY(y);
-		m=600-this.getPosX();
-		n=-this.getPosY();
+		this.m = (650 - this.getPosX()) / 20;
+		this.n = this.getPosY() / 20;
+		this.setImage(new ImageIcon("plantsVsZombieMaterials/images/interface/Sun.gif").getImage());
 		this.controller=controller;
 		this.start();
 	}
@@ -30,60 +31,16 @@ public class SunMove extends Sun implements Runnable{
 	}
 	
 	public void run() {
-		while(this.isExistent())
-		{
-			this.setImage(new ImageIcon("plantsVsZombieMaterials/images/interface/Sun.gif").getImage());
-			if(this.getPosX()-20>=600||this.getTposX()+20<=600)
-			{
-				moveSun(m,n);
-				if(this.getPosY()<=0.0001) {				
-					this.setExistent(false);
-					break;
-				}
-			}
-			else {
-				if(this.getPosY()>0.0001)
-					moveY(-10);
-				else {
-				this.setExistent(false);
-				break;
-				}
+		for (int i = 0; i < 20; i++) {
+			this.setPosX(this.getPosX() + m);
+			this.setPosY(this.getPosY() - n);
+			try {
+				Thread.sleep(40);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		this.controller.getMovingSun().remove(this);
-	}
-	
-	public void moveSun(int x, int y) {
-
-		if(this.getPosX()!=600) {
-		  if(this.getPosX()<570) {
-			  
-			this.moveX(x/5);
-		  }
-		  else if(this.getPosX()>630) {
-			this.moveX(-10);
-		  }
-		}
-		if(this.getPosY()!=0) {
-			this.moveY(y/5);
-		}
-	}
-	
-	public void moveY(int x) {
-		try {
-			Thread.sleep(40);
-			this.setPosY(this.getPosY()+x);
-		}catch(InterruptedException e){
-			e.printStackTrace();
-		}
-	}
-	
-	public void moveX(int x) {
-		try {
-			Thread.sleep(40);
-			this.setPosX(this.getPosX()+x);
-		}catch(InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 }

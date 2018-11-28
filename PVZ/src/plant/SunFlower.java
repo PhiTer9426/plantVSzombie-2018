@@ -20,10 +20,11 @@ public class SunFlower extends Plant implements Runnable{
 		
 		super(x, y);
 		this.setCurrent_health(6);
-		this.creatSpeed = 24000;
+		this.creatSpeed = 100;
 		this.setPrice(50);
 		this.setName("SunFlower");
-		this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/SunFlower/SunFlower1.gif"));
+		this.setImage(Toolkit.getDefaultToolkit().
+				getImage("plantsVsZombieMaterials/images/Plants/SunFlower/SunFlower1.gif"));
 		this.controller = controller;
 		this.start();
 	}
@@ -40,13 +41,14 @@ public class SunFlower extends Plant implements Runnable{
 		// TODO Auto-generated method stub
 		while(this.getIs_alive()) {
 			try {
-				if (isIs_shoot() == true) {	
-					creat();
+				creat();
+				for (int i = 0; i < creatSpeed; i++) {
+					Thread.sleep(40);
+					if (this.getCurrent_health() <= 0) {
+						this.setIs_alive(false);
+						break;
+					}
 				}
-				if (this.getCurrent_health() <= 0) {
-					this.setIs_alive(false);
-				}
-				Thread.sleep(creatSpeed);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -56,7 +58,10 @@ public class SunFlower extends Plant implements Runnable{
 	}
 	
 	public void creat() {
-		controller.getSuns().add(new ProduceSun(controller));
+		controller.getSuns().add(new ProduceSun(
+				180 + 81 * this.getPosX(),
+				100 + 92 * this.getPosY(),
+				120 + 92 * this.getPosY()));
 	}
 
 }

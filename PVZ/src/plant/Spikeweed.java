@@ -38,7 +38,8 @@ public class Spikeweed extends Plant implements Runnable {
 			while(this.getIs_alive()) {
 				for (Zombie zombie : this.controller.getZombies()) {
 		    	    if (this.getPosY() == zombie.getPosY() &&
-		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()) {
+		    			    this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()
+		    			    && this.getPosX() * 81 + 81 + 150 < zombie.getPosX()) {
 		    		    zombie.setCurrent_health(zombie.getCurrent_health() - 1);
 	                }
 	    	    }

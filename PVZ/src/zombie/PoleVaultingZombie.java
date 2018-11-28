@@ -110,7 +110,8 @@ public class PoleVaultingZombie extends Zombie  {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() && !plant.getName().equals("Spikeweed")) {
+			if((posX - 150 - 81)/81-1 == plant.getPosX() &&	posY == plant.getPosY() 
+					&& !plant.getName().equals("Spikeweed")) {
 				if(this.getIs_Pole()) {					
 					Jump1();
 					if(this.getIs_alive() == false)

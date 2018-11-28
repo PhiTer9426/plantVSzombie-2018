@@ -90,9 +90,9 @@ public class GameView extends JLayeredPane {
 		this.add(this. sun,new Integer(4));
 		
 
-		plantCard.add(new CardLabel("WXZ", 0, this.controller, this));
+		plantCard.add(new CardLabel("CherryBomb", 0, this.controller, this));
 	
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this));
+		plantCard.add(new CardLabel("Squash", 1, this.controller, this));
 
 		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this));
 		

@@ -28,12 +28,12 @@ public class PickCardLabel extends JLabel{
 					setIcon(new ImageIcon("plantsVsZombieMaterials/images/Card/"
 							+ "Plants/" + name + "_03.gif"));
 				}
-				else {
+				else if (View.getNum() < 10) {
 					View.setCard(name);
 					setIcon(new ImageIcon("plantsVsZombieMaterials/images/Card/"
 							+ "Plants/" + name + "_01.gif"));
 				}
-				isChoosed = !isChoosed;
+					isChoosed = !isChoosed;				
 			}
 			public void mouseEntered(MouseEvent e) {
 				setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

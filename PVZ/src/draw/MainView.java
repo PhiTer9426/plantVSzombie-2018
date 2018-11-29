@@ -13,9 +13,11 @@ import plant.Plant;
 
 public class MainView extends JFrame{
 	private Container container;
-	private JLayeredPane Menu;
-	private JLayeredPane game;
-	private JLayeredPane pickup;
+	private MenuView Menu;
+	private GameView game;
+	private PickCardView pickup;
+	private PassLevel pass;
+	private int level;
 	
 	public MainView() {
 		// TODO Auto-generated constructor stub
@@ -25,10 +27,9 @@ public class MainView extends JFrame{
 		
 		this.Menu = new MenuView(this);
 		this.container.add(Menu);
-		this.game = new GameView(this);
-		this.container.add(game);
 		this.pickup = new PickCardView(this);
 		this.container.add(pickup);
+		this.level = 1;
 		showMenu();
 		
 		this.setSize(905, 640);
@@ -38,14 +39,27 @@ public class MainView extends JFrame{
 		
 	}
 	
-	public void showGame() {
-		game.setVisible(true);
+	public void showGame(String[] picked) {
+		game = new GameView(this, level, picked);
+		this.container.add(game);
 		Menu.setVisible(false);
 		pickup.setVisible(false);
 	}
 	
+	public void showPickup() {
+		if (game != null) {
+			this.container.remove(game);
+			game = null;
+		}
+		Menu.setVisible(false);
+		pickup.setVisible(true);
+	}
+	
 	public void showMenu() {
-		game.setVisible(false);
+		if (game != null) {
+			this.container.remove(game);
+			game = null;
+		}
 		Menu.setVisible(true);
 		pickup.setVisible(false);
 	}

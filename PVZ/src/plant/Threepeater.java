@@ -13,6 +13,7 @@ public class Threepeater extends PlantShooter {
 	public Threepeater(int x, int y, Controller controller) {		
 		super(x, y, controller);
 		this.setCurrent_health(6);
+		this.setMax_health(6);
 		this.setShootSpeed(1100);
 		this.setPrice(325);
 		this.setName("Threepeater");

@@ -40,6 +40,7 @@ public class CardLabel extends JLabel implements Runnable{
 		this.setBounds(10, index * 60, 100, 60);
 
 		this.addMouseListener(new MouseAdapter() {
+
 			public void mouseClicked(MouseEvent e) {								
 				if(leftCd <= 0 && controller.getSun() >= price) {
 					controller.setMouse(name);
@@ -47,6 +48,7 @@ public class CardLabel extends JLabel implements Runnable{
 							"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif",
 							"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif");
 					leftCd = cd;
+
 				}
 			}
 			public void mouseEntered(MouseEvent e) {
@@ -64,6 +66,7 @@ public class CardLabel extends JLabel implements Runnable{
 	
 	public void run() {
 		while(true) {
+
 			try {
 				Thread.sleep(40);
 			} catch (InterruptedException e) {

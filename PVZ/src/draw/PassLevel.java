@@ -6,9 +6,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-public class PassLevel extends JPanel{
+public class PassLevel extends JLayeredPane{
 	
 	private JLabel backgroud;
 	private JLabel button;
@@ -30,34 +31,50 @@ public class PassLevel extends JPanel{
 		switch (level) {
 		case 1:
 			backgroud.setIcon(new ImageIcon(
-					"plantsVsZombieMaterials/images/interface/Hearo_Demon.jpg"));
+					"plantsVsZombieMaterials/images/interface/Hearo_Elf.jpg"));
 			break;
 		case 2:
 			backgroud.setIcon(new ImageIcon(
-					"plantsVsZombieMaterials/images/interface/Hearo_Elf.jpg"));
+					"plantsVsZombieMaterials/images/interface/Hearo_Demon.jpg"));
 			break;
 		case 3:
 			backgroud.setIcon(new ImageIcon(
-					"plantsVsZombieMaterials/images/interface/background3.jpg"));
+					"plantsVsZombieMaterials/images/interface/Passall.jpg"));
 			break;
 		default:
 			break;
 		}
 		backgroud.setBounds(0, 0, 900, 600);
-		this.add(backgroud);
+		this.add(backgroud, new Integer(1));
 		
-		this.button.setIcon(new ImageIcon(
-					"plantsVsZombieMaterials/images/interface/background3.jpg"));
-		this.button.setBounds(300, 200, 100, 50);
-		this.add(button);
+		
+		if (level == 3) {
+			this.button.setIcon(new ImageIcon(
+					"plantsVsZombieMaterials/images/interface/finish.png"));
+		}
+		else {
+			this.button.setIcon(new ImageIcon(
+					"plantsVsZombieMaterials/images/interface/next.png"));
+		}
+		
+		this.button.setBounds(400, 500, 102, 38);
+		this.add(button, new Integer(2));
 		
 		button.addMouseListener(new MouseAdapter() {
 			public void mouseEntered(MouseEvent e) {
 				setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			}				
+			}
+			public void mouseExited(MouseEvent e) {
+				setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			}
 			public void mouseClicked(MouseEvent e) {
-				parent.showPickup();
-				parent.setLevel(level+1);
+				if (level == 3) {
+					parent.showMenu();
+				}
+				else {
+					parent.showPickup();
+					parent.setLevel(level+1);
+				}
 			}
 		});	
 	}

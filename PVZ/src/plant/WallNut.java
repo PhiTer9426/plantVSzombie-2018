@@ -46,8 +46,11 @@ public class WallNut extends Plant implements Runnable {
 			else if (this.getCurrent_health() <= 20) {
 				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/Wallnut_cracked2.gif").getImage());
 			}
-			 else if (this.getCurrent_health() <= 40) {
+			 else if (this.getCurrent_health() <= 40 && this.getCurrent_health() >= 20) {
 				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/Wallnut_cracked1.gif").getImage());
+			}
+			 else if (this.getCurrent_health() >= 40) {
+				this.setImage(new ImageIcon("plantsVsZombieMaterials/images/Plants/WallNut/Wallnut.gif").getImage());
 			}
 		}
 		this.controller.getPlants().remove(this);

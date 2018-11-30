@@ -11,6 +11,7 @@ import controller.Controller;
 public class SnowPea extends PlantShooter {
 	public SnowPea(int x, int y, Controller controller) {		
 		super(x, y, controller);
+		this.setMax_health(6);
 		this.setCurrent_health(6);
 		this.setShootSpeed(1200);
 		this.setPrice(175);

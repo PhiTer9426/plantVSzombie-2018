@@ -10,8 +10,8 @@ public class ScreenDoorZombie extends Zombie {
 		private boolean is_Door; //true为有门
 		private int Door_health;
 		
-		public ScreenDoorZombie(Controller controller){
-			super((int)(Math.random() * 5), controller);
+		public ScreenDoorZombie(int y, Controller controller){
+			super(y, controller);
 			this.setIs_Door(true);
 			this.setCurrent_health(50);
 			this.setDoor_health(40);

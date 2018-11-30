@@ -8,8 +8,8 @@ import plant.Plant;
 public class FlagZombie extends Zombie {
 
 	private Controller controller;
-	public FlagZombie(Controller controller){
-		super((int)(Math.random() * 5), controller);
+	public FlagZombie(int y, Controller controller){
+		super(y, controller);
 		
 		this.setCurrent_health(10);
 		this.setWalkSpeed(50);

@@ -10,9 +10,8 @@ public class DuckyTubeZombie extends Zombie {
 	private Controller controller;
 
 	
-	public  DuckyTubeZombie(Controller controller){
-		
-		super((int)(Math.random()*5), controller); 
+	public  DuckyTubeZombie(int y, Controller controller){
+		super(y, controller); 
 		this.setCurrent_health(10); 
 		this.setWalkSpeed(60);
 		this.setEatSpeed(500);

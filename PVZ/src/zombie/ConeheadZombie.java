@@ -11,8 +11,8 @@ public class ConeheadZombie extends Zombie {
 	private boolean is_Cone;     //true为有帽子
 	private int Cone_health;
 	
-	public ConeheadZombie(Controller controller){
-		super((int)(Math.random() * 5), controller);
+	public ConeheadZombie(int y, Controller controller){
+		super(y, controller);
 		this.setIs_Cone(true);
 		this.setCurrent_health(25); //待修改
 		this.setCone_health(15);

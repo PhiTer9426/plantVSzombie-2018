@@ -12,8 +12,8 @@ public class PoleVaultingZombie extends Zombie  {
 	private Controller controller;
 	private boolean is_Pole; //true为有杆子
 	
-	public PoleVaultingZombie(Controller controller){
-		super((int)(Math.random() * 5), controller);
+	public PoleVaultingZombie(int y, Controller controller){
+		super(y, controller);
 		this.setIs_Pole(true);
 		this.setCurrent_health(10);
 		this.setWalkSpeed(30);

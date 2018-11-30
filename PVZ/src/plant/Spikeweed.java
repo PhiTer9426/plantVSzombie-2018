@@ -16,6 +16,7 @@ public class Spikeweed extends Plant implements Runnable {
 	public Spikeweed(int x, int y, Controller controller) {
 		
 		super(x, y);
+		this.setMax_health(6);
 		this.setCurrent_health(6);
 		this.setPrice(100);
 		this.setName("Spikeweed");

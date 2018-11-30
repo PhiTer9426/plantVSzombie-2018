@@ -13,6 +13,7 @@ public class Wxz extends PlantShooter {
 	public Wxz(int x, int y, Controller controller) {
 		super(x, y, controller);
 		this.setCurrent_health(6);
+		this.setMax_health(6);
 		this.setShootSpeed(1200);
 		this.setPrice(1000);
 		this.setName("WXZ");

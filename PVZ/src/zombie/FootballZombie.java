@@ -11,8 +11,8 @@ public class FootballZombie extends Zombie {
 	private boolean is_Orn;     //true为有头盔
 	private int Orn_health;
 	
-	public FootballZombie(Controller controller){
-		super((int)(Math.random() * 5), controller);
+	public FootballZombie(int y, Controller controller){
+		super(y, controller);
 		this.setIs_Orn(true);
 		this.setCurrent_health(60);
 		this.setOrn_health(50);

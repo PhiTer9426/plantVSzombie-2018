@@ -19,6 +19,7 @@ public class Chomper extends Plant implements Runnable {
 		
 		super(x, y);
 		this.setCurrent_health(6);
+		this.setMax_health(6);
 		this.setPrice(150);
 		this.setName("Chomper");
 		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/Chomper/Chomper.gif"));

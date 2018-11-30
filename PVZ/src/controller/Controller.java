@@ -1,10 +1,16 @@
 package controller;
 
 
+import java.awt.Image;
 import java.util.concurrent.CopyOnWriteArrayList;
+
 
 import bullet.Bullet;
 import bullet.LawnCleaner;
+import draw.GameView;
+import hero.Demon;
+import hero.Elf;
+import hero.Hero;
 import plant.Plant;
 import plant.ProduceSun;
 import plant.SunMove;
@@ -16,6 +22,7 @@ public class Controller {
 	private CopyOnWriteArrayList<Bullet> bullets;
 	private CopyOnWriteArrayList<ProduceSun> sunNumber;
 	private CopyOnWriteArrayList<SunMove> movingSun;
+	private Hero hero;
 	
 	private String mouse;
 	private int sun;
@@ -23,8 +30,10 @@ public class Controller {
 	private ZombieProducer zombieProducer;
 	private SunProducer sunProducer;
 	
+	private Image last;
+	private GameView game;
 	
-	public Controller() {
+	public Controller(GameView game) {
 		// TODO Auto-generated constructor stub
 		this.plants = new CopyOnWriteArrayList<Plant>();
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
@@ -32,12 +41,26 @@ public class Controller {
 		this.sunNumber =new CopyOnWriteArrayList<ProduceSun>();
 		this.movingSun=new CopyOnWriteArrayList<SunMove>();
 		this.mouse = "";
+		this.setGame(game);
 		this.setSun(50);
 		for (int i = 0; i < 5; i++) {
 			this.bullets.add(new LawnCleaner(150, i * 92 + 90 + 92, this));
 		}
-		this.zombieProducer = new ZombieProducer(this);	
-		this.sunProducer=new SunProducer(this);
+		if (game.getLevel() == 3) {
+			this.bullets.add(new LawnCleaner(150, 5 * 92 + 90 + 92, this));
+		}
+		this.setZombieProducer(new ZombieProducer(game.getLevel(), this));	
+		
+		if (game.getLevel() != 2) {
+			this.sunProducer=new SunProducer(this);
+		}
+		
+//		if (game.getLevel() == 2) {
+//			this.hero = new Elf(300, 100, this);
+//		}
+//		if (game.getLevel() == 3) {
+//			this.hero = new Demon(300, 100, this);
+//		}
 	}
 
 	
@@ -54,6 +77,9 @@ public class Controller {
 	public CopyOnWriteArrayList<ProduceSun> getSuns(){
 		return sunNumber;
 	}
+	public Hero getHero() {
+		return hero;
+	}
 	public String getMouse() {
 		return mouse;
 	}
@@ -69,6 +95,26 @@ public class Controller {
 
 	public CopyOnWriteArrayList<SunMove> getMovingSun() {
 		return movingSun;
+	}
+
+	public Image getLast() {
+		return last;
+	}
+
+	public GameView getGame() {
+		return game;
+	}
+
+	public void setGame(GameView game) {
+		this.game = game;
+	}
+
+	public ZombieProducer getZombieProducer() {
+		return zombieProducer;
+	}
+
+	public void setZombieProducer(ZombieProducer zombieProducer) {
+		this.zombieProducer = zombieProducer;
 	}
 
 }

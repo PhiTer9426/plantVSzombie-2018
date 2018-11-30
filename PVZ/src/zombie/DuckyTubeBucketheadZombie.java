@@ -11,9 +11,8 @@ public class DuckyTubeBucketheadZombie extends Zombie {
 	private boolean is_Bucket;     //true为有帽子
 	private int Bucket_health;
 	
-	public  DuckyTubeBucketheadZombie(Controller controller){
-		
-		super((int)(Math.random()*5), controller);  //只在三四行出现
+	public  DuckyTubeBucketheadZombie(int y, Controller controller){
+		super(y, controller);  //只在三四行出现
 		this.setIs_Bucket(true);
 		this.setCurrent_health(40); 
 		this.setBucket_health(30);

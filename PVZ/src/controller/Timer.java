@@ -19,6 +19,7 @@ public class Timer  implements Runnable{
 		}
 	}
 	
+
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -34,6 +35,7 @@ public class Timer  implements Runnable{
 	
 	public static void main(String[] args) {
 		Timer timer = new Timer();
+
 	}
 
 }

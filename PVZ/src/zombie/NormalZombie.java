@@ -7,8 +7,8 @@ import controller.Controller;
 public class NormalZombie extends Zombie{
 
 	
-	public NormalZombie(Controller controller){
-		super((int)(Math.random() * 5), controller);
+	public NormalZombie(int y, Controller controller){
+		super(y, controller);
 		
 		this.setCurrent_health(10);
 		this.setWalkSpeed(60);

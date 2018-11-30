@@ -19,6 +19,7 @@ public class SunFlower extends Plant implements Runnable{
 	public SunFlower (int x, int y, Controller controller) {
 		
 		super(x, y);
+		this.setMax_health(6);
 		this.setCurrent_health(6);
 		this.creatSpeed = 100;
 		this.setPrice(50);

@@ -40,44 +40,63 @@ public class MainView extends JFrame{
 	}
 	
 	public void showGame(String[] picked) {
+		if (game != null) {
+			this.container.remove(game);
+			game = null;
+		}
 		game = new GameView(this, level, picked);
 		this.container.add(game);
 		Menu.setVisible(false);
 		pickup.setVisible(false);
+		if (pass != null) {
+			this.container.remove(pass);
+			pass = null;
+		}
 	}
 	
 	public void showPickup() {
 		if (game != null) {
-			this.container.remove(game);
-			game = null;
+			game.setVisible(false);
 		}
 		Menu.setVisible(false);
 		pickup.setVisible(true);
+		if (pass != null) {
+			this.container.remove(pass);
+			pass = null;
+		}
 	}
 	
 	public void showMenu() {
 		if (game != null) {
-			this.container.remove(game);
-			game = null;
+			game.setVisible(false);
 		}
 		Menu.setVisible(true);
 		pickup.setVisible(false);
+		if (pass != null) {
+			this.container.remove(pass);
+			pass = null;
+		}
 	}
 	
 	public void showPass() {
-		if (game != null) {
-			this.container.remove(game);
-			game = null;
-		}
-		Menu.setVisible(true);
+		Menu.setVisible(false);
 		pickup.setVisible(false);
+		pass = new PassLevel(level, this);
+		this.container.add(pass);
+		if (game != null) {
+			game.setVisible(false);
+		}
 	}
 	
 	public Container getContainer() {
 		return container;
 	}
 	
+
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	public int getLevel() {
+		return level;
 	}
 }

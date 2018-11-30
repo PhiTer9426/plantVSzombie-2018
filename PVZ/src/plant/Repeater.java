@@ -12,6 +12,7 @@ public class Repeater extends PlantShooter {
 	public Repeater(int x, int y, Controller controller) {		
 		super(x, y, controller);
 		this.setCurrent_health(6);
+		this.setMax_health(6);
 		this.setShootSpeed(1100);
 		this.setPrice(200);
 		this.setName("Repeater");

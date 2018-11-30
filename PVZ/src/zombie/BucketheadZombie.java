@@ -11,8 +11,8 @@ public class BucketheadZombie extends Zombie {
 	private boolean is_Bucket;     //true为有铁桶
 	private int Bucket_health;
 	
-	public BucketheadZombie(Controller controller){
-		super((int)(Math.random() * 5), controller);
+	public BucketheadZombie(int y, Controller controller){
+		super(y, controller);
 		this.setIs_Bucket(true);
 		this.setCurrent_health(40);
 		this.setBucket_health(30);

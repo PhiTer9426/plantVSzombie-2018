@@ -21,6 +21,7 @@ public class LawnCleaner extends Bullet{
 	
 	public void bulletEffect(Zombie zombie) {
 		controller.getZombies().remove(zombie);
+		zombie.setIs_alive(false);
 	}
 	
 	public void run() {

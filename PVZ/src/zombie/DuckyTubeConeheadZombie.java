@@ -11,9 +11,8 @@ public class DuckyTubeConeheadZombie extends Zombie {
 	private boolean is_Cone;     //true为有帽子
 	private int Cone_health;
 	
-	public  DuckyTubeConeheadZombie(Controller controller){
-		
-		super((int)(Math.random()*5), controller);  //只在三四行出现
+	public  DuckyTubeConeheadZombie(int y, Controller controller){
+		super(y, controller);  //只在三四行出现
 		this.setIs_Cone(true);
 		this.setCurrent_health(25); 
 		this.setCone_health(15);

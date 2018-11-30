@@ -43,7 +43,7 @@ public class Controller {
 		for (int i = 0; i < 5; i++) {
 			this.bullets.add(new LawnCleaner(150, i * 92 + 90 + 92, this));
 		}
-		this.zombieProducer = new ZombieProducer(this);	
+		this.setZombieProducer(new ZombieProducer(this));	
 		this.sunProducer=new SunProducer(this);
 	}
 
@@ -92,6 +92,18 @@ public class Controller {
 
 	public void setGame(GameView game) {
 		this.game = game;
+	}
+
+
+
+	public ZombieProducer getZombieProducer() {
+		return zombieProducer;
+	}
+
+
+
+	public void setZombieProducer(ZombieProducer zombieProducer) {
+		this.zombieProducer = zombieProducer;
 	}
 
 }

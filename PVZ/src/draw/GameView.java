@@ -43,7 +43,7 @@ public class GameView extends JLayeredPane {
 		this.backgroud = new JLabel();
 		this.button = new JLabel();
 		this.shovelBack =new JLabel();
-		this.panel = new DrawPanel(this.controller);
+		this.panel = new DrawPanel(this.controller,this);
 		this.plantCard = new JPanel();
 		this.prePlant = new JLabel();
 		this.prePlantShadow = new JLabel();
@@ -358,4 +358,8 @@ public class GameView extends JLayeredPane {
 	public void setEnd(JLabel end) {
 		this.end = end;
 	}
+	
+	public DrawPanel getPanel() {
+		return panel;
+	};
 }

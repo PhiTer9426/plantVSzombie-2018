@@ -7,11 +7,12 @@ import zombie.*;
 public class ZombieProducer implements Runnable{
 	private Thread t;
 	private Controller controller;
-	
+	private boolean lastWave;
 	public ZombieProducer(Controller controller) {
 		// TODO Auto-generated constructor stub
 		this.controller = controller;		
 		this.start();
+		this.setLastWave(false);
 	}
 	
 	public void start () {
@@ -65,9 +66,9 @@ public class ZombieProducer implements Runnable{
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new NewspaperZombie(this.controller));
 				Thread.sleep(2000);
-				controller.getGame().getEnd().setVisible(true);
+				this.setLastWave(true);
 				Thread.sleep(1000);
-				controller.getGame().getEnd().setVisible(false);
+				this.setLastWave(false);
 				Thread.sleep(3000);
 				this.controller.getZombies().add(new FlagZombie(this.controller));
 				for(int i=0;i<5;i++) {
@@ -81,5 +82,13 @@ public class ZombieProducer implements Runnable{
 				e.printStackTrace();
 			}
 		}
+
+	public boolean isLastWave() {
+		return lastWave;
+	}
+
+	public void setLastWave(boolean lastWave) {
+		this.lastWave = lastWave;
+	}
 	
 }

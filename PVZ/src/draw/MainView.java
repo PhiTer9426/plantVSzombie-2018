@@ -77,4 +77,5 @@ public class MainView extends JFrame{
 		return container;
 	}
 	
+
 }

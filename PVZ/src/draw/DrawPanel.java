@@ -17,19 +17,25 @@ public class DrawPanel extends JPanel{
 	private Controller controller;
 	Image plant;
 	private boolean game;
-
-	public DrawPanel(Controller controller) {
+	private GameView gm;
+	
+	public DrawPanel(Controller controller,GameView game) {
 		this.controller = controller;
 		this.setOpaque(false);
-		this.game =false;
-	}
+		this.game =true;
+		gm=game;
+		}
 
+	public boolean getGame() {
+		return game;
+	}
 	@Override
 	public void paint(Graphics g) {
-		if(game) {
 		super.paint(g);
 		g.drawImage(
 				new ImageIcon("plantsVsZombieMaterials/images/interface/ShovelBack.png").getImage(),340,0,100,55,null);
+
+		if(game) {
 
 		if (controller.getBullets().size() != 0) {
 			for (Bullet bullet : controller.getBullets()) {
@@ -88,11 +94,15 @@ public class DrawPanel extends JPanel{
 					sun.getPosY(), null);
 			}
 		}
+		if(controller.getZombieProducer().isLastWave()) {
+			gm.getEnd().setVisible(true);
+		}
+		else gm.getEnd().setVisible(false);
 
 	} 
-		else {
+		else {		
 		g.drawImage(new ImageIcon("plantsVsZombieMaterials/images/interface/ZombiesWon.png").getImage(),
-				450,200,200,200,null);
+				420,200,200,200,null);
 	}
 	}
 }

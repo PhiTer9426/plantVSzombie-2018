@@ -50,16 +50,19 @@ public class Zomboni extends Zombie {
 		for (Plant plant : this.controller.getPlants()) {
 			int posX = this.getPosX();
 			int posY = this.getPosY();
-			if ((posX - 150 -40)/81 == plant.getPosX() &&
-					posY == plant.getPosY() && plant.getName() != "Spikeweed") {
+			if (posX - 150 - 270 <= plant.getPosX() *81 &&
+					posX - 150 - 51 >= plant.getPosX()*81 && posY == plant.getPosY() &&
+					plant.getName() != ("Spikeweed")) {
 				plant.setIs_alive(false);
 				this.controller.getPlants().remove(plant);
 			}
-			if ((posX - 150 - 81)/81 == plant.getPosX() &&
-					posY == plant.getPosY() && plant.getName().equals ("Spikeweed")) {
-				System.out.println("0");
+			if (posX - 150 - 270 <= plant.getPosX() *81 &&
+					posX - 150 - 120 >= plant.getPosX()*81 && posY == plant.getPosY() &&
+					plant.getName().equals ("Spikeweed")) {
 				this.setCurrent_health(0);
 				this.setStatus(1);
+				plant.setIs_alive(false);
+				this.controller.getPlants().remove(plant);
 				break;
 			}
 		}
@@ -70,7 +73,8 @@ public class Zomboni extends Zombie {
 					this.getCurrent_health() >= 20)
 				this.setImage(Toolkit.getDefaultToolkit().
 						getImage("plantsVsZombieMaterials/images/Zombies/Zomboni/2.gif"));
-			else if(this.getCurrent_health() < 20) 
+			else if(this.getCurrent_health() < 20 &&
+					this.getCurrent_health() > 0) 
 			    this.setImage(Toolkit.getDefaultToolkit().
 					    getImage("plantsVsZombieMaterials/images/Zombies/Zomboni/3.gif"));
 	}
@@ -78,9 +82,10 @@ public class Zomboni extends Zombie {
 	@Override
 	public void WalkOfDie() {          //被打死
 		try {
+			this.setPosX(this.getPosX() - 30);
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zomboni/5.gif"));
-			Thread.sleep(900);
+			Thread.sleep(1100);
 			
 			this.controller.getZombies().remove(this);
 		} catch (InterruptedException e) {
@@ -91,6 +96,7 @@ public class Zomboni extends Zombie {
 
 	public void EatOfDie() {	       //踩地刺
 		try {	    
+			this.setPosX(this.getPosX());
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zomboni/4.gif"));
 	    	Thread.sleep(1000);
@@ -99,9 +105,10 @@ public class Zomboni extends Zombie {
 			e.printStackTrace();
 		}	
 		try {
+			this.setPosX(this.getPosX() - 30);
 			this.setImage(Toolkit.getDefaultToolkit().
 					createImage("plantsVsZombieMaterials/images/Zombies/Zomboni/5.gif"));
-			Thread.sleep(900);
+			Thread.sleep(1100);
 			this.controller.getZombies().remove(this);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -111,6 +118,7 @@ public class Zomboni extends Zombie {
 
 	public void DieBoom() {		
 		try {
+			this.setPosX(this.getPosX() - 30);
 		    this.setImage(Toolkit.getDefaultToolkit().
 		    		createImage("plantsVsZombieMaterials/images/Zombies/Zomboni/BoomDie.gif"));
 			Thread.sleep(2500);

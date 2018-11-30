@@ -26,11 +26,10 @@ public class ZombieProducer implements Runnable{
 	public void run() {
 		// TODO Auto-generated method stub		 
 			try	{
-				/*Thread.sleep(2000);
+				Thread.sleep(2000);
 				this.controller.getZombies().add(new NormalZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
-				
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new BucketheadZombie(this.controller));
 				Thread.sleep(2000);
@@ -61,8 +60,8 @@ public class ZombieProducer implements Runnable{
 				this.controller.getZombies().add(new DuckyTubeConeheadZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new DuckyTubeBucketheadZombie(this.controller));
-				Thread.sleep(2000);
-				this.controller.getZombies().add(new Zomboni(this.controller));*/
+				Thread.sleep(5000);
+				this.controller.getZombies().add(new Zomboni(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new NewspaperZombie(this.controller));
 				Thread.sleep(2000);

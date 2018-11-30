@@ -64,6 +64,15 @@ public class MainView extends JFrame{
 		pickup.setVisible(false);
 	}
 	
+	public void showPass() {
+		if (game != null) {
+			this.container.remove(game);
+			game = null;
+		}
+		Menu.setVisible(true);
+		pickup.setVisible(false);
+	}
+	
 	public Container getContainer() {
 		return container;
 	}

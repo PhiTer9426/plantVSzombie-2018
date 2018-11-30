@@ -34,7 +34,7 @@ public class NewspaperZombie extends Zombie implements Runnable {
 			else if (this.getStatus() == 1) {
 				Eat();
 			}
-			if(this.getIs_Newspaper() == true) {            //有报纸才需要判定
+			if(this.getIs_Newspaper() == true && this.getDeath() == 0) {            //有报纸才需要判定
 			    //if (this.getNewsPaper_health() <= 0) {      //报纸生命耗尽
 				if(this.getCurrent_health()<=10) {
 				    this.setIs_Newspaper(false);

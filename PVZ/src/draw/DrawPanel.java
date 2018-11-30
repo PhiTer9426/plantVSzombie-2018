@@ -3,6 +3,7 @@ package draw;
 import java.awt.Graphics;
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import bullet.Bullet;
@@ -24,6 +25,9 @@ public class DrawPanel extends JPanel{
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		g.drawImage(
+				new ImageIcon("plantsVsZombieMaterials/images/interface/ShovelBack.png").getImage(),340,0,100,55,null);
+
 		if (controller.getBullets().size() != 0) {
 			for (Bullet bullet : controller.getBullets()) {
 				g.drawImage(

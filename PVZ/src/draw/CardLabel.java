@@ -51,6 +51,7 @@ public class CardLabel extends JLabel implements Runnable{
 						"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif");
 				isBegin=false;
 				
+				
 				firstTime = nextTime;				
 				}
 			}
@@ -70,13 +71,15 @@ public class CardLabel extends JLabel implements Runnable{
 	public void run() {
 		while(true) {
 			nextTime=System.currentTimeMillis();
-			if(isBegin) {
+			if(isBegin) {				
 				this.setIcon(new ImageIcon(
 						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
+							
 			}
-			else {
+			if(!isBegin) {
 				setIcon(new ImageIcon(
 						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_03.gif"));
+				
 				//System.out.println(nextTime-firstTime);
 			}
 			if(nextTime-firstTime>=cd) {

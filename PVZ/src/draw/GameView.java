@@ -2,6 +2,7 @@ package draw;
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -20,6 +21,7 @@ public class GameView extends JLayeredPane {
 	private JLabel backgroud;
 	private JPanel plantCard;
 	private JLabel button;
+	private JLabel shovelBack;
 	private DrawPanel panel;
 	private JLabel prePlant;
 	private JLabel prePlantShadow;
@@ -38,6 +40,7 @@ public class GameView extends JLayeredPane {
 		this.controller = new Controller();
 		this.backgroud = new JLabel();
 		this.button = new JLabel();
+		this.shovelBack =new JLabel();
 		this.panel = new DrawPanel(this.controller);
 		this.plantCard = new JPanel();
 		this.prePlant = new JLabel();
@@ -58,6 +61,10 @@ public class GameView extends JLayeredPane {
 				new ImageIcon("plantsVsZombieMaterials/images/interface/Button.png"));
 		button.setBounds(787, 0, 113, 41);
 		this.add(button, new Integer(3));
+		//add chanzi
+		shovelBack.setIcon(new ImageIcon("plantsVsZombieMaterials/images/interface/Shovel.png"));
+		shovelBack.setBounds(348,6,100,40);
+		this.add(shovelBack, new Integer(3));
 		
 		//add drawPanel in game
 		panel.setBounds(0, 0, 900, 600);
@@ -128,8 +135,22 @@ public class GameView extends JLayeredPane {
 			}
 			public void mouseExited(MouseEvent e) {
 				button.setBounds(787, 0, 113, 41);
-			}	
+			}
+			
 		});	
+		shovelBack.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				shovelBack.setBounds(348,6,80,30);
+			}
+			public void mouseClicked(MouseEvent e) {
+				setPreIcon(
+						"plantsVsZombieMaterials/images/interface/Shovel.png","plantsVsZombieMaterials/images/interface/Shovel.png");
+				controller.setMouse("Shovel");
+			}
+			public void mouseExited(MouseEvent e) {
+				shovelBack.setBounds(348, 6, 100, 40);
+			}
+		});
 		
 		
 		
@@ -190,7 +211,12 @@ public class GameView extends JLayeredPane {
 	public void addPlant(int x, int y, String name) {
 		for (Plant plant : this.controller.getPlants()) {
 			if (plant.getPosX() == x && plant.getPosY() == y) {
+				if(controller.getMouse().equals("Shovel")) {
+				controller.getPlants().remove(plant);
+				plant.setIs_alive(false);
 				controller.setMouse("");
+				}
+				else controller.setMouse("");
 				break;
 			}
 		}

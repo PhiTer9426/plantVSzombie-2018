@@ -50,7 +50,7 @@ public class MenuView extends JLayeredPane {
 				adventure.setBounds(0, 5, 331, 146);
 			}				
 			public void mouseClicked(MouseEvent e) {
-				parent.showGame();
+				parent.showPickup();
 			}				
 			public void mouseEntered(MouseEvent e) {
 				adventure.setIcon(

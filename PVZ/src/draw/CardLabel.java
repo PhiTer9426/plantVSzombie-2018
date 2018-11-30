@@ -13,13 +13,15 @@ import controller.Controller;
 public class CardLabel extends JLabel implements Runnable{
 	private int cd;
 	private int leftCd;
+	private int price;
 	
 	private String name;
 	private Thread t;
 	private Controller controller;
 	
 	public CardLabel(String name, int index,
-			Controller controller, GameView game , int cd) {
+			Controller controller, GameView game ,
+			int cd, int price) {
 		// TODO Auto-generated constructor stub
 		this.setIcon(new ImageIcon(
 				"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
@@ -29,6 +31,7 @@ public class CardLabel extends JLabel implements Runnable{
 		this.name = name;
 		this.cd = cd;
 		this.leftCd = 0;
+		this.price = price;
 		this.controller = controller;
 		
 		
@@ -38,7 +41,7 @@ public class CardLabel extends JLabel implements Runnable{
 
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {								
-				if(leftCd <= 0) {
+				if(leftCd <= 0 && controller.getSun() >= price) {
 					controller.setMouse(name);
 					game.setPreIcon(
 							"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif",
@@ -68,12 +71,18 @@ public class CardLabel extends JLabel implements Runnable{
 				e.printStackTrace();
 			}
 			if(leftCd <= 0) {
-				this.setIcon(new ImageIcon(
+				if (controller.getSun() >= this.price) {
+					this.setIcon(new ImageIcon(
 						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
+				}
+				else {
+					this.setIcon(new ImageIcon(
+						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_03.gif"));
+				}
 			}
 			else {
 				this.setIcon(new ImageIcon(
-						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_03.gif"));
+					"plantsVsZombieMaterials/images/Card/Plants/" + name + "_03.gif"));
 				leftCd--;
 			}
 		}

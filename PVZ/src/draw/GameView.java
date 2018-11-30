@@ -285,6 +285,10 @@ public class GameView extends JLayeredPane {
 			this.controller.getPlants().add(new SunFlower(x, y, controller));
 			addSunNumber(-50);
 			break;
+		case "LilyPad":
+			this.controller.getPlants().add(new SunFlower(x, y, controller));
+			addSunNumber(-25);
+			break;
 		default:
 			break;
 		}

@@ -37,6 +37,7 @@ public class ZombieProducer implements Runnable{
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new ConeheadZombie(this.controller));
 				Thread.sleep(2000);
+				
 				this.controller.getZombies().add(new FlagZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new ScreenDoorZombie(this.controller));

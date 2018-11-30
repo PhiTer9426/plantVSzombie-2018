@@ -107,8 +107,9 @@ public class PickCardView extends JLayeredPane{
 		this.cards.add(new PickCardLabel("TallNut", 10, this));
 		this.cards.add(new PickCardLabel("Threepeater", 11, this));
 		this.cards.add(new PickCardLabel("WallNut", 12, this));
-		this.cards.add(new PickCardLabel("Torchwood", 13, this));
-		this.cards.add(new PickCardLabel("WXZ", 14, this));
+		this.cards.add(new PickCardLabel("LilyPad", 13, this));
+		this.cards.add(new PickCardLabel("Torchwood", 14, this));
+		this.cards.add(new PickCardLabel("WXZ", 15, this));
 		
 		for (PickCardLabel pickCardLabel : cards) {
 			this.add(pickCardLabel, new Integer(3));

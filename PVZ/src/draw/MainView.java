@@ -77,4 +77,7 @@ public class MainView extends JFrame{
 		return container;
 	}
 	
+	public void setLevel(int level) {
+		this.level = level;
+	}
 }

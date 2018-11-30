@@ -40,7 +40,7 @@ public class Squash extends Plant implements Runnable {
 				for (Zombie zombie : this.controller.getZombies()) {
 					if (this.getPosY() == zombie.getPosY() &&
 							this.getPosX() * 81 + 81 + 81 +150 > zombie.getPosX()
-							&& this.getPosX() * 81 + 81 + 150 < zombie.getPosX()) {
+							&& this.getPosX() * 150 < zombie.getPosX()) {
 						if (this.getIs_alive()) {
 							this.setImage(Toolkit.getDefaultToolkit().createImage("plantsVsZombieMaterials/images/Plants/Squash/SquashR.gif"));
 							Thread.sleep(500);

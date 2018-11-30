@@ -56,7 +56,7 @@ public class FlagZombie extends Zombie {
 	        }			
 		    
 			this.setImage(Toolkit.getDefaultToolkit().
-					createImage("plantsVsZombieMaterials/images/Zombies/FlagZombie/FlagZombieDie.gif"));
+					createImage("plantsVsZombieMaterials/images/Zombies/FlagZombie/ZombieDie.gif"));
 			Thread.sleep(1800);
 			this.controller.getZombies().remove(this);
 		} catch (InterruptedException e) {
@@ -75,7 +75,7 @@ public class FlagZombie extends Zombie {
 			
 	    	Thread.sleep(this.getEatSpeed() * 6);
 			this.setImage(Toolkit.getDefaultToolkit().
-					createImage("plantsVsZombieMaterials/images/Zombies/FlagZombie/FlagZombieDie.gif"));
+					createImage("plantsVsZombieMaterials/images/Zombies/FlagZombie/ZombieDie.gif"));
 			Thread.sleep(1800);
 			this.controller.getZombies().remove(this);
 		} catch (InterruptedException e) {

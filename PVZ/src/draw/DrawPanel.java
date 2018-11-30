@@ -16,14 +16,17 @@ import zombie.Zombie;
 public class DrawPanel extends JPanel{
 	private Controller controller;
 	Image plant;
+	private boolean game;
 
 	public DrawPanel(Controller controller) {
 		this.controller = controller;
 		this.setOpaque(false);
+		this.game =false;
 	}
 
 	@Override
 	public void paint(Graphics g) {
+		if(game) {
 		super.paint(g);
 		g.drawImage(
 				new ImageIcon("plantsVsZombieMaterials/images/interface/ShovelBack.png").getImage(),340,0,100,55,null);
@@ -66,6 +69,9 @@ public class DrawPanel extends JPanel{
 							    90 + 92 + 92 * zombie.getDiePosY() - zombie.getImageOfDie().getHeight(null), null);
 					}
 				}
+				if(zombie.getPosX()<=50 && zombie.getIs_alive()) {
+					game=false;
+				}
 			}
 		}
 
@@ -83,5 +89,10 @@ public class DrawPanel extends JPanel{
 			}
 		}
 
+	} 
+		else {
+		g.drawImage(new ImageIcon("plantsVsZombieMaterials/images/interface/ZombiesWon.png").getImage(),
+				450,200,200,200,null);
+	}
 	}
 }

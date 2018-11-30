@@ -11,48 +11,44 @@ import javax.swing.JLayeredPane;
 import controller.Controller;
 
 public class CardLabel extends JLabel implements Runnable{
-	private long firstTime;
-	private long nextTime;
-	
-	private long cd;
-	private boolean isBegin;
+	private int cd;
+	private int leftCd;
+	private int price;
 	
 	private String name;
 	private Thread t;
 	private Controller controller;
 	
 	public CardLabel(String name, int index,
-			Controller controller, GameView game , long cd) {
+			Controller controller, GameView game ,
+			int cd, int price) {
 		// TODO Auto-generated constructor stub
 		this.setIcon(new ImageIcon(
 				"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
 
 		this.setBounds(10, 10 + index * 60, 100, 60);
 		
-		this.isBegin=true;
-		this.name=name;
-		this.cd=cd;
-		this.controller=controller;
+		this.name = name;
+		this.cd = cd;
+		this.leftCd = 0;
+		this.price = price;
+		this.controller = controller;
 		
-		firstTime=System.currentTimeMillis();
 		
 		this.start();
 		
-
 		this.setBounds(10, index * 60, 100, 60);
 
 		this.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-								
-				if(isBegin) {
-				controller.setMouse(name);
-				game.setPreIcon(
-						"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif",
-						"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif");
-				isBegin=false;
-				
-				
-				firstTime = nextTime;				
+
+			public void mouseClicked(MouseEvent e) {								
+				if(leftCd <= 0 && controller.getSun() >= price) {
+					controller.setMouse(name);
+					game.setPreIcon(
+							"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif",
+							"plantsVsZombieMaterials/images/Plants/" + name + "/" + name + ".gif");
+					leftCd = cd;
+
 				}
 			}
 			public void mouseEntered(MouseEvent e) {
@@ -70,20 +66,27 @@ public class CardLabel extends JLabel implements Runnable{
 	
 	public void run() {
 		while(true) {
-			nextTime=System.currentTimeMillis();
-			if(isBegin) {				
-				this.setIcon(new ImageIcon(
+
+			try {
+				Thread.sleep(40);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(leftCd <= 0) {
+				if (controller.getSun() >= this.price) {
+					this.setIcon(new ImageIcon(
 						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_01.gif"));
-							
-			}
-			if(!isBegin) {
-				setIcon(new ImageIcon(
+				}
+				else {
+					this.setIcon(new ImageIcon(
 						"plantsVsZombieMaterials/images/Card/Plants/" + name + "_03.gif"));
-				
-				//System.out.println(nextTime-firstTime);
+				}
 			}
-			if(nextTime-firstTime>=cd) {
-				isBegin=true;
+			else {
+				this.setIcon(new ImageIcon(
+					"plantsVsZombieMaterials/images/Card/Plants/" + name + "_03.gif"));
+				leftCd--;
 			}
 		}
 	}

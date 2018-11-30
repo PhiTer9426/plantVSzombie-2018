@@ -20,7 +20,8 @@ public class Elf extends Hero implements Runnable {
 		this.setMax_health(30);
 		this.setCurrent_health(30);
 		this.setName("Elf");
-//		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Plants/TallNut/TallNut.gif"));
+		this.setPrice(100);
+		this.setImage(Toolkit.getDefaultToolkit().getImage("plantsVsZombieMaterials/images/Hearoes/Elf/Elf.gif"));
 		this.controller = controller;
 		this.start();
 	}

@@ -23,21 +23,20 @@ public class ZombieProducer implements Runnable{
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		while (true) {
+		// TODO Auto-generated method stub		 
 			try	{
-				Thread.sleep(2000);
+				/*Thread.sleep(2000);
 				this.controller.getZombies().add(new NormalZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new PoleVaultingZombie(this.controller));
-				Thread.sleep(2000);
-				this.controller.getZombies().add(new NewspaperZombie(this.controller));
+				
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new BucketheadZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new ConeheadZombie(this.controller));
 				Thread.sleep(2000);
 				this.controller.getZombies().add(new FlagZombie(this.controller));
+
 //				Thread.sleep(2000);
 //				this.controller.getZombies().add(new ScreenDoorZombie(this.controller));
 //				Thread.sleep(2000);
@@ -51,9 +50,36 @@ public class ZombieProducer implements Runnable{
 //				Thread.sleep(2000);
 //				this.controller.getZombies().add(new Zomboni(this.controller));
 				
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new ScreenDoorZombie(this.controller));
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new FootballZombie(this.controller));
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new DuckyTubeZombie(this.controller));
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new DuckyTubeConeheadZombie(this.controller));
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new DuckyTubeBucketheadZombie(this.controller));
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new Zomboni(this.controller));*/
+				Thread.sleep(2000);
+				this.controller.getZombies().add(new NewspaperZombie(this.controller));
+				Thread.sleep(2000);
+				controller.getGame().getEnd().setVisible(true);
+				Thread.sleep(1000);
+				controller.getGame().getEnd().setVisible(false);
+				Thread.sleep(3000);
+				this.controller.getZombies().add(new FlagZombie(this.controller));
+				for(int i=0;i<5;i++) {
+					this.controller.getZombies().add(new NewspaperZombie(this.controller));
+					this.controller.getZombies().add(new NormalZombie(this.controller));
+					this.controller.getZombies().add(new BucketheadZombie(this.controller));
+					this.controller.getZombies().add(new NormalZombie(this.controller));
+					
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-	}
+	
 }

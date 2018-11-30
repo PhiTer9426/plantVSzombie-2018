@@ -17,8 +17,7 @@ public class MenuView extends JLayeredPane {
 	public MenuView(MainView parent) {
 		// TODO Auto-generated constructor stub
 		this.parent = parent;
-		this.setBounds(0, 0, 900, 600);		
-		parent.getContainer().add(this);
+		this.setBounds(0, 0, 900, 600);	
 		init();
 		addListener();
 	}
@@ -51,7 +50,7 @@ public class MenuView extends JLayeredPane {
 				adventure.setBounds(0, 5, 331, 146);
 			}				
 			public void mouseClicked(MouseEvent e) {
-				parent.showGame();
+				parent.showPickup();
 			}				
 			public void mouseEntered(MouseEvent e) {
 				adventure.setIcon(

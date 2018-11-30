@@ -1,12 +1,13 @@
 package draw;
 
+
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -25,19 +26,20 @@ public class GameView extends JLayeredPane {
 	private DrawPanel panel;
 	private JLabel prePlant;
 	private JLabel prePlantShadow;
+	private JLabel end;
 	
 	private MainView parent;
 	private Controller controller;
-	
+		
 	private JLabel sunText;
 	private JTextField sun;
+	private String[] picked;
 	
-	public GameView(MainView parent) {
+	public GameView(MainView parent, int level, String[] picked) {
 		// TODO Auto-generated constructor stub
 		this.setBounds(0, 0, 900, 600);
 		this.parent = parent;
-		parent.getContainer().add(this);
-		this.controller = new Controller();
+		this.controller = new Controller(this);
 		this.backgroud = new JLabel();
 		this.button = new JLabel();
 		this.shovelBack =new JLabel();
@@ -45,14 +47,29 @@ public class GameView extends JLayeredPane {
 		this.plantCard = new JPanel();
 		this.prePlant = new JLabel();
 		this.prePlantShadow = new JLabel();
-		init();
+		this.picked = picked;
+		init(level);
 		addListener();
 	}
 	
-	public void init() {
+	public void init(int level) {
 		//add background
-		backgroud.setIcon(
-				new ImageIcon("plantsVsZombieMaterials/images/interface/background1.jpg"));
+		switch (level) {
+		case 1:
+			backgroud.setIcon(new ImageIcon(
+					"plantsVsZombieMaterials/images/interface/background1.jpg"));
+			break;
+		case 2:
+			backgroud.setIcon(new ImageIcon(
+					"plantsVsZombieMaterials/images/interface/background2.jpg"));
+			break;
+		case 3:
+			backgroud.setIcon(new ImageIcon(
+					"plantsVsZombieMaterials/images/interface/background3.jpg"));
+			break;
+		default:
+			break;
+		}
 		backgroud.setBounds(0, 0, 900, 600);
 		this.add(backgroud, new Integer(1));	
 
@@ -61,6 +78,7 @@ public class GameView extends JLayeredPane {
 				new ImageIcon("plantsVsZombieMaterials/images/interface/Button.png"));
 		button.setBounds(787, 0, 113, 41);
 		this.add(button, new Integer(3));
+		
 		//add chanzi
 		shovelBack.setIcon(new ImageIcon("plantsVsZombieMaterials/images/interface/Shovel.png"));
 		shovelBack.setBounds(348,6,100,40);
@@ -96,35 +114,66 @@ public class GameView extends JLayeredPane {
 		sun.setText("50");
 		this.add(this. sun,new Integer(4));
 		
-
-
-		plantCard.add(new CardLabel("WXZ", 0, this.controller, this,5000));
-	
-		plantCard.add(new CardLabel("Peashooter", 1, this.controller, this,(long) 0.8));
+		//add end
+		this.setEnd(new JLabel());
+		this.getEnd().setIcon(new ImageIcon("plantsVsZombieMaterials/images/interface/FinalWave.gif"));
+		this.getEnd().setBounds(400, 100, 600, 400);
+		this.end.setVisible(false);
+		this.add(getEnd(), new Integer(5));
 		
-		plantCard.add(new CardLabel("CherryBomb", 0, this.controller, this,5000));
-	
-		plantCard.add(new CardLabel("Squash", 1, this.controller, this,5000));
-
-
-		plantCard.add(new CardLabel("SnowPea", 2, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("SunFlower", 3, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("Torchwood", 4, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("PotatoMine", 5, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("Jalapeno", 6, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("Chomper", 7, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("Spikeweed", 8, this.controller, this,5000));
-		
-		plantCard.add(new CardLabel("Threepeater", 9, this.controller, this,5000));
+		for (int i = 0; i < picked.length; i++) {			
+			switch (picked[i]) {
+			case "WXZ":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 0));
+				break;
+			case "Peashooter":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 100));
+				break;
+			case "Repeater":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 200));
+				break;
+			case "SnowPea":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 175));
+				break;
+			case "WallNut":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 50));
+				break;
+			case "Torchwood":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 175));
+				break;
+			case "PotatoMine":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 25));
+				break;
+			case "Jalapeno":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 125));
+				break;
+			case "Chomper":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 150));
+				break;
+			case "Spikeweed":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 100));
+				break;
+			case "Threepeater":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 325));
+				break;
+			case "Squash":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 50));
+				break;
+			case "CherryBomb":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 150));
+				break;
+			case "TallNut":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 125));
+				break;
+			case "SunFlower":
+				plantCard.add(new CardLabel(picked[i], i, this.controller, this, 200, 50));
+				break;
+			default:
+				break;
+			}
+		}
 	}
-	
-	
+
 	public void addListener() {
 		button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -157,27 +206,26 @@ public class GameView extends JLayeredPane {
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if (e.getButton() == 1) {
-
-
 					for(ProduceSun sun : controller.getSuns()) {
-
 						if(e.getX() < sun.getPosX() + 80   &&
 								e.getX() > sun.getPosX() - 80  &&
 								e.getY() < sun.getPosY() + 100 &&
 								e.getY() > sun.getPosY() - 100)
-
 						{
 							controller.getMovingSun().add(new SunMove(sun.getPosX(),sun.getPosY(),controller));
-							addSunNumber();
+							addSunNumber(25);
 							destroy(sun);
 							break;
 						}
 					}
-						
-					
 					if (e.getX() < 880 && e.getX() > 150 && e.getY() > 90 && e.getY() < 560) {
 						addPlant((e.getX()-150)/81, (e.getY()-90)/92, controller.getMouse());
 					}
+				}
+				else {
+					controller.setMouse("");
+					prePlant.setVisible(false);
+					prePlantShadow.setVisible(false);
 				}
 			}
 		});	
@@ -226,45 +274,59 @@ public class GameView extends JLayeredPane {
 			break;
 		case "Peashooter":
 			this.controller.getPlants().add(new Peashooter(x, y, controller));
+			addSunNumber(-100);
 			break;
 		case "Repeater":
 			this.controller.getPlants().add(new Repeater(x, y, controller));
+			addSunNumber(-200);
 			break;
 		case "SnowPea":
 			this.controller.getPlants().add(new SnowPea(x, y, controller));
+			addSunNumber(-175);
 			break;
 		case "WallNut":
 			this.controller.getPlants().add(new WallNut(x, y, controller));
+			addSunNumber(-50);
 			break;
 		case "Torchwood":
 			this.controller.getPlants().add(new Torchwood(x, y, controller));
+			addSunNumber(-175);
 			break;
 		case "PotatoMine":
 			this.controller.getPlants().add(new PotatoMine(x, y, controller));
+			addSunNumber(-25);
 			break;
 		case "Jalapeno":
 			this.controller.getPlants().add(new Jalapeno(x, y, controller));
+			addSunNumber(-125);
 			break;
 		case "Chomper":
 			this.controller.getPlants().add(new Chomper(x, y, controller));
+			addSunNumber(-150);
 			break;
 		case "Spikeweed":
 			this.controller.getPlants().add(new Spikeweed(x, y, controller));
+			addSunNumber(-100);
 			break;
 		case "Threepeater":
 			this.controller.getPlants().add(new Threepeater(x, y, controller));
+			addSunNumber(-325);
 			break;
 		case "Squash":
 			this.controller.getPlants().add(new Squash(x, y, controller));
+			addSunNumber(-50);
 			break;
 		case "CherryBomb":
 			this.controller.getPlants().add(new CherryBomb(x, y, controller));
+			addSunNumber(-150);
 			break;
 		case "TallNut":
 			this.controller.getPlants().add(new TallNut(x, y, controller));
+			addSunNumber(-125);
 			break;
 		case "SunFlower":
 			this.controller.getPlants().add(new SunFlower(x, y, controller));
+			addSunNumber(-50);
 			break;
 		default:
 			break;
@@ -274,9 +336,8 @@ public class GameView extends JLayeredPane {
 		prePlantShadow.setVisible(false);
 	}
 
-
-	public void addSunNumber() {
-		controller.setSun(controller.getSun() + 25);
+	public void addSunNumber(int x) {
+		controller.setSun(controller.getSun() + x);
 		String s =String.valueOf(controller.getSun());
 		sun.setText(s);
 	}
@@ -285,9 +346,16 @@ public class GameView extends JLayeredPane {
 		this.controller.getSuns().remove(sun);
 	}
 	
-
 	public void setPreIcon(String preName, String PreShadow) {
 		prePlant.setIcon(new ImageIcon(preName));
 		prePlantShadow.setIcon(new ImageIcon(PreShadow));
+	}
+
+	public JLabel getEnd() {
+		return end;
+	}
+
+	public void setEnd(JLabel end) {
+		this.end = end;
 	}
 }

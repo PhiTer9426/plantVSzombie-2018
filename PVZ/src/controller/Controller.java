@@ -1,10 +1,14 @@
 package controller;
 
 
+import java.awt.Image;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import javax.swing.ImageIcon;
 
 import bullet.Bullet;
 import bullet.LawnCleaner;
+import draw.GameView;
 import plant.Plant;
 import plant.ProduceSun;
 import plant.SunMove;
@@ -23,9 +27,10 @@ public class Controller {
 	private ZombieProducer zombieProducer;
 	private SunProducer sunProducer;
 	
-	private TimeCount time;
+	private Image last;
+	private GameView game;
 	
-	public Controller() {
+	public Controller(GameView game) {
 		// TODO Auto-generated constructor stub
 		this.plants = new CopyOnWriteArrayList<Plant>();
 		this.zombies = new CopyOnWriteArrayList<Zombie>();
@@ -33,13 +38,13 @@ public class Controller {
 		this.sunNumber =new CopyOnWriteArrayList<ProduceSun>();
 		this.movingSun=new CopyOnWriteArrayList<SunMove>();
 		this.mouse = "";
+		this.setGame(game);
 		this.setSun(50);
 		for (int i = 0; i < 5; i++) {
 			this.bullets.add(new LawnCleaner(150, i * 92 + 90 + 92, this));
 		}
 		this.zombieProducer = new ZombieProducer(this);	
 		this.sunProducer=new SunProducer(this);
-		this.time=new TimeCount(this);
 	}
 
 	
@@ -73,9 +78,20 @@ public class Controller {
 		return movingSun;
 	}
 
-	public TimeCount getTime() {
-		return time;
+	public Image getLast() {
+		return last;
 	}
 
+
+
+	public GameView getGame() {
+		return game;
+	}
+
+
+
+	public void setGame(GameView game) {
+		this.game = game;
+	}
 
 }

@@ -17,6 +17,7 @@ public abstract class Hero {
 	private	int posX;
 	private	int posY;
 	private int cd;
+	private int price;
 	private Image image;
 	private final AudioFilePlayer player;
 	
@@ -73,6 +74,10 @@ public abstract class Hero {
 	public int getCd() {
 		return this.cd;
 	}
+	
+	public int getPrice() {
+		return this.price;
+	}
 		
 	public void setName(String name) {
 		this.name = name;
@@ -108,6 +113,10 @@ public abstract class Hero {
 	
 	public void setCd(int cd) {
 		this.cd = cd;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	public Image getImage() {

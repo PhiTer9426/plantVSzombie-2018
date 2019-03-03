@@ -29,7 +29,7 @@ public class MainView extends JFrame{
 		this.container.add(Menu);
 		this.pickup = new PickCardView(this);
 		this.container.add(pickup);
-		this.level = 1;
+		this.level = 3;
 		showMenu();
 		
 		this.setSize(905, 640);
